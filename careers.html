@@ -14,6 +14,13 @@
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/style.css" />
 
+  <!-- Fix: improve native form control theming + dropdown readability -->
+  <style>
+    html { color-scheme: dark; }
+    /* Dropdown list (native) is often white on Windows; make option text readable */
+    select option { color: #04101F; background: #ffffff; }
+  </style>
+
   <!-- Open Graph -->
   <meta property="og:title" content="Careers — BlueWave Digital" />
   <meta property="og:description" content="BlueWave Digital is a results-focused digital marketing and technology agency based in Seychelles, offering on-site and worldwide remote services." />
@@ -74,8 +81,8 @@
     <div class="pill reveal">Careers</div>
     <h1 class="reveal">Developer opportunities at BlueWave Digital</h1>
     <p class="reveal">
-      We offer career opportunities for developers. If you build high-quality work and communicate professionally,
-      we want to hear from you.
+      We offer career opportunities for developers. For current openings, please view our LinkedIn page.
+      If no positions are available, you may email your CV/Resume for consideration.
     </p>
   </div>
 </section>
@@ -85,25 +92,33 @@
     <div class="grid grid-2">
       <div class="card reveal">
         <div class="card-pad">
-          <h2 style="margin-top:0;">What we look for</h2>
-          <ul>
-            <li>Solid fundamentals and clean implementation</li>
-            <li>Reliable communication and accountability</li>
-            <li>Ability to work with requirements and timelines</li>
-            <li>Portfolio, GitHub, or live projects to review</li>
-          </ul>
-          <div class="notice" style="margin-top: 14px;">
-            <strong>Remote:</strong> developers can apply from anywhere.
-            <br />
-            <strong>On-site:</strong> Seychelles-based opportunities depend on project needs.
+          <h2 style="margin-top:0;">Open positions</h2>
+          <p class="small">
+            View available opportunities on our LinkedIn page:
+          </p>
+          <div class="notice" style="margin-top: 10px;">
+            <strong>LinkedIn:</strong>
+            <a href="https://www.linkedin.com/company/bluewave-digital-tng" target="_blank" rel="noopener noreferrer">
+              linkedin.com/company/bluewave-digital-tng
+            </a>
           </div>
+
+          <div class="hr"></div>
+
+          <h3 style="margin:0 0 6px;">If nothing is listed</h3>
+          <p class="small" style="margin:0;">
+            Email your CV/Resume for consideration:
+            <a href="mailto:bluewavedigital.business@gmail.com?subject=BlueWave%20Digital%20CV%20Submission">bluewavedigital.business@gmail.com</a>
+          </p>
         </div>
       </div>
 
       <div class="card reveal">
         <div class="card-pad">
           <h2 style="margin-top:0;">Application form</h2>
-          <p class="small">This form is connected via Formspree. Submissions are delivered to our secure inbox for review.</p>
+          <p class="small">
+            This form is connected via Formspree. Please ensure your CV/Resume link is shareable (public access / “anyone with the link can view”).
+          </p>
 
           <form class="form" action="https://formspree.io/f/xdaeqbrg" method="POST">
             <div class="row">
@@ -117,23 +132,10 @@
               </div>
             </div>
 
-            <div class="row">
-              <div class="field">
-                <label for="role">Role</label>
-                <select id="role" name="role" required>
-                  <option value="" selected disabled>Select a role</option>
-                  <option>Front-end Developer</option>
-                  <option>Back-end Developer</option>
-                  <option>Full-stack Developer</option>
-                  <option>Mobile App Developer</option>
-                  <option>UI/UX Designer</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="portfolio">Portfolio / GitHub link</label>
-                <input id="portfolio" name="portfolio" placeholder="https://github.com/username" />
-              </div>
+            <div class="field">
+              <label for="position">Position you’re applying for</label>
+              <input id="position" name="position" placeholder="e.g., Front-end Developer" />
+              <div class="hint">You can copy the exact title from LinkedIn if available.</div>
             </div>
 
             <div class="field">
@@ -143,7 +145,7 @@
             </div>
 
             <div class="field">
-              <label for="message">Message</label>
+              <label for="message">Message (optional)</label>
               <textarea id="message" name="message" placeholder="Briefly introduce yourself and your experience."></textarea>
             </div>
 
@@ -154,14 +156,6 @@
             <div class="hint">By submitting, you confirm the information provided is accurate.</div>
           </form>
         </div>
-      </div>
-    </div>
-
-    <div class="card reveal" style="margin-top: 18px;">
-      <div class="card-pad">
-        <h2 style="margin-top:0;">Prefer email?</h2>
-        <p class="small">You can also contact us directly and include your portfolio links.</p>
-        <a class="btn" href="mailto:bluewavedigital.business@gmail.com?subject=BlueWave%20Digital%20Career%20Application">Email applications</a>
       </div>
     </div>
   </div>
