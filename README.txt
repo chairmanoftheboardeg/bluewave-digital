@@ -1,11 +1,30 @@
-BlueWave Digital - Full Static Website (Corporate Neutral Design)
+# BlueWave Digital — Static Website (Corporate Agency Theme)
 
-Deploy on GitHub Pages:
-1) Create a public GitHub repo.
-2) Upload everything in this folder to the repo root.
-3) Settings -> Pages -> Deploy from branch -> main -> /(root).
-4) Put your logo at /images/logo.png (same path used for favicon + header logo).
+This is a multi-page static website designed for GitHub Pages hosting.
 
-Notes:
-- Home page includes a thin announcement bar only.
-- Pricing is handled by email (no public pricing tables).
+## Structure
+- index.html (Home)
+- about.html
+- services.html
+- pricing.html
+- careers.html (Formspree application form)
+- contact.html (Formspree contact form)
+- insights.html + /posts (starter blog templates)
+- assets/css/style.css
+- assets/js/main.js
+- images/logo.png (logo + favicon)
+
+## Formspree setup (required)
+1) Create a Formspree form for Contact and copy the endpoint:
+   - Example: https://formspree.io/f/xxxxxx
+2) Replace the placeholder in:
+   - contact.html: action="https://formspree.io/f/YOUR_CONTACT_FORM_ID"
+   - careers.html: action="https://formspree.io/f/YOUR_APPLICATION_FORM_ID"
+
+## Notes
+- Logo and favicon both use: images/logo.png
+- Blog posts are starter templates. Replace with your own content for real SEO benefit.
+- No build step required: upload files to GitHub Pages as-is.
+
+## Optional
+- Add analytics scripts in the <head> of each page if needed.
