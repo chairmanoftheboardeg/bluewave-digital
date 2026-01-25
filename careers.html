@@ -69,7 +69,6 @@
 </header>
 
 <main id="main">
-
 <section class="pagehead">
   <div class="container">
     <div class="pill reveal">Careers</div>
@@ -104,9 +103,9 @@
       <div class="card reveal">
         <div class="card-pad">
           <h2 style="margin-top:0;">Application form</h2>
-          <p class="small">This form is connected via Formspree. Replace the placeholder endpoint in <span class="kbd">careers.html</span>.</p>
+          <p class="small">This form is connected via Formspree. Submissions are delivered to our secure inbox for review.</p>
 
-          <form class="form" action="https://formspree.io/f/YOUR_APPLICATION_FORM_ID" method="POST" enctype="multipart/form-data">
+          <form class="form" action="https://formspree.io/f/xdaeqbrg" method="POST">
             <div class="row">
               <div class="field">
                 <label for="name">Full name</label>
@@ -138,15 +137,9 @@
             </div>
 
             <div class="field">
-              <label for="cvlink">CV link (recommended)</label>
-              <input id="cvlink" name="cv_link" placeholder="Link to your CV (Drive/Dropbox/etc.)" />
-              <div class="hint">If you prefer, you can also upload a CV file below.</div>
-            </div>
-
-            <div class="field">
-              <label for="cvfile">CV file upload (optional)</label>
-              <input id="cvfile" type="file" name="cv_file" accept=".pdf,.doc,.docx" />
-              <div class="hint">File upload support depends on your Formspree plan/settings.</div>
+              <label for="cvlink">CV/Resume link</label>
+              <input id="cvlink" name="cv_link" placeholder="Paste a shareable link (Google Drive, Dropbox, OneDrive, etc.)" required />
+              <div class="hint">Make sure the link is accessible (sharing set to “Anyone with the link can view”).</div>
             </div>
 
             <div class="field">
@@ -167,13 +160,12 @@
     <div class="card reveal" style="margin-top: 18px;">
       <div class="card-pad">
         <h2 style="margin-top:0;">Prefer email?</h2>
-        <p class="small">You can also contact us directly and attach your portfolio links.</p>
+        <p class="small">You can also contact us directly and include your portfolio links.</p>
         <a class="btn" href="mailto:bluewavedigital.business@gmail.com?subject=BlueWave%20Digital%20Career%20Application">Email applications</a>
       </div>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer class="footer">
