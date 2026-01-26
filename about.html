@@ -147,6 +147,129 @@
   </div>
 </section>
 
+  <style>
+  /* Section Scoped Styles to avoid conflicts */
+  .bw-team-section {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 60px 20px;
+    background-color: transparent; /* Assuming parent container has the dark bg */
+    color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Section Header Styling */
+  .bw-team-header {
+    margin-bottom: 40px;
+  }
+  
+  .bw-pill-label {
+    display: inline-block;
+    background-color: #1e3a5f; /* Muted blue pill background */
+    color: #60a5fa; /* Cyan text */
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .bw-team-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+  }
+
+  .bw-team-header p {
+    color: #94a3b8; /* Muted grey text */
+    max-width: 600px;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* Grid Layout */
+  .bw-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  /* Card Styling */
+  .bw-team-card {
+    background-color: #152033; /* Matches your existing card dark blue */
+    border: 1px solid #1e293b; /* Subtle border */
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .bw-team-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6; /* Highlight border on hover */
+  }
+
+  /* Profile Image */
+  .bw-member-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #1e293b;
+  }
+
+  /* Typography within Card */
+  .bw-team-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 5px 0;
+    color: #ffffff;
+  }
+
+  .bw-role {
+    color: #38bdf8; /* Cyan accent color */
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .bw-bio {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+</style>
+
+<section class="bw-team-section">
+  <div class="bw-team-header">
+    <span class="bw-pill-label">Our Experts</span>
+    <h2>Meet the team behind the results</h2>
+    <p>We are a diverse group of strategists, designers, and developers passionate about building digital excellence.</p>
+  </div>
+
+  <div class="bw-team-grid">
+    
+    <div class="bw-team-card">
+      <img src="https://i.pravatar.cc/300?img=11" alt="Team Member" class="bw-member-img">
+      <h3>Tyler Nicholas</h3>
+      <span class="bw-role">Head Founder</span>
+      <p class="bw-bio"></p>
+    </div>
+
+    <div class="bw-team-card">
+      <img src="https://i.pravatar.cc/300?img=59" alt="Team Member" class="bw-member-img">
+      <h3>Dearen Porice</h3>
+      <span class="bw-role">Founder</span>
+      <p class="bw-bio"></p>
+    </div>
+ </div>
+</section>
+
 </main>
 
 <footer class="footer">
