@@ -131,26 +131,6 @@
             text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
-        .btn-primary {
-            background: linear-gradient(45deg, var(--blue-accent), var(--cyan-glow));
-            color: var(--bg-deep-navy);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-        }
-
         /* --- PAGE HERO --- */
         .page-hero {
             padding: 12rem 5% 6rem;
@@ -234,20 +214,25 @@
             transform: scaleX(1);
         }
 
-        .trusted-icon {
-            font-size: 3.5rem;
-            color: rgba(0, 210, 255, 0.15);
+        /* New Logo Styling */
+        .trusted-logo {
+            height: 70px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
             margin-bottom: 1.5rem;
-            transition: color 0.4s ease, transform 0.4s ease;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.05));
+            border-radius: 8px; /* Smooths out square JPGs slightly */
         }
 
-        .trusted-card:hover .trusted-icon {
-            color: var(--cyan-glow);
-            transform: scale(1.1);
+        .trusted-card:hover .trusted-logo {
+            transform: scale(1.08);
+            filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.2));
         }
 
         .trusted-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--text-white);
             margin-bottom: 2rem;
         }
@@ -264,6 +249,7 @@
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
+            margin-top: auto;
         }
 
         .btn-outline:hover {
@@ -453,33 +439,39 @@
         <div class="trusted-grid">
 
             <div class="trusted-card reveal">
-                <i class="fa-solid fa-building trusted-icon"></i>
+                <img src="https://i.ibb.co/XkMkGnfB/TNG-Logo.png" alt="Tyler Nicholas Group Logo" class="trusted-logo">
                 <h3>Tyler Nicholas Group</h3>
                 <a href="https://tylernicholasgroup.com" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
             <div class="trusted-card reveal">
-                <i class="fa-brands fa-discord trusted-icon"></i>
-                <h3>Emirates Group Roblox</h3>
-                <a href="https://emirtesgrouproblox.link" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-
-            <div class="trusted-card reveal">
-                <i class="fa-solid fa-microchip trusted-icon"></i>
-                <h3>BlueWave Digital</h3>
-                <a href="https://blue-wave.tylernicholasgroup.com" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-
-            <div class="trusted-card reveal">
-                <i class="fa-solid fa-bowl-food trusted-icon"></i>
+                <img src="https://www.foodshare-seychelles.online/image/logo.png" alt="FoodShare Seychelles Logo" class="trusted-logo">
                 <h3>FoodShare Seychelles</h3>
-                <a href="https://foodshare-seychelles.online" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                <a href="https://www.foodshare-seychelles.online" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
             <div class="trusted-card reveal">
-                <i class="fa-solid fa-paintbrush trusted-icon"></i>
+                <img src="https://emiratesgrouproblox.link/images/logo.png" alt="Emirates Group Roblox Logo" class="trusted-logo">
+                <h3>Emirates Group Roblox</h3>
+                <a href="https://emiratesgrouproblox.link" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="trusted-card reveal">
+                <img src="https://i.ibb.co/1hqpv2C/Icon.png" alt="Blackwood Digital Services Logo" class="trusted-logo">
+                <h3>Blackwood Digital Services</h3>
+                <a href="https://bds.tylernicholasgroup.com" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="trusted-card reveal">
+                <img src="https://i.ibb.co/rGzQB2Rz/IMG-20260213-WA0008.jpg" alt="Pretty Dazzle Logo" class="trusted-logo">
                 <h3>Pretty Dazzle</h3>
                 <a href="https://pretty-dazzle.tylernicholasgroup.com/" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="trusted-card reveal">
+                <img src="https://i.ibb.co/zTcY2KGN/Logo-2.jpg" alt="Aqua Smart Logo" class="trusted-logo">
+                <h3>Aqua Smart</h3>
+                <a href="https://aqua-smart.tylernicholasgroup.com/" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
         </div>
