@@ -15,11 +15,11 @@
         :root {
             --bg-deep-navy: #06101e;
             --bg-card: #0a182b;
+            --bg-pure-black: #000000;
             --cyan-glow: #00d2ff;
             --blue-accent: #3b96d2;
             --text-white: #ffffff;
             --text-muted: #a0aec0;
-            --tng-gold: #c5a059;
         }
 
         * {
@@ -38,6 +38,19 @@
 
         h1, h2, h3, h4 {
             font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- GLOBAL LINK STYLING FOR TNG --- */
+        .tng-link {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .tng-link:hover {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
         }
 
         /* --- LOADING SCREEN --- */
@@ -86,7 +99,7 @@
         }
 
         .logo img {
-            height: 55px; /* Scales the official logo perfectly */
+            height: 55px;
             width: auto;
             transition: transform 0.3s ease;
             display: block;
@@ -310,7 +323,7 @@
 
         .bento-card.wide { grid-column: span 2; }
 
-        /* --- TNG BRANDING SECTION --- */
+        /* --- TNG BRANDING SECTION (UPDATED TO BLACK) --- */
         .tng-section {
             padding: 5rem 5%;
             background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
@@ -323,21 +336,21 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            background: rgba(255,255,255,0.03);
+            background: var(--bg-pure-black); /* Changed to pure black */
             padding: 1rem 3rem;
             border-radius: 50px;
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(0, 210, 255, 0.2);
             transition: all 0.3s;
         }
 
         .tng-badge:hover {
-            border-color: var(--tng-gold);
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.1);
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
             transform: scale(1.02);
         }
 
         .tng-badge i {
-            color: var(--tng-gold);
+            color: var(--cyan-glow); /* Changed from orange to cyan */
             font-size: 1.5rem;
         }
 
@@ -345,6 +358,7 @@
             font-size: 1.2rem;
             letter-spacing: 1px;
             text-transform: uppercase;
+            color: var(--text-white);
         }
 
         .tng-text p {
@@ -411,11 +425,6 @@
             border-top: 1px solid rgba(255,255,255,0.05);
             color: var(--text-muted);
             font-size: 0.9rem;
-        }
-
-        .footer-bottom span {
-            color: var(--tng-gold);
-            font-weight: 600;
         }
 
         /* --- KEYFRAMES --- */
@@ -492,7 +501,7 @@
         <div class="tng-badge">
             <i class="fa-solid fa-building-shield"></i>
             <div class="tng-text">
-                <h4>A Tyler Nicholas Group Company</h4>
+                <h4>A <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a> Company</h4>
                 <p>Backed by elite corporate infrastructure.</p>
             </div>
         </div>
@@ -571,7 +580,7 @@
 
         <div class="footer-bottom">
             &copy; 2026 BlueWave Digital. All Rights Reserved. <br>
-            Proudly owned and operated by the <span>Tyler Nicholas Group</span>.
+            Proudly owned and operated by the <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a>.
         </div>
     </footer>
 
