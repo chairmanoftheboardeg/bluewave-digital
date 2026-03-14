@@ -1,115 +1,457 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>404 - BlueWave Digital</title>
-  <meta name="description" content="BlueWave Digital — IT Solutions: web, software, apps, IT support, domains, SEO, and security."/>
-  <link rel="icon" href="/images/logo.png"/>
-  <link rel="stylesheet" href="/assets/style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Endpoint Not Found | BlueWave Digital</title>
+    
+    <link rel="icon" href="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-deep-navy: #06101e;
+            --bg-card: #0a182b;
+            --bg-pure-black: #000000;
+            --cyan-glow: #00d2ff;
+            --blue-accent: #3b96d2;
+            --text-white: #ffffff;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep-navy);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- GLOBAL LINK STYLING FOR TNG --- */
+        .tng-link {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .tng-link:hover {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        /* --- LOADING SCREEN --- */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-deep-navy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(0, 210, 255, 0.1);
+            border-left-color: var(--cyan-glow);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(6, 16, 30, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--blue-accent), var(--cyan-glow));
+            color: var(--bg-deep-navy);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+        }
+
+        /* --- 404 ERROR SECTION --- */
+        .error-section {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12rem 5% 8rem;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(0, 210, 255, 0.05) 0%, transparent 60%);
+        }
+
+        .error-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            color: rgba(0, 210, 255, 0.15);
+            margin-bottom: 1rem;
+            animation: pulseIcon 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseIcon {
+            0% { transform: scale(1); color: rgba(0, 210, 255, 0.15); }
+            50% { transform: scale(1.05); color: rgba(0, 210, 255, 0.3); }
+            100% { transform: scale(1); color: rgba(0, 210, 255, 0.15); }
+        }
+
+        .error-content h1 {
+            font-size: 7rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: var(--cyan-glow);
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .error-content h2 {
+            font-size: 2rem;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .error-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .error-buttons {
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* --- TNG BRANDING SECTION --- */
+        .tng-section {
+            padding: 4rem 5%;
+            background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tng-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-pure-black);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tng-badge:hover {
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .tng-badge i {
+            color: var(--cyan-glow);
+            font-size: 1.5rem;
+        }
+
+        .tng-text h4 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-white);
+        }
+
+        .tng-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #030811;
+            padding: 4rem 5% 2rem;
+            border-top: 2px solid var(--blue-accent);
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            max-width: 400px;
+        }
+
+        .footer-links h3 {
+            color: var(--cyan-glow);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan-glow);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE MENU --- */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .error-content h1 { font-size: 5rem; }
+            .error-content h2 { font-size: 1.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="container">
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="/index.html" aria-label="BlueWave Digital Home">
-          <img src="/images/logo.png" alt="BlueWave Digital logo"/>
-          <div class="title">
-            <strong>BlueWave Digital</strong>
-            <span>IT Solutions • Seychelles & Remote</span>
-          </div>
+    <div id="loader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
         </a>
+        
+        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+        
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/portfolio/">Portfolio</a></li>
+            <li><a href="/careers/">Careers</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </nav>
 
-        <div class="navlinks" aria-label="Primary links">
-          <a data-nav class="" href="/index.html">Home</a>
-          <a data-nav class="" href="/about.html">About</a>
-          <a data-nav class="" href="/services.html">Services</a>
-          <a data-nav class="" href="/portfolio.html">Portfolio</a>
-          <a data-nav class="" href="/careers.html">Careers</a>
-          <a data-nav class="" href="/contact.html">Contact</a>
-          <div class="dropdown" data-dropdown>
-            <button type="button" data-dropdown-btn aria-label="More pages">More ▾</button>
-            <div class="dropdown-menu" aria-label="More links">
-              <a data-nav class="" href="/it-support.html">IT Support</a>
-              <a data-nav class="" href="/domains.html">Domains</a>
-              <a data-nav class="" href="/security.html">Security</a>
-              <a data-nav class="" href="/seo.html">SEO</a>
-              <a data-nav class="" href="/insights/index.html">Insights</a>
-              <a data-nav class="" href="/legal.html">Legal & Compliance</a>
-              <a data-nav class="" href="/accessibility.html">Accessibility</a>
+    <section class="error-section">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fa-solid fa-network-wired"></i>
             </div>
-          </div>
+            <h1>404</h1>
+            <h2>Endpoint Not Found.</h2>
+            <p>The digital asset or infrastructure you are attempting to access has been moved, deleted, or does not exist on this server. Let's route you back to headquarters.</p>
+            
+            <div class="error-buttons">
+                <a href="/" class="btn-primary">Return to Homepage</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="tng-section">
+        <div class="tng-badge">
+            <i class="fa-solid fa-building-shield"></i>
+            <div class="tng-text">
+                <h4>A <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a> Company</h4>
+                <p>Backed by elite corporate infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
+                </div>
+                <p>Elite digital infrastructure and software development. Operating on-site in Seychelles and remote worldwide.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Solutions</h3>
+                <ul>
+                    <li><a href="/services/">Custom Development</a></li>
+                    <li><a href="/services/">Infrastructure Setup</a></li>
+                    <li><a href="/services/">Discord Security</a></li>
+                    <li><a href="/services/">Nonprofit Systems</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/portfolio/">Our Work</a></li>
+                    <li><a href="/careers/">Careers at TNG</a></li>
+                    <li><a href="/contact/">Contact Us</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="actions">
-          <a class="btn primary" href="/contact.html"><span class="dot" aria-hidden="true"></span>Get in Touch</a>
-          <button class="hamburger" type="button" data-hamburger aria-label="Open menu" aria-expanded="false">Menu</button>
+        <div class="footer-bottom">
+            &copy; 2026 BlueWave Digital. All Rights Reserved. <br>
+            Proudly owned and operated by the <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a>.
         </div>
-      </nav>
+    </footer>
 
-      <div class="mobile" data-mobile aria-label="Mobile links">
-        <a data-nav class="" href="/index.html">Home</a>
-        <a data-nav class="" href="/about.html">About</a>
-        <a data-nav class="" href="/services.html">Services</a>
-        <a data-nav class="" href="/portfolio.html">Portfolio</a>
-        <a data-nav class="" href="/careers.html">Careers</a>
-        <a data-nav class="" href="/contact.html">Contact</a>
-        <a data-nav class="" href="/it-support.html">IT Support</a>
-        <a data-nav class="" href="/domains.html">Domains</a>
-        <a data-nav class="" href="/security.html">Security</a>
-        <a data-nav class="" href="/seo.html">SEO</a>
-        <a data-nav class="" href="/insights/index.html">Insights</a>
-        <a data-nav class="" href="/legal.html">Legal & Compliance</a>
-        <a data-nav class="" href="/accessibility.html">Accessibility</a>
-      </div>
-    </div>
-  </header>
+    <script>
+        // Loading Screen
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("loader");
+            setTimeout(() => {
+                loader.style.opacity = "0";
+                loader.style.visibility = "hidden";
+            }, 600);
+        });
 
-  
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
 
-  <main>
-    
-<section class="section">
-  <div class="container">
-    <div class="card"><div class="inner">
-      <div class="kicker"><span class="pill">404</span><span>Page not found</span></div>
-      <h1 style="margin-top:14px">We could not find that page.</h1>
-      <p class="lead">Use the navigation to return to the main site, or contact us for support.</p>
-      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:14px">
-        <a class="btn primary" href="/index.html"><span class="dot" aria-hidden="true"></span>Go to Home</a>
-        <a class="btn" href="/contact.html">Contact</a>
-        <a class="btn" href="mailto:bluewavedigital.business@gmail.com?subject=Website%20support%20-%20BlueWave%20Digital">Email Support</a>
-      </div>
-    </div></div>
-  </div>
-</section>
-
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <small>
-            <strong>BlueWave Digital</strong><br/>
-            IT Solutions based in Seychelles, delivering remote and on-site work locally and internationally.<br/>
-            Email: <a href="mailto:bluewavedigital.business@gmail.com">bluewavedigital.business@gmail.com</a>
-          </small>
-        </div>
-        <div class="footer-links">
-          <a href="/privacy.html">Privacy</a>
-          <a href="/terms.html">Terms</a>
-          <a href="/legal.html">Legal</a>
-          <a href="mailto:bluewavedigital.business@gmail.com?subject=Project%20enquiry%20%E2%80%94%20BlueWave%20Digital">Email Us</a>
-        </div>
-      </div>
-      <div class="section compact" style="padding-top:0">
-        <div class="small">© 2026 BlueWave Digital. All rights reserved.</div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="/assets/main.js" defer></script>
+        menuToggle.addEventListener('click', () => {
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.backgroundColor = 'rgba(6, 16, 30, 0.95)';
+                navLinks.style.padding = '2rem 0';
+                navLinks.style.borderBottom = '1px solid rgba(0, 210, 255, 0.1)';
+            }
+        });
+    </script>
 </body>
 </html>
