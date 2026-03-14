@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Work | BlueWave Digital</title>
+    <title>Trusted Partners | BlueWave Digital</title>
     
     <link rel="icon" href="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" type="image/png">
     
@@ -185,100 +185,75 @@
             transform: translateY(0);
         }
 
-        /* --- PORTFOLIO GRID --- */
-        .portfolio-section {
-            padding: 4rem 5% 8rem;
+        /* --- TRUSTED PARTNERS GRID --- */
+        .trusted-section {
+            padding: 2rem 5% 8rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .portfolio-grid {
+        .trusted-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .portfolio-card {
+        .trusted-card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 3.5rem 2rem;
+            text-align: center;
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .portfolio-card:hover {
+        .trusted-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--blue-accent), var(--cyan-glow));
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s ease;
+        }
+
+        .trusted-card:hover {
             transform: translateY(-10px);
             border-color: rgba(0, 210, 255, 0.3);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.1);
         }
 
-        .portfolio-img {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #0d233e 0%, #06101e 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
+        .trusted-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .portfolio-img i {
-            font-size: 4rem;
-            color: rgba(0, 210, 255, 0.1);
-            transition: transform 0.4s ease, color 0.4s ease;
+        .trusted-icon {
+            font-size: 3.5rem;
+            color: rgba(0, 210, 255, 0.15);
+            margin-bottom: 1.5rem;
+            transition: color 0.4s ease, transform 0.4s ease;
         }
 
-        .portfolio-card:hover .portfolio-img i {
-            transform: scale(1.1);
-            color: rgba(0, 210, 255, 0.3);
-        }
-
-        .portfolio-content {
-            padding: 2.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .portfolio-tags span {
-            background: rgba(0, 210, 255, 0.05);
+        .trusted-card:hover .trusted-icon {
             color: var(--cyan-glow);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            letter-spacing: 0.5px;
+            transform: scale(1.1);
         }
 
-        .portfolio-content h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-content p {
-            color: var(--text-muted);
-            font-size: 1rem;
+        .trusted-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-white);
             margin-bottom: 2rem;
-            line-height: 1.7;
-            flex-grow: 1;
         }
 
         .btn-outline {
-            display: inline-table;
+            display: inline-block;
             padding: 0.6rem 1.5rem;
             border: 1px solid var(--blue-accent);
             color: var(--cyan-glow);
@@ -286,13 +261,38 @@
             border-radius: 4px;
             font-weight: 600;
             transition: all 0.3s;
-            text-align: center;
-            width: fit-content;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         .btn-outline:hover {
             background: rgba(0, 210, 255, 0.1);
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+        }
+
+        .btn-outline i {
+            margin-left: 5px;
+        }
+
+        /* --- GLOBAL DISCLAIMER --- */
+        .global-disclaimer {
+            background: rgba(0, 210, 255, 0.03);
+            border: 1px dashed rgba(0, 210, 255, 0.2);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .global-disclaimer p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .global-disclaimer strong {
+            color: var(--cyan-glow);
         }
 
         /* --- TNG BRANDING SECTION --- */
@@ -416,7 +416,7 @@
             .nav-links { display: none; }
             .menu-toggle { display: block; }
             .page-hero h1 { font-size: 3rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
+            .trusted-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -437,7 +437,7 @@
         <ul class="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/services/">Services</a></li>
-            <li><a href="/portfolio/" class="active">Portfolio</a></li>
+            <li><a href="/portfolio/" class="active">Trusted By</a></li>
             <li><a href="/careers/">Careers</a></li>
             <li><a href="/about/">About Us</a></li>
             <li><a href="/contact/">Contact</a></li>
@@ -445,88 +445,47 @@
     </nav>
 
     <header class="page-hero">
-        <h1>Engineered by BlueWave.</h1>
-        <p>A curated selection of live digital platforms, robust web applications, and large-scale community infrastructures designed, built, and optimized by our team.</p>
+        <h1>Trusted Partners.</h1>
+        <p>Don't just take our word for it. We are trusted by organizations and enterprises worldwide. You can verify our infrastructure by visiting a selection of our live partners below.</p>
     </header>
 
-    <section class="portfolio-section">
-        <div class="portfolio-grid">
+    <section class="trusted-section">
+        <div class="trusted-grid">
 
-            <div class="portfolio-card reveal">
-                <div class="portfolio-img">
-                    <i class="fa-solid fa-building"></i>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-tags">
-                        <span>Enterprise Architecture</span>
-                        <span>Web Dev</span>
-                    </div>
-                    <h3>Tyler Nicholas Group</h3>
-                    <p>Designed and deployed the central corporate hub for our parent company. Built a highly responsive, professional front-end to showcase the group's global footprint, subsidiaries, and executive leadership.</p>
-                    <a href="https://tylernicholasgroup.com" target="_blank" class="btn-outline">View Website <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
-                </div>
+            <div class="trusted-card reveal">
+                <i class="fa-solid fa-building trusted-icon"></i>
+                <h3>Tyler Nicholas Group</h3>
+                <a href="https://tylernicholasgroup.com" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
-            <div class="portfolio-card reveal">
-                <div class="portfolio-img">
-                    <i class="fa-brands fa-discord"></i>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-tags">
-                        <span>Discord Architecture</span>
-                        <span>Web Design</span>
-                    </div>
-                    <h3>Emirates Group Roblox</h3>
-                    <p>Engineered the digital web presence and Discord community architecture for a massive virtual aviation ecosystem. Optimized load speeds and established clear user pathways for hundreds of active users.</p>
-                    <a href="https://emirtesgrouproblox.link" target="_blank" class="btn-outline">View Website <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
-                </div>
+            <div class="trusted-card reveal">
+                <i class="fa-brands fa-discord trusted-icon"></i>
+                <h3>Emirates Group Roblox</h3>
+                <a href="https://emirtesgrouproblox.link" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
-            <div class="portfolio-card reveal">
-                <div class="portfolio-img">
-                    <i class="fa-solid fa-microchip"></i>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-tags">
-                        <span>Full-Stack</span>
-                        <span>UI/UX Design</span>
-                    </div>
-                    <h3>BlueWave Digital</h3>
-                    <p>We built our own infrastructure. This agency website features custom CSS animations, sub-second load times via pure code architecture, and a highly optimized mobile-first layout.</p>
-                    <a href="https://blue-wave.tylernicholasgroup.com" target="_blank" class="btn-outline">View Website <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
-                </div>
+            <div class="trusted-card reveal">
+                <i class="fa-solid fa-microchip trusted-icon"></i>
+                <h3>BlueWave Digital</h3>
+                <a href="https://blue-wave.tylernicholasgroup.com" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
-            <div class="portfolio-card reveal">
-                <div class="portfolio-img">
-                    <i class="fa-solid fa-bowl-food"></i>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-tags">
-                        <span>Database Architecture</span>
-                        <span>Nonprofit Dev</span>
-                    </div>
-                    <h3>FoodShare Seychelles</h3>
-                    <p>Engineered the core digital platform to enhance food security and distribution logistics across the islands. Built data routing systems to connect essential resources with communities in need.</p>
-                    <a href="https://foodshare-seychelles.online" target="_blank" class="btn-outline">View Website <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
-                </div>
+            <div class="trusted-card reveal">
+                <i class="fa-solid fa-bowl-food trusted-icon"></i>
+                <h3>FoodShare Seychelles</h3>
+                <a href="https://foodshare-seychelles.online" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
-            <div class="portfolio-card reveal">
-                <div class="portfolio-img">
-                    <i class="fa-solid fa-paintbrush"></i>
-                </div>
-                <div class="portfolio-content">
-                    <div class="portfolio-tags">
-                        <span>E-Commerce</span>
-                        <span>Responsive Design</span>
-                    </div>
-                    <h3>Pretty Dazzle</h3>
-                    <p>Built a high-conversion, responsive e-commerce landing page and product showcase platform. Focused on sleek front-end design, rapid load speeds, and optimized user experience.</p>
-                    <a href="https://pretty-dazzle.tylernicholasgroup.com/" target="_blank" class="btn-outline">View Website <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left: 5px; font-size: 0.8rem;"></i></a>
-                </div>
+            <div class="trusted-card reveal">
+                <i class="fa-solid fa-paintbrush trusted-icon"></i>
+                <h3>Pretty Dazzle</h3>
+                <a href="https://pretty-dazzle.tylernicholasgroup.com/" target="_blank" class="btn-outline">Verify Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
 
+        </div>
+
+        <div class="global-disclaimer reveal">
+            <p><strong>Please Note:</strong> The listings above are only a curated selection for verification purposes. We are trusted by <strong>many more companies, communities, organizations, and servers worldwide</strong> who rely on our elite digital infrastructure.</p>
         </div>
     </section>
 
