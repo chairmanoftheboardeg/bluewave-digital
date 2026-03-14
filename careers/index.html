@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | BlueWave Digital</title>
+    
+    <link rel="icon" href="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" type="image/png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* --- CORE VARIABLES --- */
+        :root {
+            --bg-deep-navy: #06101e;
+            --bg-card: #0a182b;
+            --bg-pure-black: #000000;
+            --cyan-glow: #00d2ff;
+            --blue-accent: #3b96d2;
+            --text-white: #ffffff;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep-navy);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* --- GLOBAL LINK STYLING FOR TNG --- */
+        .tng-link {
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .tng-link:hover {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        /* --- LOADING SCREEN --- */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-deep-navy);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(0, 210, 255, 0.1);
+            border-left-color: var(--cyan-glow);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- NAVIGATION BAR --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: rgba(6, 16, 30, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
+        }
+
+        .logo img {
+            height: 55px;
+            width: auto;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--cyan-glow);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--blue-accent), var(--cyan-glow));
+            color: var(--bg-deep-navy);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border: 1px solid var(--blue-accent);
+            color: var(--cyan-glow);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 210, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* --- PAGE HERO --- */
+        .page-hero {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top, rgba(0, 210, 255, 0.05) 0%, transparent 60%);
+        }
+
+        .page-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        /* --- CAREERS SECTION --- */
+        .careers-section {
+            padding: 2rem 5% 8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Information Protocol Box */
+        .protocol-box {
+            background: rgba(0, 210, 255, 0.05);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            border-left: 4px solid var(--cyan-glow);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .protocol-box h3 {
+            color: var(--cyan-glow);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .protocol-box p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .protocol-box p strong {
+            color: var(--text-white);
+        }
+
+        .protocol-box ul {
+            color: var(--text-muted);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .protocol-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Job Postings Container */
+        .jobs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .job-card:hover {
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .job-title-group h2 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .job-meta span {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--cyan-glow);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .job-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .job-footer {
+            margin-top: 1rem;
+        }
+
+        /* Loading / Error States */
+        .status-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-card);
+            border: 1px dashed rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-muted);
+        }
+
+        .status-message i {
+            font-size: 3rem;
+            color: var(--blue-accent);
+            margin-bottom: 1rem;
+        }
+
+        /* --- TNG BRANDING SECTION --- */
+        .tng-section {
+            padding: 5rem 5%;
+            background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tng-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--bg-pure-black);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .tng-badge:hover {
+            border-color: var(--cyan-glow);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+            transform: scale(1.02);
+        }
+
+        .tng-badge i {
+            color: var(--cyan-glow);
+            font-size: 1.5rem;
+        }
+
+        .tng-text h4 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-white);
+        }
+
+        .tng-text p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        /* --- FOOTER --- */
+        .site-footer {
+            background-color: #030811;
+            padding: 4rem 5% 2rem;
+            border-top: 2px solid var(--blue-accent);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            max-width: 400px;
+        }
+
+        .footer-links h3 {
+            color: var(--cyan-glow);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan-glow);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- KEYFRAMES --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE MENU --- */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-white);
+        }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .page-hero h1 { font-size: 3rem; }
+            .job-header { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
+        </a>
+        
+        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
+        
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/services/">Services</a></li>
+            <li><a href="/portfolio/">Portfolio</a></li>
+            <li><a href="/careers/" class="active">Careers</a></li>
+            <li><a href="/about/">About Us</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="page-hero">
+        <h1>Join BlueWave Digital.</h1>
+        <p>We are always looking for elite engineers, developers, and strategists to join our operations. Review our open technical positions below.</p>
+    </header>
+
+    <section class="careers-section">
+
+        <div class="protocol-box">
+            <h3><i class="fa-solid fa-circle-info"></i> Application Protocol & Timeline</h3>
+            <p><strong>Centralized Hiring:</strong> BlueWave Digital is a subsidiary of the Tyler Nicholas Group. All applications are processed through our central corporate HR portal.</p>
+            <ul>
+                <li>When you click "Apply," you will be routed to <code>careers.tylernicholasgroup.com</code>.</li>
+                <li><strong>You must locate this specific job post again on the central portal and click it to access the final application form.</strong></li>
+                <li>If you do not see any roles listed here, you may browse the central portal for other opportunities across the organization.</li>
+            </ul>
+            <p><strong>Timeline:</strong> Applications are reviewed within 2 to 4 business days. Expect an official response in less than 240 hours.</p>
+            <p><strong>Notice (As of March 2026):</strong> The majority of our current openings operate on a Paid or Volunteer Part-Time basis.</p>
+            
+            <div style="margin-top: 1.5rem;">
+                <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Visit Central TNG Careers Portal</a>
+            </div>
+        </div>
+
+        <div class="jobs-container" id="jobs-container">
+            <div class="status-message">
+                <i class="fa-solid fa-circle-notch fa-spin"></i>
+                <h3>Connecting to Secure Server...</h3>
+                <p>Retrieving active job postings for BlueWave Digital.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="tng-section reveal">
+        <div class="tng-badge">
+            <i class="fa-solid fa-building-shield"></i>
+            <div class="tng-text">
+                <h4>A <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a> Company</h4>
+                <p>Backed by elite corporate infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
+                </div>
+                <p>Elite digital infrastructure and software development. Operating on-site in Seychelles and remote worldwide.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Solutions</h3>
+                <ul>
+                    <li><a href="/services/">Custom Development</a></li>
+                    <li><a href="/services/">Infrastructure Setup</a></li>
+                    <li><a href="/services/">Discord Security</a></li>
+                    <li><a href="/services/">Nonprofit Systems</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/portfolio/">Our Work</a></li>
+                    <li><a href="/careers/">Careers at TNG</a></li>
+                    <li><a href="/contact/">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            &copy; 2026 BlueWave Digital. All Rights Reserved. <br>
+            Proudly owned and operated by the <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a>.
+        </div>
+    </footer>
+
+    <script>
+        // 1. Loading Screen & Reveal Logic
+        window.addEventListener("load", function() {
+            const loader = document.getElementById("loader");
+            setTimeout(() => { loader.style.opacity = "0"; loader.style.visibility = "hidden"; }, 600);
+        });
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // 2. Supabase Fetch Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const jobsContainer = document.getElementById('jobs-container');
+            const supabaseUrl = 'https://hicowukbjsbpuebquqbh.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpY293dWtianNicHVlYnF1cWJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzgyNzQsImV4cCI6MjA4NzU1NDI3NH0.sz7ZNU3-WcsskIaHC5Cjs_-WVmXLtYR15Iy8VGi8ch0';
+
+            // Query: Get jobs where company = 'BlueWave Digital' AND is_active = true
+            const endpoint = `${supabaseUrl}/rest/v1/job_postings?select=*&company=eq.BlueWave%20Digital&is_active=eq.true&order=created_at.desc`;
+
+            fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    'apikey': supabaseKey,
+                    'Authorization': `Bearer ${supabaseKey}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) { throw new Error('Network response was not ok'); }
+                return response.json();
+            })
+            .then(jobs => {
+                jobsContainer.innerHTML = ''; // Clear loading message
+
+                if (jobs.length === 0) {
+                    jobsContainer.innerHTML = `
+                        <div class="status-message" style="border-color: rgba(255,255,255,0.05);">
+                            <i class="fa-solid fa-folder-open" style="color: var(--text-muted);"></i>
+                            <h3>No Specific Openings</h3>
+                            <p>There are currently no exclusive listings active for BlueWave Digital. <br>Please check the main corporate portal for all open positions across the organization.</p>
+                            <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-primary" style="margin-top: 1.5rem;">View All TNG Careers</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                jobs.forEach((job, index) => {
+                    // Determine the Apply link logic based on your instruction
+                    // If external_link exists and isn't empty, use it. Otherwise default to TNG careers.
+                    const applyLink = (job.external_link && job.external_link.trim() !== "") 
+                        ? job.external_link 
+                        : "https://careers.tylernicholasgroup.com";
+
+                    // Convert plain text description to basic HTML if needed, or just insert
+                    const safeDesc = job.description || "No description provided.";
+
+                    const card = document.createElement('div');
+                    card.className = 'job-card';
+                    // Stagger the animation slightly for each card
+                    card.style.animationDelay = `${index * 0.15}s`;
+                    
+                    card.innerHTML = `
+                        <div class="job-header">
+                            <div class="job-title-group">
+                                <h2>${job.title}</h2>
+                                <div class="job-meta">
+                                    <span><i class="fa-solid fa-location-dot"></i> ${job.location || 'Remote'}</span>
+                                    <span><i class="fa-solid fa-clock"></i> ${job.employment_type || 'Part-Time'}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-description">
+                            ${safeDesc}
+                        </div>
+                        <div class="job-footer">
+                            <a href="${applyLink}" target="_blank" class="btn-primary">Apply Now <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
+                        </div>
+                    `;
+                    jobsContainer.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching jobs:', error);
+                jobsContainer.innerHTML = `
+                    <div class="status-message" style="border-color: rgba(230, 0, 38, 0.3);">
+                        <i class="fa-solid fa-triangle-exclamation" style="color: #E60026;"></i>
+                        <h3>Connection Error</h3>
+                        <p>Unable to connect to the TNG secure career database. Please try again later or visit the central portal directly.</p>
+                        <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Go to Central Portal</a>
+                    </div>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
