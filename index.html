@@ -193,10 +193,44 @@
             100% { transform: translateY(0px); }
         }
 
-        .hero-content {
+        /* Hero Split Layout */
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 4rem;
             position: relative;
             z-index: 1;
-            max-width: 800px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0, 210, 255, 0.15));
+            transform: translateY(0);
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .hero-image img:hover {
+            transform: translateY(-10px);
+            filter: drop-shadow(0 30px 50px rgba(0, 210, 255, 0.3));
         }
 
         .hero-badge {
@@ -323,7 +357,7 @@
 
         .bento-card.wide { grid-column: span 2; }
 
-        /* --- TNG BRANDING SECTION (UPDATED TO BLACK) --- */
+        /* --- TNG BRANDING SECTION --- */
         .tng-section {
             padding: 5rem 5%;
             background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
@@ -336,7 +370,7 @@
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            background: var(--bg-pure-black); /* Changed to pure black */
+            background: var(--bg-pure-black);
             padding: 1rem 3rem;
             border-radius: 50px;
             border: 1px solid rgba(0, 210, 255, 0.2);
@@ -350,7 +384,7 @@
         }
 
         .tng-badge i {
-            color: var(--cyan-glow); /* Changed from orange to cyan */
+            color: var(--cyan-glow);
             font-size: 1.5rem;
         }
 
@@ -437,7 +471,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- MOBILE MENU --- */
+        /* --- MOBILE MENU & RESPONSIVE --- */
         .menu-toggle {
             display: none;
             font-size: 1.5rem;
@@ -452,7 +486,23 @@
             .menu-toggle {
                 display: block;
             }
+            
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
             .hero h1 { font-size: 3rem; }
+            .hero-image {
+                justify-content: center;
+            }
+            
             .bento-grid { grid-template-columns: 1fr; }
             .bento-card.wide { grid-column: span 1; }
             .footer-grid { grid-template-columns: 1fr; }
@@ -486,13 +536,19 @@
         <div class="glow-orb-1"></div>
         <div class="glow-orb-2"></div>
         
-        <div class="hero-content">
-            <div class="hero-badge">On-Site in Seychelles & Remote Worldwide</div>
-            <h1>Elite Digital Infrastructure & Development.</h1>
-            <p>We build, optimize, and secure custom web platforms, software applications, and massive digital communities. Future-proof your digital presence today.</p>
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="hero-badge">On-Site in Seychelles & Remote Worldwide</div>
+                <h1>Elite Digital Infrastructure & Development.</h1>
+                <p>We build, optimize, and secure custom web platforms, software applications, and massive digital communities. Future-proof your digital presence today.</p>
+                
+                <div class="hero-buttons">
+                    <a href="/services/" class="btn-primary">Explore Our Services</a>
+                </div>
+            </div>
             
-            <div class="hero-buttons">
-                <a href="/services/" class="btn-primary">Explore Our Services</a>
+            <div class="hero-image">
+                <img src="REPLACE_WITH_YOUR_DIRECT_LINK.jpg" alt="BlueWave Digital Platform Showcase">
             </div>
         </div>
     </header>
