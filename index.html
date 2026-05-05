@@ -1,670 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueWave Digital | Elite Web & Software Development</title>
+    <title>BlueWave Digital | Enterprise Web & Software Solutions</title>
     
-    <link rel="icon" href="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" type="image/png">
+    <link rel="icon" href="https://i.ibb.co/d4rtnvfr/logo.png" type="image/png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif']
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#020617',       // Slate 950
+                            surface: '#0f172a',  // Slate 900
+                            border: '#1e293b',   // Slate 800
+                            blue: '#0052CC',     // Deep vibrant tech blue
+                            blueHover: '#0043A6',
+                            cyan: '#06b6d4',     // Electric cyan accent
+                            text: '#f8fafc',
+                            muted: '#94a3b8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* --- CORE VARIABLES --- */
-        :root {
-            --bg-deep-navy: #06101e;
-            --bg-card: #0a182b;
-            --bg-pure-black: #000000;
-            --cyan-glow: #00d2ff;
-            --blue-accent: #3b96d2;
-            --text-white: #ffffff;
-            --text-muted: #a0aec0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* High-performance static grid background */
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-deep-navy);
-            color: var(--text-white);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: #020617;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
+        .glow-text {
+            text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
         }
 
-        /* --- GLOBAL LINK STYLING FOR TNG --- */
-        .tng-link {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 800;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .tng-link:hover {
-            color: var(--cyan-glow);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-
-        /* --- LOADING SCREEN --- */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-deep-navy);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
-        }
-
-        .loader-ring {
-            width: 80px;
-            height: 80px;
-            border: 4px solid rgba(0, 210, 255, 0.1);
-            border-left-color: var(--cyan-glow);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* --- NAVIGATION BAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: rgba(6, 16, 30, 0.9);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
-        }
-
-        .logo img {
-            height: 55px;
-            width: auto;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover {
-            color: var(--cyan-glow);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--blue-accent), var(--cyan-glow));
-            color: var(--bg-deep-navy);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        /* Glowing Background Orbs */
-        .glow-orb-1 {
-            position: absolute;
-            top: 10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        .glow-orb-2 {
-            position: absolute;
-            bottom: -10%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59, 150, 210, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 10s ease-in-out infinite reverse;
-            z-index: 0;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Hero Split Layout */
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            gap: 4rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 650px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 700px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(0, 210, 255, 0.15));
-            transform: translateY(0);
-            transition: transform 0.5s ease, filter 0.5s ease;
-        }
-
-        .hero-image img:hover {
-            transform: translateY(-10px);
-            filter: drop-shadow(0 30px 50px rgba(0, 210, 255, 0.3));
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--cyan-glow);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            animation: fadeInDown 1s ease-out;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .hero-buttons {
-            animation: fadeInUp 1s ease-out 0.6s both;
-        }
-
-        /* --- SCROLL ANIMATION CLASSES --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- SERVICES BENTO GRID --- */
-        .services-section {
-            padding: 8rem 5%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .bento-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem 2rem;
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bento-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--blue-accent), var(--cyan-glow));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 210, 255, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 210, 255, 0.1);
-        }
-
-        .bento-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .bento-icon {
-            font-size: 2.5rem;
-            color: var(--cyan-glow);
-            margin-bottom: 1.5rem;
-        }
-
-        .bento-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .bento-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .bento-card.wide { grid-column: span 2; }
-
-        /* --- TNG BRANDING SECTION --- */
-        .tng-section {
-            padding: 5rem 5%;
-            background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .tng-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: var(--bg-pure-black);
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .tng-badge:hover {
-            border-color: var(--cyan-glow);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
-            transform: scale(1.02);
-        }
-
-        .tng-badge i {
-            color: var(--cyan-glow);
-            font-size: 1.5rem;
-        }
-
-        .tng-text h4 {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-white);
-        }
-
-        .tng-text p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            font-family: 'Outfit', sans-serif;
-            margin-top: 2px;
-        }
-
-        /* --- FOOTER --- */
-        .site-footer {
-            background-color: #030811;
-            padding: 4rem 5% 2rem;
-            border-top: 2px solid var(--blue-accent);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo img {
-            height: 45px;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-about p {
-            color: var(--text-muted);
-            max-width: 400px;
-        }
-
-        .footer-links h3 {
-            color: var(--cyan-glow);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--cyan-glow);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- KEYFRAMES --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        /* Smooth hardware-accelerated entrance */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
-
-        /* --- MOBILE MENU & RESPONSIVE --- */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-white);
-        }
-
-        @media (max-width: 900px) {
-            .nav-links {
-                display: none; 
-            }
-            .menu-toggle {
-                display: block;
-            }
-            
-            .hero-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-            .hero-text {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero h1 { font-size: 3rem; }
-            .hero-image {
-                justify-content: center;
-            }
-            
-            .bento-grid { grid-template-columns: 1fr; }
-            .bento-card.wide { grid-column: span 1; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
+        
+        /* Hide scrollbar for clean horizontal scrolling if needed */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col font-sans text-brand-text antialiased selection:bg-brand-blue selection:text-white">
 
-    <div id="loader">
-        <div class="loader-ring"></div>
-    </div>
-
-    <nav class="navbar">
-        <a href="/" class="logo">
-            <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
-        </a>
-        
-        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
-        
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/services/">Services</a></li>
-            <li><a href="/portfolio/">Portfolio</a></li>
-            <li><a href="/careers/">Careers</a></li>
-            <li><a href="/about/">About Us</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
-    </nav>
-
-    <header class="hero">
-        <div class="glow-orb-1"></div>
-        <div class="glow-orb-2"></div>
-        
-        <div class="hero-container">
-            <div class="hero-text">
-                <div class="hero-badge">On-Site in Seychelles & Remote Worldwide</div>
-                <h1>Elite Digital Infrastructure & Development.</h1>
-                <p>We build, optimize, and secure custom web platforms, software applications, and massive digital communities. Future-proof your digital presence today.</p>
-                
-                <div class="hero-buttons">
-                    <a href="/services/" class="btn-primary">Explore Our Services</a>
-                </div>
-            </div>
+    <header class="w-full border-b border-brand-border bg-brand-bg/95 backdrop-blur-md fixed top-0 z-50">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <div class="hero-image">
-                <img src="https://i.ibb.co/9HZywV9X/image-4-removebg-preview.png" alt="BlueWave Digital Platform Showcase">
+            <a href="/" class="flex items-center gap-3 group">
+                <img src="https://i.ibb.co/d4rtnvfr/logo.png" alt="BlueWave Digital" class="h-10 object-contain drop-shadow-md">
+                <span class="font-heading font-bold text-xl tracking-tight text-white hidden sm:block">BlueWave Digital</span>
+            </a>
+            
+            <nav class="hidden xl:flex items-center gap-6 text-[13px] font-medium tracking-wide text-brand-muted">
+                <a href="#" class="text-white">Home</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">About</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Services</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Industries</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Solutions</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Work</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Pricing</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Resources</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Careers</a>
+                <a href="#" class="hover:text-brand-cyan transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#" class="hidden md:inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-brand-text bg-brand-surface border border-brand-border rounded-lg hover:border-brand-cyan/50 hover:bg-brand-border transition-all shadow-sm">
+                    Client Login <i class="fa-solid fa-lock ml-2 text-brand-muted"></i>
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold text-white transition-all bg-brand-blue rounded-lg hover:bg-brand-blueHover shadow-[0_0_15px_rgba(0,82,204,0.3)] hover:shadow-[0_0_25px_rgba(0,82,204,0.5)] uppercase tracking-wider">
+                    Request a Quote
+                </a>
             </div>
         </div>
     </header>
 
-    <section class="tng-section reveal">
-        <div class="tng-badge">
-            <i class="fa-solid fa-building-shield"></i>
-            <div class="tng-text">
-                <h4>A <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a> Company</h4>
-                <p>Backed by elite corporate infrastructure.</p>
-            </div>
-        </div>
-    </section>
+    <main class="flex-grow pt-20">
+        
+        <section class="relative max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 lg:pt-32 lg:pb-40 overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-    <section class="services-section">
-        <div class="section-header reveal">
-            <h2>Our Core Competencies</h2>
-            <p>Comprehensive solutions engineered for scale and security.</p>
-        </div>
-
-        <div class="bento-grid">
-            
-            <div class="bento-card wide reveal">
-                <i class="fa-solid fa-code bento-icon"></i>
-                <h3>Web, Software & App Development</h3>
-                <p>Full-stack custom development from the ground up. We build highly responsive websites, iOS/Android mobile applications, custom APIs, client portals, and secure payment gateways.</p>
-            </div>
-
-            <div class="bento-card reveal">
-                <i class="fa-solid fa-magnifying-glass-chart bento-icon"></i>
-                <h3>SEO & Optimization</h3>
-                <p>Technical SEO audits, speed optimization, and performance analytics to ensure your platform dominates search rankings and converts visitors seamlessly.</p>
-            </div>
-
-            <div class="bento-card reveal">
-                <i class="fa-solid fa-server bento-icon"></i>
-                <h3>Hosting & Infrastructure</h3>
-                <p>Enterprise-grade server setup, DNS configuration, SSL installation, and 24/7 uptime monitoring to keep your assets secure and online.</p>
-            </div>
-
-            <div class="bento-card wide reveal">
-                <i class="fa-brands fa-discord bento-icon"></i>
-                <h3>Discord & Community Architecture</h3>
-                <p>Elite setup for massive digital communities. We design server structures, code custom moderation bots, integrate reaction roles, and provide 24/7 anti-raid security protocols.</p>
-            </div>
-
-            <div class="bento-card reveal">
-                <i class="fa-solid fa-hand-holding-heart bento-icon"></i>
-                <h3>Nonprofit Digital Strategy</h3>
-                <p>Specialized systems for NGOs, including donation integrations, volunteer registration portals, and high-conversion awareness campaign pages.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
+                
+                <div class="animate-fade-up max-w-2xl">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
+                        Enterprise Grade Solutions
+                    </div>
+                    <h1 class="font-heading text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.1] mb-6 glow-text">
+                        Digital Excellence.<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">Engineered for Scale.</span>
+                    </h1>
+                    <p class="text-base sm:text-lg text-brand-muted leading-relaxed mb-10 max-w-xl">
+                        We build robust, scalable, and intelligent digital infrastructure. From custom software and high-performance websites to AI automation and cybersecurity.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all bg-brand-blue rounded-lg hover:bg-brand-blueHover shadow-lg uppercase tracking-widest w-full sm:w-auto">
+                            Start a Project <i class="fa-solid fa-arrow-right ml-3"></i>
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all bg-brand-surface border border-brand-border rounded-lg hover:border-brand-cyan/50 hover:bg-brand-border uppercase tracking-widest w-full sm:w-auto">
+                            Explore Services
+                        </a>
+                    </div>
                 </div>
-                <p>Elite digital infrastructure and software development. Operating on-site in Seychelles and remote worldwide.</p>
+
+                <div class="relative animate-fade-up flex justify-center lg:justify-end" style="animation-delay: 0.2s;">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue/20 to-transparent rounded-full blur-3xl"></div>
+                    <img src="https://i.ibb.co/9HZywV9X/image-4-removebg-preview.png" alt="BlueWave Digital Interface Display" class="relative z-10 w-full max-w-[600px] object-contain drop-shadow-2xl scale-105 hover:scale-[1.07] transition-transform duration-700">
+                </div>
+
             </div>
-            
-            <div class="footer-links">
-                <h3>Solutions</h3>
-                <ul>
-                    <li><a href="/services/">Custom Development</a></li>
-                    <li><a href="/services/">Infrastructure Setup</a></li>
-                    <li><a href="/services/">Discord Security</a></li>
-                    <li><a href="/services/">Nonprofit Systems</a></li>
-                </ul>
+        </section>
+
+        <section class="border-y border-brand-border bg-brand-surface/50 backdrop-blur-sm">
+            <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="flex -space-x-3">
+                        <div class="w-10 h-10 rounded-full border-2 border-brand-bg bg-slate-700 flex items-center justify-center text-xs font-bold">C</div>
+                        <div class="w-10 h-10 rounded-full border-2 border-brand-bg bg-slate-600 flex items-center justify-center text-xs font-bold">T</div>
+                        <div class="w-10 h-10 rounded-full border-2 border-brand-bg bg-slate-800 flex items-center justify-center text-xs font-bold">S</div>
+                        <div class="w-10 h-10 rounded-full border-2 border-brand-bg bg-brand-cyan flex items-center justify-center text-xs font-bold text-brand-bg"><i class="fa-solid fa-star"></i></div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-white">Trusted by forward-thinking businesses.</p>
+                        <p class="text-xs text-brand-muted">Consistently rated 5 stars for excellence.</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://g.page/r/CeDCh_I5Z1PeEAI/review" target="_blank" class="inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold text-white transition-all bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-white/20 uppercase tracking-widest">
+                        <i class="fa-brands fa-google text-brand-cyan mr-2"></i> Leave a Review
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-32">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="text-brand-cyan text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Our Expertise</h2>
+                <h3 class="font-heading text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-6">Complete Digital Infrastructure.</h3>
+                <p class="text-brand-muted text-base leading-relaxed">We provide end-to-end technology solutions, managing everything from your public-facing website to your complex internal business systems.</p>
             </div>
 
-            <div class="footer-links">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="/about/">About Us</a></li>
-                    <li><a href="/portfolio/">Our Work</a></li>
-                    <li><a href="/careers/">Careers at TNG</a></li>
-                    <li><a href="/contact/">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Web & Software Dev</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Custom website design, full-stack application development, API integrations, and client portal architecture.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
 
-        <div class="footer-bottom">
-            &copy; 2026 BlueWave Digital. All Rights Reserved. <br>
-            Proudly owned and operated by the <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a>.
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">AI & Automation</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Deploy intelligent chatbots, streamline internal workflows, and automate lead qualification and reporting.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Cybersecurity & Hosting</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Enterprise-grade server deployment, zero-trust security hardening, malware protection, and automated backups.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">E-Commerce Solutions</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Scalable online storefronts, inventory management systems, and secure payment gateway integrations.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Business Systems (CRM/ERP)</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Custom HR portals, tailored CRM setups, executive data dashboards, and internal task management tools.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+
+                <div class="bg-brand-surface border border-brand-border rounded-2xl p-8 hover:border-brand-cyan/50 hover:-translate-y-1 transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                    <div class="w-12 h-12 rounded-xl bg-brand-bg border border-brand-border flex items-center justify-center text-brand-cyan text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-discord"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-3">Discord & Community</h4>
+                    <p class="text-sm text-brand-muted leading-relaxed mb-6">Professional server architecture, custom bot development, and security via BlackWood Digital Services.</p>
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">Explore <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#" class="inline-flex items-center text-sm font-bold text-white hover:text-brand-cyan transition-colors border-b border-brand-cyan pb-1 uppercase tracking-widest">
+                    View Complete Service Directory <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+            <div class="bg-gradient-to-br from-brand-blue/20 to-brand-surface border border-brand-blue/30 rounded-3xl p-10 md:p-20 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-cyan/20 rounded-full blur-3xl"></div>
+                
+                <h2 class="font-heading text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-6 relative z-10">Ready to transform your operations?</h2>
+                <p class="text-brand-text/80 text-lg mb-10 max-w-2xl mx-auto relative z-10">Whether you are a startup requiring a digital launch package, or a corporate entity needing complex system integration, we are ready to build.</p>
+                
+                <a href="#" class="relative z-10 inline-flex items-center justify-center px-10 py-4 text-sm font-bold text-white transition-all bg-brand-blue rounded-lg hover:bg-brand-blueHover shadow-lg uppercase tracking-widest">
+                    Request a Custom Quote
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-brand-border bg-brand-bg pt-20 pb-10">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
+                
+                <div class="lg:col-span-2">
+                    <img src="https://i.ibb.co/d4rtnvfr/logo.png" alt="BlueWave Digital" class="h-10 object-contain mb-6 grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all">
+                    <p class="text-sm text-brand-muted leading-relaxed max-w-sm mb-6">
+                        A technology and software firm dedicated to delivering high-performance digital infrastructure, automation, and design for global organizations.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-muted hover:text-brand-cyan hover:border-brand-cyan transition-colors"><i class="fa-brands fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center text-brand-muted hover:text-brand-cyan hover:border-brand-cyan transition-colors"><i class="fa-brands fa-x-twitter text-sm"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Directory</h4>
+                    <ul class="space-y-4 text-sm text-brand-muted">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Service Directory</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Client Portfolio</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Pricing & Packages</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Support & Legal</h4>
+                    <ul class="space-y-4 text-sm text-brand-muted">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Client Login</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Support Center</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">System Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Partnerships</h4>
+                    <ul class="space-y-4 text-sm text-brand-muted">
+                        <li>
+                            <a href="https://bds.tylernicholasgroup.com/" target="_blank" class="block hover:text-brand-cyan transition-colors">
+                                <span class="block text-white mb-1">BlackWood Digital</span>
+                                <span class="text-xs leading-snug">Specialized Discord & Community Security Solutions.</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-brand-border flex flex-col md:flex-row items-center justify-between gap-6">
+                <p class="text-xs text-brand-muted">
+                    &copy; 2026 BlueWave Digital. All rights reserved.
+                </p>
+                <a href="https://tylernicholasgroup.com" class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity group">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-muted group-hover:text-white transition-colors">A Proud Member Of</span>
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" class="h-5 grayscale group-hover:grayscale-0 transition-all">
+                </a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // 1. Loading Screen Logic
-        window.addEventListener("load", function() {
-            const loader = document.getElementById("loader");
-            setTimeout(() => {
-                loader.style.opacity = "0";
-                loader.style.visibility = "hidden";
-            }, 600);
-        });
-
-        // 2. Scroll Animation Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Trigger point
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal();
-    </script>
 </body>
 </html>
