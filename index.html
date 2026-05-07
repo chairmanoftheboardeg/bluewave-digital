@@ -49,58 +49,37 @@
             pointer-events: none; /* Prevents right-click and new tab opening */
         }
         
-        /* Re-enable pointer events for links that wrap images, but keep context menu blocked via JS */
-        a img {
-            pointer-events: none; 
-        }
-        a.carousel-link {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
+        a img { pointer-events: none; }
 
-        /* Carousel Animation Classes */
+        /* Bulletproof 3D Carousel Setup */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+        @media (min-width: 640px) { .carousel-container { height: 450px; } }
+        @media (min-width: 1024px) { .carousel-container { height: 550px; } }
+
         .carousel-item {
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
             position: absolute;
-            top: 0;
-            width: 60%;
+            width: 70%;
             max-width: 800px;
-        }
-        /* Active Center Slide */
-        .slide-active {
-            left: 50%;
-            transform: translateX(-50%) scale(1);
-            z-index: 30;
-            opacity: 1;
-            visibility: visible;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-        }
-        /* Left Slide */
-        .slide-left {
-            left: 15%;
-            transform: translateX(-50%) scale(0.85);
-            z-index: 20;
-            opacity: 0.5;
-            visibility: visible;
-            filter: blur(2px);
-        }
-        /* Right Slide */
-        .slide-right {
-            left: 85%;
-            transform: translateX(-50%) scale(0.85);
-            z-index: 20;
-            opacity: 0.5;
-            visibility: visible;
-            filter: blur(2px);
-        }
-        /* Hidden Slides */
-        .slide-hidden {
-            left: 50%;
-            transform: translateX(-50%) scale(0.6);
-            z-index: 10;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, z-index 0.6s;
             opacity: 0;
-            visibility: hidden;
+            z-index: 10;
+            pointer-events: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Preloader Custom Background */
@@ -219,53 +198,38 @@
         </section>
 
         <section class="w-full bg-slate-50 py-24 sm:py-32 overflow-hidden">
-            <div class="max-w-[90rem] mx-auto px-6 text-center mb-16">
+            <div class="max-w-[90rem] mx-auto px-6 text-center mb-10">
                 <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Expertise</h2>
                 <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Complete Digital Infrastructure.</h3>
-                <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto font-light">Explore our enterprise-grade services below. Select any module to view the full scope of solutions we build.</p>
+                <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto font-light">Explore our enterprise-grade services below. Click any module to view the full scope of solutions we build.</p>
             </div>
 
-            <div class="relative w-full max-w-[90rem] mx-auto h-[300px] sm:h-[400px] md:h-[500px]">
+            <div class="carousel-container" id="expertise-carousel">
                 
-                <div class="carousel-item slide-active" data-index="0">
-                    <a href="/services/" class="carousel-link group pointer-events-auto">
-                        <img src="https://i.ibb.co/S7RcFKxs/Chat-GPT-Image-May-7-2026-04-12-23-PM.png" alt="Web & Software Development" class="w-full rounded-2xl shadow-xl group-hover:shadow-2xl transition-shadow duration-300">
-                    </a>
-                </div>
+                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                    <img src="https://i.ibb.co/S7RcFKxs/Chat-GPT-Image-May-7-2026-04-12-23-PM.png" alt="Web & Software Development">
+                </a>
                 
-                <div class="carousel-item slide-right" data-index="1">
-                    <a href="/services/" class="carousel-link group pointer-events-auto">
-                        <img src="https://i.ibb.co/rP8wd9x/Chat-GPT-Image-May-7-2026-04-14-13-PM.png" alt="AI & Business Automations" class="w-full rounded-2xl shadow-lg">
-                    </a>
-                </div>
+                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                    <img src="https://i.ibb.co/rP8wd9x/Chat-GPT-Image-May-7-2026-04-14-13-PM.png" alt="AI & Business Automations">
+                </a>
 
-                <div class="carousel-item slide-hidden" data-index="2">
-                    <a href="/services/" class="carousel-link group pointer-events-auto">
-                        <img src="https://i.ibb.co/tkWLW1g/Chat-GPT-Image-May-7-2026-04-16-09-PM.png" alt="Cybersecurity & Hosting" class="w-full rounded-2xl shadow-lg">
-                    </a>
-                </div>
+                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                    <img src="https://i.ibb.co/tkWLW1g/Chat-GPT-Image-May-7-2026-04-16-09-PM.png" alt="Cybersecurity & Hosting">
+                </a>
 
-                <div class="carousel-item slide-hidden" data-index="3">
-                    <a href="/services/" class="carousel-link group pointer-events-auto">
-                        <img src="https://i.ibb.co/gLD6Xqnc/Chat-GPT-Image-May-7-2026-04-17-53-PM.png" alt="E-Commerce Solutions" class="w-full rounded-2xl shadow-lg">
-                    </a>
-                </div>
+                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                    <img src="https://i.ibb.co/gLD6Xqnc/Chat-GPT-Image-May-7-2026-04-17-53-PM.png" alt="E-Commerce Solutions">
+                </a>
 
-                <div class="carousel-item slide-left" data-index="4">
-                    <a href="/services/" class="carousel-link group pointer-events-auto">
-                        <img src="https://i.ibb.co/zTnGMHFp/Chat-GPT-Image-May-7-2026-04-21-23-PM.png" alt="Discord & Community" class="w-full rounded-2xl shadow-lg">
-                    </a>
-                </div>
+                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                    <img src="https://i.ibb.co/zTnGMHFp/Chat-GPT-Image-May-7-2026-04-21-23-PM.png" alt="Discord & Community">
+                </a>
 
             </div>
 
-            <div class="flex items-center justify-center gap-3 mt-10 relative z-20">
-                <button class="dot-btn w-3 h-3 rounded-full bg-brand-blue transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer" onclick="goToSlide(0)"></button>
-                <button class="dot-btn w-3 h-3 rounded-full bg-slate-300 hover:bg-brand-cyan transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer" onclick="goToSlide(1)"></button>
-                <button class="dot-btn w-3 h-3 rounded-full bg-slate-300 hover:bg-brand-cyan transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer" onclick="goToSlide(2)"></button>
-                <button class="dot-btn w-3 h-3 rounded-full bg-slate-300 hover:bg-brand-cyan transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer" onclick="goToSlide(3)"></button>
-                <button class="dot-btn w-3 h-3 rounded-full bg-slate-300 hover:bg-brand-cyan transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer" onclick="goToSlide(4)"></button>
-            </div>
+            <div class="flex items-center justify-center gap-3 mt-8 relative z-20" id="carousel-dots">
+                </div>
         </section>
 
         <section class="bg-brand-navy py-24 text-white text-center">
@@ -345,7 +309,7 @@
                     </p>
                     <span class="hidden sm:block text-slate-700">|</span>
                     
-                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=de5465d8-036a-4f5b-8c33-cbf78a4b1565" target="_blank" rel="noopener noreferrer" class="text-[10px] sm:text-xs text-slate-500 hover:text-white transition-colors pointer-events-auto">
+                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=de5465d8-036a-4f5b-8c33-cbf78a4b1565" target="_blank" rel="noopener noreferrer" class="text-[10px] sm:text-xs font-medium text-slate-500 hover:text-white transition-colors pointer-events-auto">
                         Protected by the Digital Millennium Copyright Act (DMCA)
                     </a>
                 </div>
@@ -380,64 +344,97 @@
                         }, 700);
                     }, 200);
                 }
-            }, 25); 
+            }, 20); 
         });
 
-        // 2. 3D Carousel Logic
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.carousel-item');
-        const dots = document.querySelectorAll('.dot-btn');
-        let autoSlideInterval;
+        // 2. Bulletproof 3D Carousel Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.carousel-item');
+            const dotsContainer = document.getElementById('carousel-dots');
+            let currentIndex = 0;
+            let autoSlideInterval;
 
-        function updateCarousel(index) {
-            const total = slides.length;
-            
-            // Calculate relative positions
-            const prevIndex = (index - 1 + total) % total;
-            const nextIndex = (index + 1) % total;
-
-            slides.forEach((slide, i) => {
-                // Reset classes
-                slide.className = 'carousel-item slide-hidden';
-                
-                // Assign new positions
-                if (i === index) slide.classList.add('slide-active');
-                else if (i === prevIndex) slide.classList.add('slide-left');
-                else if (i === nextIndex) slide.classList.add('slide-right');
+            // Generate Dots Dynamically
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'w-3 h-3 rounded-full transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer';
+                dot.addEventListener('click', () => {
+                    goToSlide(i);
+                });
+                dotsContainer.appendChild(dot);
             });
+            const dots = dotsContainer.querySelectorAll('button');
 
-            // Update Dots
-            dots.forEach((dot, i) => {
-                if (i === index) {
-                    dot.classList.remove('bg-slate-300');
-                    dot.classList.add('bg-brand-blue');
-                } else {
-                    dot.classList.remove('bg-brand-blue');
-                    dot.classList.add('bg-slate-300');
-                }
-            });
+            function updateCarousel(index) {
+                const total = slides.length;
+                const prevIndex = (index - 1 + total) % total;
+                const nextIndex = (index + 1) % total;
 
-            currentIndex = index;
-        }
+                slides.forEach((slide, i) => {
+                    // Reset styling
+                    slide.style.opacity = '0';
+                    slide.style.zIndex = '10';
+                    slide.style.transform = 'translateX(-50%) scale(0.6)';
+                    slide.style.pointerEvents = 'none';
+                    slide.style.left = '50%';
+                    slide.style.filter = 'blur(0)';
 
-        function goToSlide(index) {
-            updateCarousel(index);
+                    // Apply 3D Positioning based on relation to active index
+                    if (i === index) {
+                        slide.style.opacity = '1';
+                        slide.style.zIndex = '30';
+                        slide.style.transform = 'translateX(-50%) scale(1)';
+                        slide.style.pointerEvents = 'auto'; // Make active slide clickable
+                    } else if (i === prevIndex) {
+                        slide.style.opacity = '0.5';
+                        slide.style.zIndex = '20';
+                        slide.style.transform = 'translateX(-50%) scale(0.85)';
+                        slide.style.left = '15%';
+                        slide.style.filter = 'blur(2px)';
+                        slide.style.pointerEvents = 'auto'; // Make visible so click redirects to /services/
+                    } else if (i === nextIndex) {
+                        slide.style.opacity = '0.5';
+                        slide.style.zIndex = '20';
+                        slide.style.transform = 'translateX(-50%) scale(0.85)';
+                        slide.style.left = '85%';
+                        slide.style.filter = 'blur(2px)';
+                        slide.style.pointerEvents = 'auto'; // Make visible so click redirects to /services/
+                    }
+                });
+
+                // Update Dots
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.remove('bg-slate-300');
+                        dot.classList.add('bg-brand-blue');
+                    } else {
+                        dot.classList.remove('bg-brand-blue');
+                        dot.classList.add('bg-slate-300');
+                    }
+                });
+
+                currentIndex = index;
+            }
+
+            function goToSlide(index) {
+                updateCarousel(index);
+                resetInterval();
+            }
+
+            function nextSlide() {
+                const next = (currentIndex + 1) % slides.length;
+                updateCarousel(next);
+            }
+
+            function resetInterval() {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(nextSlide, 4000);
+            }
+
+            // Initialize immediately
+            updateCarousel(0);
             resetInterval();
-        }
-
-        function nextSlide() {
-            const next = (currentIndex + 1) % slides.length;
-            updateCarousel(next);
-        }
-
-        function resetInterval() {
-            clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(nextSlide, 4000);
-        }
-
-        // Initialize Carousel
-        updateCarousel(0);
-        resetInterval();
+        });
     </script>
 </body>
 </html>
