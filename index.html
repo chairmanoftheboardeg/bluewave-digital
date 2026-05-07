@@ -46,61 +46,31 @@
             user-select: none;
             -webkit-user-select: none;
             -ms-user-select: none;
-            pointer-events: none; /* Prevents right-click and new tab opening */
+            pointer-events: none;
         }
         
-        /* Re-enable pointer events for links that wrap images, but keep context menu blocked via JS */
-        a img {
-            pointer-events: none; 
-        }
-        a.carousel-link {
-            display: block;
-            width: 100%;
-            height: 100%;
+        a img { pointer-events: none; }
+
+        /* Bulletproof Carousel Container */
+        .carousel-item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            max-width: 850px;
+            border-radius: 1rem;
+            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Initial hidden state */
+            transform: translate(-50%, -50%) scale(0.5);
+            opacity: 0;
+            z-index: 10;
         }
 
-        /* Carousel Animation Classes */
-        .carousel-item {
-            transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-            position: absolute;
-            top: 0;
-            width: 60%;
-            max-width: 800px;
-        }
-        /* Active Center Slide */
-        .slide-active {
-            left: 50%;
-            transform: translateX(-50%) scale(1);
-            z-index: 30;
-            opacity: 1;
-            visibility: visible;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-        }
-        /* Left Slide */
-        .slide-left {
-            left: 15%;
-            transform: translateX(-50%) scale(0.85);
-            z-index: 20;
-            opacity: 0.5;
-            visibility: visible;
-            filter: blur(2px);
-        }
-        /* Right Slide */
-        .slide-right {
-            left: 85%;
-            transform: translateX(-50%) scale(0.85);
-            z-index: 20;
-            opacity: 0.5;
-            visibility: visible;
-            filter: blur(2px);
-        }
-        /* Hidden Slides */
-        .slide-hidden {
-            left: 50%;
-            transform: translateX(-50%) scale(0.6);
-            z-index: 10;
-            opacity: 0;
-            visibility: hidden;
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         /* Preloader Custom Background */
@@ -130,7 +100,7 @@
             <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-28 object-contain mb-10 drop-shadow-xl">
             
             <div class="w-72 h-1.5 bg-blue-100 rounded-full overflow-hidden mb-5 shadow-inner">
-                <div id="progress-fill" class="h-full bg-gradient-to-r from-brand-blue to-brand-cyan w-0 rounded-full transition-all duration-200 ease-out shadow-[0_0_10px_rgba(0,184,217,0.8)]"></div>
+                <div id="progress-fill" class="h-full bg-gradient-to-r from-brand-blue to-brand-cyan w-[5%] rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,184,217,0.8)]"></div>
             </div>
             
             <p class="text-brand-navy font-semibold text-[15px] tracking-wide mb-1">Loading your experience...</p>
@@ -218,42 +188,42 @@
             </div>
         </section>
 
-        <section class="w-full bg-slate-50 py-24 sm:py-32 overflow-hidden">
-            <div class="max-w-[90rem] mx-auto px-6 text-center mb-10">
+        <section class="w-full bg-slate-50 py-24 sm:py-32 overflow-hidden relative">
+            <div class="max-w-[90rem] mx-auto px-6 text-center mb-10 relative z-20">
                 <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Expertise</h2>
                 <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Complete Digital Infrastructure.</h3>
                 <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto font-light">Explore our enterprise-grade services below. Click any module to view the full scope of solutions we build.</p>
             </div>
 
-            <div class="carousel-container" id="expertise-carousel">
+            <div class="relative w-full h-[350px] sm:h-[450px] lg:h-[550px] max-w-[90rem] mx-auto overflow-visible z-10">
                 
-                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                <a href="/services/" class="carousel-item pointer-events-auto" data-index="0">
                     <img src="https://i.ibb.co/S7RcFKxs/Chat-GPT-Image-May-7-2026-04-12-23-PM.png" alt="Web & Software Development">
                 </a>
                 
-                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                <a href="/services/" class="carousel-item pointer-events-auto" data-index="1">
                     <img src="https://i.ibb.co/rP8wd9x/Chat-GPT-Image-May-7-2026-04-14-13-PM.png" alt="AI & Business Automations">
                 </a>
 
-                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                <a href="/services/" class="carousel-item pointer-events-auto" data-index="2">
                     <img src="https://i.ibb.co/tkWLW1g/Chat-GPT-Image-May-7-2026-04-16-09-PM.png" alt="Cybersecurity & Hosting">
                 </a>
 
-                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                <a href="/services/" class="carousel-item pointer-events-auto" data-index="3">
                     <img src="https://i.ibb.co/gLD6Xqnc/Chat-GPT-Image-May-7-2026-04-17-53-PM.png" alt="E-Commerce Solutions">
                 </a>
 
-                <a href="/services/" class="carousel-item pointer-events-auto shadow-2xl border border-slate-200/50">
+                <a href="/services/" class="carousel-item pointer-events-auto" data-index="4">
                     <img src="https://i.ibb.co/zTnGMHFp/Chat-GPT-Image-May-7-2026-04-21-23-PM.png" alt="Discord & Community">
                 </a>
 
             </div>
 
-            <div class="flex items-center justify-center gap-3 mt-8 relative z-20" id="carousel-dots">
+            <div class="flex items-center justify-center gap-3 mt-12 relative z-20" id="carousel-dots">
                 </div>
         </section>
 
-        <section class="bg-brand-navy py-24 text-white text-center">
+        <section class="bg-brand-navy py-24 text-white text-center relative z-20">
             <div class="max-w-3xl mx-auto px-6">
                 <h2 class="text-4xl font-extrabold tracking-tight mb-6">Ready to scale your operations?</h2>
                 <p class="text-slate-300 text-lg font-light mb-10 leading-relaxed">
@@ -267,7 +237,7 @@
 
     </main>
 
-    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300">
+    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300 relative z-20">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
                 
@@ -344,59 +314,62 @@
     </footer>
 
     <script>
-        // 1. TRUE ASSET-TRACKING PRELOADER LOGIC
-        // This ensures the page ONLY shows when all images are explicitly downloaded.
+        // 1. TRUE IMAGE TRACKING PRELOADER
         document.addEventListener('DOMContentLoaded', function() {
             const preloader = document.getElementById('preloader');
             const progressFill = document.getElementById('progress-fill');
             const body = document.getElementById('body-wrap');
             
-            let width = 0;
-            let isFullyLoaded = false;
+            // Collect all images on the page
+            const images = document.images;
+            const totalImages = images.length;
+            let loadedImages = 0;
 
-            // Fake animation up to 85% to show activity
-            const fakeLoaderInterval = setInterval(() => {
-                if (width < 85) {
-                    width += Math.random() * 4;
-                    if (width > 85) width = 85;
-                    progressFill.style.width = width + '%';
+            function updateProgress() {
+                loadedImages++;
+                let percent = (loadedImages / totalImages) * 100;
+                progressFill.style.width = percent + '%';
+
+                if (loadedImages >= totalImages) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            body.classList.remove('overflow-hidden');
+                        }, 700);
+                    }, 400); // Small pause at 100%
                 }
-            }, 60);
+            }
 
-            // REAL load event: Waits for ALL external assets (images, fonts) to finish downloading
-            window.addEventListener('load', function() {
-                isFullyLoaded = true;
-                clearInterval(fakeLoaderInterval);
-
-                // Snap directly to 100% since everything is actually loaded
+            if (totalImages === 0) {
                 progressFill.style.width = '100%';
-
-                // Wait 300ms for user to register the full bar, then fade out
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     setTimeout(() => {
                         preloader.style.display = 'none';
                         body.classList.remove('overflow-hidden');
-                    }, 700); // Wait for CSS transition
-                }, 300);
-            });
-
-            // Safety fallback (in case an image link is broken and delays the load event indefinitely)
-            setTimeout(() => {
-                if (!isFullyLoaded) {
-                    window.dispatchEvent(new Event('load'));
+                    }, 700);
+                }, 200);
+            } else {
+                for (let i = 0; i < totalImages; i++) {
+                    if (images[i].complete) {
+                        updateProgress();
+                    } else {
+                        images[i].addEventListener('load', updateProgress);
+                        images[i].addEventListener('error', updateProgress); // Prevent infinite hang on broken image
+                    }
                 }
-            }, 12000); // 12 seconds max waiting time
+            }
         });
 
-        // 2. Bulletproof 3D Carousel Logic
+        // 2. BULLETPROOF 3D CAROUSEL LOGIC
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.carousel-item');
             const dotsContainer = document.getElementById('carousel-dots');
             let currentIndex = 0;
             let autoSlideInterval;
 
-            // Generate Dots Dynamically
+            // Dynamically create dots
             slides.forEach((_, i) => {
                 const dot = document.createElement('button');
                 dot.className = 'w-3 h-3 rounded-full transition-colors duration-300 focus:outline-none pointer-events-auto cursor-pointer';
@@ -413,38 +386,35 @@
                 const nextIndex = (index + 1) % total;
 
                 slides.forEach((slide, i) => {
-                    // Reset styling
-                    slide.style.opacity = '0';
+                    // Reset all styles securely
                     slide.style.zIndex = '10';
-                    slide.style.transform = 'translateX(-50%) scale(0.6)';
+                    slide.style.opacity = '0';
+                    slide.style.transform = 'translate(-50%, -50%) scale(0.6)';
                     slide.style.pointerEvents = 'none';
-                    slide.style.left = '50%';
-                    slide.style.filter = 'blur(0)';
+                    slide.style.filter = 'blur(0px)';
 
-                    // Apply 3D Positioning based on relation to active index
+                    // Apply precise positions using translation
                     if (i === index) {
-                        slide.style.opacity = '1';
                         slide.style.zIndex = '30';
-                        slide.style.transform = 'translateX(-50%) scale(1)';
-                        slide.style.pointerEvents = 'auto'; // Make active slide clickable
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translate(-50%, -50%) scale(1)';
+                        slide.style.pointerEvents = 'auto'; // Active slide is clickable
                     } else if (i === prevIndex) {
-                        slide.style.opacity = '0.5';
                         slide.style.zIndex = '20';
-                        slide.style.transform = 'translateX(-50%) scale(0.85)';
-                        slide.style.left = '15%';
+                        slide.style.opacity = '0.5';
+                        slide.style.transform = 'translate(-85%, -50%) scale(0.85)';
                         slide.style.filter = 'blur(2px)';
-                        slide.style.pointerEvents = 'auto'; // Make visible so click redirects to /services/
+                        slide.style.pointerEvents = 'auto'; 
                     } else if (i === nextIndex) {
-                        slide.style.opacity = '0.5';
                         slide.style.zIndex = '20';
-                        slide.style.transform = 'translateX(-50%) scale(0.85)';
-                        slide.style.left = '85%';
+                        slide.style.opacity = '0.5';
+                        slide.style.transform = 'translate(-15%, -50%) scale(0.85)';
                         slide.style.filter = 'blur(2px)';
-                        slide.style.pointerEvents = 'auto'; // Make visible so click redirects to /services/
+                        slide.style.pointerEvents = 'auto'; 
                     }
                 });
 
-                // Update Dots
+                // Update dots
                 dots.forEach((dot, i) => {
                     if (i === index) {
                         dot.classList.remove('bg-slate-300');
@@ -473,7 +443,7 @@
                 autoSlideInterval = setInterval(nextSlide, 4000);
             }
 
-            // Initialize immediately
+            // Initialize carousel layout
             updateCarousel(0);
             resetInterval();
         });
