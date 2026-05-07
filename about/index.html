@@ -18,7 +18,9 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
                             navy: '#020b1a',     
@@ -59,6 +61,25 @@
             bottom: -10%; left: -10%; width: 120%; height: 50%;
             background: radial-gradient(ellipse at center, rgba(0, 184, 217, 0.1) 0%, transparent 70%);
             border-radius: 50%; filter: blur(40px);
+        }
+
+        /* Stats Gradient Border (Matching Reference) */
+        .stat-card-gradient::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 3px;
+            background: linear-gradient(90deg, #ec4899, #00B8D9);
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            opacity: 0.8;
+            transition: width 0.3s ease;
+        }
+        .stat-card-gradient:hover::after {
+            width: 60%;
         }
     </style>
 </head>
@@ -126,148 +147,180 @@
 
     <main class="flex-grow">
         
-        <section class="bg-brand-navy pt-40 pb-20 border-b border-brand-cyan/20 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px] pointer-events-none"></div>
-            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                <h1 class="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">Company Overview</h1>
-                <p class="text-xl text-slate-300 font-light leading-relaxed">
-                    BlueWave Digital bridges the gap between visionary ideas and seamless digital execution.
-                </p>
-                <div class="mt-8 inline-flex items-center gap-3 bg-white/10 px-5 py-2 rounded-full border border-white/20">
-                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="h-4">
-                    <span class="text-[10px] font-bold text-white uppercase tracking-widest">A Proud Member of The Tyler Nicholas Group</span>
+        <section class="relative w-full h-[60vh] min-h-[500px] flex items-center justify-center mt-20 bg-brand-navy overflow-hidden border-b border-brand-cyan/20">
+            <img src="https://i.ibb.co/JWj1dHHc/Chat-GPT-Image-May-7-2026-07-54-18-PM.png" alt="BlueWave Header" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0">
+            
+            <div class="relative z-10 animate-[fadeUp_1s_ease-out_forwards]">
+                <div class="inline-flex items-center gap-3 bg-brand-navy/80 backdrop-blur-md px-8 py-4 rounded-full border border-white/10 shadow-2xl">
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="h-6">
+                    <span class="text-sm font-bold text-white uppercase tracking-widest">A Proud Member of The Tyler Nicholas Group</span>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 bg-white border-b border-slate-100">
+        <section class="bg-brand-navy py-20 border-b border-white/5">
             <div class="max-w-[90rem] mx-auto px-6">
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 text-center">
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">Jan 2026</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Founded</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">10,000+</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">SCR Processed</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">V2.0</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Website Version</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">10+</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Trusted Clients</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">100%</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">On-Time Delivery</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">100%</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Page Uptime</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">6+</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Global Staff</p></div>
-                    <div class="p-4"><p class="text-2xl font-extrabold text-brand-navy mb-1">10 Years</p><p class="text-[10px] uppercase tracking-widest text-slate-500 font-bold">Combined Exp.</p></div>
-                    <div class="p-4 md:col-span-2 lg:col-span-4 flex flex-col justify-center bg-slate-50 rounded-xl border border-slate-100">
-                        <p class="text-lg font-bold text-brand-blue mb-1">7 Support Languages</p>
-                        <p class="text-xs text-slate-500">Seychellois Creole, French, English, Spanish, Russian, Chinese</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-[90rem] mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                    <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-cyan"></div>
-                        <i class="fa-solid fa-bullseye text-3xl text-brand-cyan mb-6"></i>
-                        <h3 class="text-2xl font-extrabold text-brand-navy mb-4">Our Mission</h3>
-                        <p class="text-slate-600 font-light leading-relaxed">To democratize access to enterprise-grade digital infrastructure, empowering businesses, startups, and institutions to scale their operations with confidence, security, and absolute precision.</p>
-                    </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
                     
-                    <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-blue"></div>
-                        <i class="fa-solid fa-eye text-3xl text-brand-blue mb-6"></i>
-                        <h3 class="text-2xl font-extrabold text-brand-navy mb-4">Our Vision</h3>
-                        <p class="text-slate-600 font-light leading-relaxed">To establish the ultimate global benchmark for corporate excellence, proving that innovative digital infrastructure and visionary strategic management can redefine industry standards across the globe.</p>
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-blue to-purple-600 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(0,82,204,0.4)]"><i class="fa-solid fa-calendar-check"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">Jan 2026</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Founded</p>
                     </div>
 
-                    <div class="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-brand-navy"></div>
-                        <i class="fa-solid fa-heart text-3xl text-brand-navy mb-6"></i>
-                        <h3 class="text-2xl font-extrabold text-brand-navy mb-4">Our Passion</h3>
-                        <p class="text-slate-600 font-light leading-relaxed">We are builders at heart. Our passion lies in writing clean code, architecting unbreakable systems, and creating digital experiences that leave a lasting impact on our clients and their communities.</p>
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-orange-400 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(236,72,153,0.4)]"><i class="fa-solid fa-coins"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">10,000+</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">SCR Processed</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-cyan to-blue-500 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(0,184,217,0.4)]"><i class="fa-solid fa-code-branch"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">V2.0</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Website Version</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(168,85,247,0.4)]"><i class="fa-solid fa-handshake"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">10+</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Trusted Clients</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(52,211,153,0.4)]"><i class="fa-solid fa-truck-fast"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">100%</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">On-Time Delivery</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-brand-blue to-brand-cyan flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(0,184,217,0.4)]"><i class="fa-solid fa-server"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">100%</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Page Uptime</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(249,115,22,0.4)]"><i class="fa-solid fa-users"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">6+</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Global Staff</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(45,212,191,0.4)]"><i class="fa-solid fa-briefcase"></i></div>
+                        <p class="text-3xl font-extrabold text-white mb-1">10 Years</p>
+                        <p class="text-xs text-slate-400 font-medium tracking-wide">Combined Exp.</p>
+                    </div>
+
+                    <div class="stat-card-gradient relative bg-[#0b1221] rounded-xl p-8 flex flex-col items-center justify-center text-center shadow-lg hover:-translate-y-1 transition-transform md:col-span-2">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white mb-4 shadow-[0_0_15px_rgba(59,130,246,0.4)]"><i class="fa-solid fa-earth-americas"></i></div>
+                        <p class="text-2xl font-extrabold text-white mb-1">7 Support Languages</p>
+                        <p class="text-[11px] text-slate-400 font-medium tracking-wide">Seychellois Creole, French, English, Spanish, Russian, Chinese</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-24 bg-white border-b border-slate-100">
+        <section class="py-32 bg-white">
             <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">The BlueWave Difference</h2>
-                <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-12">What We Do & Why We Exist</h3>
-                
-                <div class="space-y-12 text-left">
-                    <div>
-                        <h4 class="text-2xl font-bold text-brand-navy mb-4 border-l-4 border-brand-cyan pl-4">What We Do</h4>
-                        <p class="text-lg text-slate-600 font-light leading-relaxed pl-5">BlueWave Digital is a full-service technology agency. We develop custom software, design high-conversion websites, integrate intelligent AI automation, and secure corporate networks. We don't just build websites; we architect the operational backbone of modern organizations.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-bold text-brand-navy mb-4 border-l-4 border-brand-blue pl-4">Why We Exist</h4>
-                        <p class="text-lg text-slate-600 font-light leading-relaxed pl-5">We recognized a gap in the market: businesses were forced to choose between cheap, unreliable freelancers or slow, overpriced legacy agencies. BlueWave Digital exists to provide a third option—agile, world-class technology solutions delivered with absolute reliability.</p>
-                    </div>
-                    <div>
-                        <h4 class="text-2xl font-bold text-brand-navy mb-4 border-l-4 border-brand-navy pl-4">Our Approach & Standards</h4>
-                        <p class="text-lg text-slate-600 font-light leading-relaxed pl-5">Our approach is deeply analytical. We audit your needs, map out the architecture, and execute with precision. Our standards demand 100% uptime, zero-trust security frameworks, and a commitment to on-time delivery. We treat your infrastructure as if it were our own.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-[90rem] mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2">
-                    <img src="https://i.ibb.co/dwcL3gBL/Chat-GPT-Image-May-7-2026-07-27-44-PM.png" alt="Seychellois Hospitality" class="w-full rounded-2xl shadow-2xl">
-                </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Client Experience</h2>
-                    <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-6">100% Pure Seychellois Hospitality.</h3>
-                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-6">
-                        We blend world-class technical expertise with the warmth and dedication of genuine Seychellois hospitality. Our commitment to our clients goes far beyond delivering code. We provide proactive support, transparent communication, and a partnership mentality.
-                    </p>
-                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-8">
-                        With staff distributed globally, we offer support in <strong class="text-brand-navy font-semibold">7 languages</strong>, ensuring that wherever you are, you feel understood, respected, and completely prioritized.
-                    </p>
-                    <a href="/contact/" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white transition-all bg-brand-navy rounded hover:bg-brand-blue shadow-lg uppercase tracking-widest active:scale-95 pointer-events-auto">
-                        Speak With Our Team
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-white border-b border-slate-100">
-            <div class="max-w-[90rem] mx-auto px-6 flex flex-col lg:flex-row-reverse items-center gap-16">
-                <div class="lg:w-1/2">
-                    <img src="https://i.ibb.co/tT0yVf1P/Chat-GPT-Image-May-7-2026-07-36-19-PM.png" alt="BlueWave Digital Pricing" class="w-full rounded-2xl shadow-2xl">
-                </div>
-                <div class="lg:w-1/2">
-                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Why Choose Us As Your Final Option</h2>
-                    <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Enterprise Tech.<br>Unbeatable Value.</h3>
-                    <p class="text-lg text-slate-600 font-light leading-relaxed mb-6">
-                        BlueWave Digital is undeniably the most cost-effective premium agency on the market. We leverage efficient internal operations to deliver massive value without the bloated overhead of traditional agencies.
-                    </p>
-                    <div class="bg-slate-50 border border-slate-200 p-6 rounded-xl mb-8">
-                        <p class="text-3xl font-extrabold text-brand-blue mb-2">Starting at 3,000 SCR</p>
-                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mb-3">(Approx. $200 USD)</p>
-                        <p class="text-base text-slate-700 font-light">That represents a massive <strong>60% reduction</strong> from standard market pricing, delivering elite digital infrastructure directly to your business at a fraction of the cost.</p>
-                    </div>
-                    <a href="/pricing/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest pointer-events-auto">
-                        View Pricing & Packages <i class="fa-solid fa-arrow-right ml-2 text-brand-cyan"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-24 bg-slate-50">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Network</h2>
-                <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-8">Who We Serve & Partnerships</h3>
-                <p class="text-lg text-slate-600 font-light leading-relaxed mb-16 max-w-3xl mx-auto">
-                    We serve a diverse portfolio ranging from dynamic startups and local Seychellois hospitality brands to international corporate clients and nonprofits. Our infrastructure scales to meet the demands of any industry.
+                <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-8">The BlueWave Difference</h2>
+                <p class="text-2xl md:text-4xl text-slate-800 font-light leading-relaxed tracking-tight">
+                    BlueWave Digital was born from a singular conviction: ambitious businesses shouldn't have to choose between unreliable freelancers and overpriced legacy agencies. We architect world-class, enterprise-grade digital infrastructure and AI solutions that democratize growth—empowering visionary organizations to scale with absolute precision and unyielding security.
                 </p>
+            </div>
+        </section>
 
+        <section class="py-24 bg-slate-50 border-y border-slate-100">
+            <div class="max-w-6xl mx-auto px-6 space-y-24">
+                
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2 md:pr-12">
+                        <h3 class="text-sm font-bold text-brand-cyan uppercase tracking-widest mb-4">01 / Our Mission</h3>
+                        <p class="text-2xl md:text-3xl text-brand-navy font-semibold leading-relaxed tracking-tight">
+                            To democratize access to enterprise-grade digital infrastructure, empowering businesses, startups, and institutions to scale their operations with confidence, security, and absolute precision.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row-reverse gap-8 items-center text-left md:text-right">
+                    <div class="md:w-1/2 md:pl-12">
+                        <h3 class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-4">02 / Our Vision</h3>
+                        <p class="text-2xl md:text-3xl text-brand-navy font-semibold leading-relaxed tracking-tight">
+                            To establish the ultimate global benchmark for corporate excellence, proving that innovative digital infrastructure and visionary strategic management can redefine industry standards across the globe.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2 md:pr-12">
+                        <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest mb-4">03 / Our Passion</h3>
+                        <p class="text-2xl md:text-3xl text-brand-navy font-semibold leading-relaxed tracking-tight">
+                            We are builders at heart. Our passion lies in writing clean code, architecting unbreakable systems, and creating digital experiences that leave a lasting impact on our clients and their communities.
+                        </p>
+                    </div>
+                    <div class="md:w-1/2 hidden md:block"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-[90rem] mx-auto px-6">
+                <img src="https://i.ibb.co/dwcL3gBL/Chat-GPT-Image-May-7-2026-07-27-44-PM.png" alt="Seychellois Hospitality" class="w-full rounded-2xl shadow-2xl object-cover">
+            </div>
+        </section>
+
+        <section class="bg-brand-navy pt-24 pb-20 relative overflow-hidden border-y border-brand-cyan/20">
+            <div class="max-w-[75rem] mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-10 relative z-10">
+                
+                <div class="md:w-5/12 flex justify-center md:justify-end">
+                    <img src="https://i.ibb.co/BHVzw0M4/Chat-GPT-Image-May-7-2026-07-11-46-PM-removebg-preview.png" alt="Tyler Nicholas" class="h-[450px] md:h-[550px] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]">
+                </div>
+                
+                <div class="md:w-7/12 text-center md:text-left">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-3">Leadership</h2>
+                    <h3 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-8">Message From The Founder</h3>
+                    
+                    <div class="text-lg text-slate-300 font-light leading-relaxed space-y-6 mb-10">
+                        <p>
+                            "Technology is only as powerful as the human ambition behind it. I founded BlueWave Digital not just to write code, but to engineer the foundations of tomorrow's great businesses."
+                        </p>
+                        <p>
+                            "We exist to empower dreamers, creators, and leaders in Seychelles and beyond, removing the barriers between their vision and reality. Every system we deploy is a promise to our clients: your growth is our absolute obsession."
+                        </p>
+                    </div>
+
+                    <div>
+                        <p class="text-white font-bold text-xl mb-1">Tyler Nicholas</p>
+                        <p class="text-brand-cyan text-sm uppercase tracking-widest mb-8">Founder, BlueWave Digital</p>
+                        
+                        <a href="https://nicholasoffice.online" target="_blank" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-brand-navy transition-all bg-white rounded hover:bg-brand-cyan shadow-lg uppercase tracking-widest active:scale-95 pointer-events-auto">
+                            Visit The Office of Tyler Nicholas <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-[90rem] mx-auto px-6">
+                <img src="https://i.ibb.co/tT0yVf1P/Chat-GPT-Image-May-7-2026-07-36-19-PM.png" alt="Unbeatable Pricing" class="w-full rounded-2xl shadow-2xl object-cover">
+            </div>
+        </section>
+
+        <section class="py-24 bg-white border-t border-slate-100">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Partners</h2>
+                <h3 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-16">Global Corporate Alignment</h3>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <a href="https://tylernicholasgroup.com" target="_blank" class="block bg-white p-10 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                    <a href="https://tylernicholasgroup.com" target="_blank" class="block bg-slate-50 p-10 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
                         <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" class="h-12 object-contain mx-auto mb-6 grayscale group-hover:grayscale-0 transition-all">
                         <h4 class="text-xl font-bold text-brand-navy mb-2">Tyler Nicholas Group</h4>
                         <p class="text-sm text-slate-500">Official Parent Company & Holding Group</p>
                     </a>
                     
-                    <a href="https://tylernicholasgroup.com/companies/bds" target="_blank" class="block bg-white p-10 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                    <a href="https://tylernicholasgroup.com/companies/bds" target="_blank" class="block bg-slate-50 p-10 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
                         <img src="https://i.ibb.co/ZRT8vbbc/Blackwood-Digital-Services.png" alt="BlackWood Digital Services" class="h-12 object-contain mx-auto mb-6 grayscale group-hover:grayscale-0 transition-all">
                         <h4 class="text-xl font-bold text-brand-navy mb-2">BlackWood Digital Services</h4>
                         <p class="text-sm text-slate-500">Official Community & Security Partner</p>
@@ -276,42 +329,9 @@
             </div>
         </section>
 
-        <section class="bg-brand-navy pt-24 pb-0 overflow-hidden relative border-t-[8px] border-brand-cyan">
-            <div class="absolute top-0 right-0 w-full h-full bg-[url('https://i.ibb.co/Gfzj1Hmm/Chat-GPT-Image-May-5-2026-08-06-42-PM.png')] bg-cover opacity-5 pointer-events-none"></div>
-            
-            <div class="max-w-[90rem] mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-end">
-                <div class="lg:w-1/2 pb-24 lg:pr-16 text-center lg:text-left">
-                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Leadership</h2>
-                    <h3 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-8">Message From The Founder</h3>
-                    
-                    <div class="text-lg text-slate-300 font-light leading-relaxed space-y-6 mb-10">
-                        <p>
-                            "When I founded BlueWave Digital, the goal was simple: to bring absolute digital excellence to businesses that were previously priced out of premium technology. We don't believe in compromises."
-                        </p>
-                        <p>
-                            "As part of the Tyler Nicholas Group, our commitment to our clients is grounded in transparency, relentless innovation, and a profound respect for the ambition of the people we serve. We are here to build the future, together."
-                        </p>
-                    </div>
-
-                    <div>
-                        <p class="text-white font-bold text-xl mb-1">Tyler Nicholas</p>
-                        <p class="text-brand-cyan text-sm uppercase tracking-widest mb-8">Founder, BlueWave Digital</p>
-                        
-                        <a href="https://nicholasoffice.online" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-brand-navy transition-all bg-white rounded hover:bg-brand-cyan shadow-lg uppercase tracking-widest active:scale-95 pointer-events-auto">
-                            Visit The Office of Tyler Nicholas <i class="fa-solid fa-arrow-right ml-3"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="lg:w-1/2 flex justify-center lg:justify-end">
-                    <img src="https://i.ibb.co/BHVzw0M4/Chat-GPT-Image-May-7-2026-07-11-46-PM-removebg-preview.png" alt="Tyler Nicholas" class="h-[500px] md:h-[600px] object-contain drop-shadow-2xl">
-                </div>
-            </div>
-        </section>
-
     </main>
 
-    <footer class="bg-brand-dark pt-20 pb-10 text-slate-300 relative z-20">
+    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300 relative z-20">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
                 
