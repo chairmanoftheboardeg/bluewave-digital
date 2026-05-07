@@ -37,31 +37,64 @@
 </head>
 <body class="min-h-screen flex flex-col font-sans text-slate-900 bg-white antialiased selection:bg-brand-cyan selection:text-white">
 
+    <div id="preloader" class="fixed inset-0 z-[100] bg-brand-navy flex flex-col items-center justify-center transition-opacity duration-500">
+        <img src="https://i.ibb.co/d4rtnvfr/logo.png" alt="BlueWave Digital" class="h-12 object-contain mb-6 animate-pulse" style="filter: brightness(0) invert(1);">
+        <div class="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+            <div class="h-full bg-brand-cyan w-1/2 animate-[ping_1.5s_ease-in-out_infinite]"></div>
+        </div>
+    </div>
+
     <header class="w-full bg-brand-navy/95 backdrop-blur-md fixed top-0 z-50 border-b border-white/10 shadow-sm">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <a href="/" class="flex items-center gap-3 group">
+            <a href="/" class="flex-shrink-0 flex items-center gap-3">
                 <img src="https://i.ibb.co/d4rtnvfr/logo.png" alt="BlueWave Digital" class="h-10 object-contain">
             </a>
             
-            <nav class="hidden xl:flex items-center gap-8 text-[13px] font-semibold tracking-wider text-slate-300 uppercase">
-                <a href="/" class="text-white">Home</a>
-                <a href="/about/" class="hover:text-brand-cyan transition-colors duration-300">About</a>
-                <a href="/services/" class="hover:text-brand-cyan transition-colors duration-300">Services</a>
-                <a href="/industries/" class="hover:text-brand-cyan transition-colors duration-300">Industries</a>
-                <a href="/solutions/" class="hover:text-brand-cyan transition-colors duration-300">Solutions</a>
-                <a href="/work/" class="hover:text-brand-cyan transition-colors duration-300">Work</a>
-                <a href="/pricing/" class="hover:text-brand-cyan transition-colors duration-300">Pricing</a>
-                <a href="/resources/" class="hover:text-brand-cyan transition-colors duration-300">Resources</a>
-                <a href="/careers/" class="hover:text-brand-cyan transition-colors duration-300">Careers</a>
-                <a href="/contact/" class="hover:text-brand-cyan transition-colors duration-300">Contact</a>
+            <nav class="hidden lg:flex items-center gap-8 text-[13px] font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="/" class="hover:text-brand-cyan transition-colors duration-200">Home</a>
+                
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Company <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-56 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/about/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">About</a>
+                        <a href="/industries/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Industries</a>
+                        <a href="/careers/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Careers</a>
+                        <a href="/work/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Our Portfolio & Work</a>
+                    </div>
+                </div>
+
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Services <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-48 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/services/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Services</a>
+                        <a href="/solutions/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Solutions</a>
+                        <a href="/pricing/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Pricing</a>
+                    </div>
+                </div>
+
+                <a href="/work/" class="hover:text-brand-cyan transition-colors duration-200">Work</a>
+
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Contact <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-40 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/contact/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Contact Us</a>
+                        <a href="/faq/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">FAQ</a>
+                    </div>
+                </div>
             </nav>
 
-            <div class="flex items-center gap-4">
-                <a href="/login/" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold text-white bg-white/5 border border-white/20 rounded hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 uppercase tracking-widest">
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="/login/" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-[11px] font-bold text-white bg-white/5 border border-white/20 rounded hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 uppercase tracking-widest">
                     Client Login
                 </a>
-                <a href="/quote/" class="inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-[0_0_15px_rgba(0,82,204,0.4)] uppercase tracking-widest active:scale-95">
+                <a href="/quote/" class="inline-flex items-center justify-center px-5 py-2 text-[11px] font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-md uppercase tracking-widest active:scale-95">
                     Request a Quote
                 </a>
             </div>
@@ -70,126 +103,131 @@
 
     <main class="flex-grow">
         
-        <section class="relative w-full h-[85vh] min-h-[650px] flex items-end pb-20 sm:pb-32 mt-20 bg-brand-navy">
+        <section class="relative w-full h-[85vh] min-h-[600px] flex items-end pb-20 sm:pb-32 mt-20 bg-brand-navy overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://i.ibb.co/Gfzj1Hmm/Chat-GPT-Image-May-5-2026-08-06-42-PM.png')] bg-cover bg-center bg-no-repeat"></div>
             
+            <div class="absolute top-8 right-8 z-20 hidden sm:block">
+                <a href="https://g.page/r/CeDCh_I5Z1PeEAI/review" target="_blank" class="inline-flex items-center px-5 py-2.5 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-navy transition-all shadow-lg active:scale-95">
+                    <i class="fa-brands fa-google text-brand-cyan mr-2"></i> Leave a Review
+                </a>
+            </div>
+
             <div class="relative z-10 max-w-[90rem] mx-auto px-6 lg:px-8 w-full">
                 <div class="flex flex-col sm:flex-row gap-4 max-w-2xl">
-                    <a href="/contact/" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-lg uppercase tracking-widest active:scale-95 w-full sm:w-auto text-center border border-transparent">
+                    <a href="/contact/" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-lg uppercase tracking-widest active:scale-95 w-full sm:w-auto text-center">
                         Start a Project <i class="fa-solid fa-arrow-right ml-3 text-brand-cyan"></i>
                     </a>
-                    <a href="/services/" class="inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-white transition-all bg-brand-navy/60 backdrop-blur-sm border border-brand-cyan/40 rounded hover:bg-brand-navy/90 hover:border-brand-cyan uppercase tracking-widest active:scale-95 w-full sm:w-auto text-center shadow-[0_0_15px_rgba(0,184,217,0.1)]">
+                    <a href="/services/" class="inline-flex items-center justify-center px-8 py-3.5 text-sm font-bold text-white transition-all bg-brand-navy/60 backdrop-blur-md border border-brand-cyan/40 rounded hover:bg-brand-navy/90 hover:border-brand-cyan uppercase tracking-widest active:scale-95 w-full sm:w-auto text-center">
                         Explore Services
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="border-b border-slate-200 bg-slate-50 py-10">
-            <div class="max-w-[90rem] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h3 class="text-xl font-bold text-brand-dark mb-1 tracking-tight">Uncompromising Digital Excellence.</h3>
-                    <p class="text-sm text-slate-500 font-medium">Discover why global industry leaders trust BlueWave Digital.</p>
-                </div>
-                <a href="https://g.page/r/CeDCh_I5Z1PeEAI/review" target="_blank" class="inline-flex items-center justify-center px-8 py-3 text-xs font-bold text-brand-dark transition-all bg-white border border-slate-300 rounded-full hover:border-brand-blue hover:text-brand-blue uppercase tracking-widest shadow-sm active:scale-95">
-                    <i class="fa-brands fa-google text-brand-cyan mr-3 text-base"></i> Read Client Reviews
-                </a>
+        <section class="w-full bg-white">
+            
+            <div class="max-w-7xl mx-auto px-6 pt-24 pb-12 text-center">
+                <h2 class="text-brand-blue text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Expertise</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Complete Digital Infrastructure.</h3>
+                <p class="text-slate-500 text-lg leading-relaxed max-w-2xl mx-auto font-light">We provide end-to-end technology solutions, managing everything from your public-facing presence to your complex internal business systems.</p>
             </div>
+
+            <div class="bg-white py-16 sm:py-24 border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/S7RcFKxs/Chat-GPT-Image-May-7-2026-04-12-23-PM.png" alt="Web & Software Development" class="w-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h4 class="text-3xl font-extrabold text-slate-900 mb-6">Web & Software Development</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 font-light">
+                            Custom website design, full-stack application development, API integrations, and secure client portal architecture built to scale with your organization.
+                        </p>
+                        <a href="/services/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 py-16 sm:py-24 border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/rP8wd9x/Chat-GPT-Image-May-7-2026-04-14-13-PM.png" alt="AI & Business Automations" class="w-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h4 class="text-3xl font-extrabold text-slate-900 mb-6">AI & Business Automation</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 font-light">
+                            Deploy intelligent chatbots, streamline internal workflows, and automate lead qualification, invoicing, and reporting to drastically cut operational hours.
+                        </p>
+                        <a href="/services/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white py-16 sm:py-24 border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/tkWLW1g/Chat-GPT-Image-May-7-2026-04-16-09-PM.png" alt="Cybersecurity & Hosting" class="w-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h4 class="text-3xl font-extrabold text-slate-900 mb-6">Cybersecurity & Hosting</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 font-light">
+                            Enterprise-grade server deployment, zero-trust security hardening, active malware protection, and automated backup systems for absolute peace of mind.
+                        </p>
+                        <a href="/services/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 py-16 sm:py-24 border-b border-slate-100">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/gLD6Xqnc/Chat-GPT-Image-May-7-2026-04-17-53-PM.png" alt="E-Commerce Solutions" class="w-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h4 class="text-3xl font-extrabold text-slate-900 mb-6">E-Commerce Solutions</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 font-light">
+                            Scalable online storefronts, digital product delivery, inventory management systems, and secure payment gateway integrations designed to maximize conversions.
+                        </p>
+                        <a href="/services/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white py-16 sm:py-24">
+                <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/zTnGMHFp/Chat-GPT-Image-May-7-2026-04-21-23-PM.png" alt="Discord & Community" class="w-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform hover:scale-[1.02] duration-500">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h4 class="text-3xl font-extrabold text-slate-900 mb-6">Discord & Community</h4>
+                        <p class="text-slate-600 text-lg leading-relaxed mb-8 font-light">
+                            Professional server architecture, custom bot development, and 24/7 moderation and security provided in partnership with BlackWood Digital Services.
+                        </p>
+                        <a href="/services/" class="inline-flex items-center text-sm font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest">
+                            Learn More <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
-        <section class="w-full bg-brand-navy py-32">
-            <div class="max-w-6xl mx-auto px-6 lg:px-8">
-                
-                <div class="mb-20 text-center md:text-left">
-                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Our Expertise</h2>
-                    <h3 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6 drop-shadow-md">Complete Digital Infrastructure.</h3>
-                    <p class="text-slate-400 text-lg leading-relaxed max-w-2xl font-light">We provide end-to-end technology solutions, managing everything from your public-facing presence to your complex internal business systems.</p>
-                </div>
-
-                <div class="flex flex-col">
-                    
-                    <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 py-12 border-b border-white/10 group">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-brand-dark border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-3xl shadow-[0_0_30px_rgba(0,184,217,0.15)] group-hover:shadow-[0_0_40px_rgba(0,184,217,0.4)] group-hover:scale-105 transition-all duration-500">
-                            <i class="fa-solid fa-code"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">Web & Software Development</h4>
-                            <p class="text-slate-400 text-base leading-relaxed max-w-3xl font-light">Custom website design, full-stack application development, API integrations, and secure client portal architecture built to scale with your organization.</p>
-                        </div>
-                        <div class="flex-shrink-0 mt-6 md:mt-0 w-full md:w-auto">
-                            <a href="/services/" class="inline-flex items-center justify-center w-full px-8 py-3.5 text-xs font-bold text-brand-cyan transition-all bg-brand-cyan/5 border border-brand-cyan/30 rounded-full hover:bg-brand-cyan hover:text-brand-navy shadow-sm uppercase tracking-widest active:scale-95 group-hover:border-brand-cyan">
-                                Learn More <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 py-12 border-b border-white/10 group">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-brand-dark border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-3xl shadow-[0_0_30px_rgba(0,184,217,0.15)] group-hover:shadow-[0_0_40px_rgba(0,184,217,0.4)] group-hover:scale-105 transition-all duration-500">
-                            <i class="fa-solid fa-robot"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">AI & Business Automation</h4>
-                            <p class="text-slate-400 text-base leading-relaxed max-w-3xl font-light">Deploy intelligent chatbots, streamline internal workflows, and automate lead qualification, invoicing, and reporting to drastically cut operational hours.</p>
-                        </div>
-                        <div class="flex-shrink-0 mt-6 md:mt-0 w-full md:w-auto">
-                            <a href="/services/" class="inline-flex items-center justify-center w-full px-8 py-3.5 text-xs font-bold text-brand-cyan transition-all bg-brand-cyan/5 border border-brand-cyan/30 rounded-full hover:bg-brand-cyan hover:text-brand-navy shadow-sm uppercase tracking-widest active:scale-95 group-hover:border-brand-cyan">
-                                Learn More <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 py-12 border-b border-white/10 group">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-brand-dark border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-3xl shadow-[0_0_30px_rgba(0,184,217,0.15)] group-hover:shadow-[0_0_40px_rgba(0,184,217,0.4)] group-hover:scale-105 transition-all duration-500">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">Cybersecurity & Hosting</h4>
-                            <p class="text-slate-400 text-base leading-relaxed max-w-3xl font-light">Enterprise-grade server deployment, zero-trust security hardening, active malware protection, and automated backup systems for absolute peace of mind.</p>
-                        </div>
-                        <div class="flex-shrink-0 mt-6 md:mt-0 w-full md:w-auto">
-                            <a href="/services/" class="inline-flex items-center justify-center w-full px-8 py-3.5 text-xs font-bold text-brand-cyan transition-all bg-brand-cyan/5 border border-brand-cyan/30 rounded-full hover:bg-brand-cyan hover:text-brand-navy shadow-sm uppercase tracking-widest active:scale-95 group-hover:border-brand-cyan">
-                                Learn More <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 py-12 border-b border-white/10 group">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-brand-dark border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-3xl shadow-[0_0_30px_rgba(0,184,217,0.15)] group-hover:shadow-[0_0_40px_rgba(0,184,217,0.4)] group-hover:scale-105 transition-all duration-500">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">E-Commerce Solutions</h4>
-                            <p class="text-slate-400 text-base leading-relaxed max-w-3xl font-light">Scalable online storefronts, digital product delivery, inventory management systems, and secure payment gateway integrations designed to maximize conversions.</p>
-                        </div>
-                        <div class="flex-shrink-0 mt-6 md:mt-0 w-full md:w-auto">
-                            <a href="/services/" class="inline-flex items-center justify-center w-full px-8 py-3.5 text-xs font-bold text-brand-cyan transition-all bg-brand-cyan/5 border border-brand-cyan/30 rounded-full hover:bg-brand-cyan hover:text-brand-navy shadow-sm uppercase tracking-widest active:scale-95 group-hover:border-brand-cyan">
-                                Learn More <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="relative flex flex-col md:flex-row items-start md:items-center gap-8 py-12 border-b border-white/10 group">
-                        <div class="flex-shrink-0 w-20 h-20 rounded-2xl bg-brand-dark border border-brand-cyan/20 flex items-center justify-center text-brand-cyan text-3xl shadow-[0_0_30px_rgba(0,184,217,0.15)] group-hover:shadow-[0_0_40px_rgba(0,184,217,0.4)] group-hover:scale-105 transition-all duration-500">
-                            <i class="fa-brands fa-discord"></i>
-                        </div>
-                        <div class="flex-grow">
-                            <h4 class="text-2xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">Discord & Community</h4>
-                            <p class="text-slate-400 text-base leading-relaxed max-w-3xl font-light">Professional server architecture, custom bot development, and 24/7 moderation and security provided in partnership with BlackWood Digital Services.</p>
-                        </div>
-                        <div class="flex-shrink-0 mt-6 md:mt-0 w-full md:w-auto">
-                            <a href="/services/" class="inline-flex items-center justify-center w-full px-8 py-3.5 text-xs font-bold text-brand-cyan transition-all bg-brand-cyan/5 border border-brand-cyan/30 rounded-full hover:bg-brand-cyan hover:text-brand-navy shadow-sm uppercase tracking-widest active:scale-95 group-hover:border-brand-cyan">
-                                Learn More <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="mt-20 text-center md:text-left">
-                    <a href="/services/" class="inline-flex items-center px-10 py-4 text-xs font-bold text-brand-navy bg-brand-cyan rounded hover:bg-white transition-colors uppercase tracking-widest active:scale-95 shadow-[0_0_20px_rgba(0,184,217,0.3)]">
-                        View Complete Service Directory
-                    </a>
-                </div>
+        <section class="bg-brand-navy py-24 text-white text-center">
+            <div class="max-w-3xl mx-auto px-6">
+                <h2 class="text-4xl font-extrabold tracking-tight mb-6">Ready to scale your operations?</h2>
+                <p class="text-slate-300 text-lg font-light mb-10 leading-relaxed">
+                    Whether you are a startup requiring a digital launch package, or a corporate entity needing complex system integration, we are ready to build.
+                </p>
+                <a href="/quote/" class="inline-flex items-center justify-center px-10 py-4 text-sm font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-cyan shadow-lg uppercase tracking-widest active:scale-95">
+                    Request a Custom Quote
+                </a>
             </div>
         </section>
 
@@ -262,5 +300,16 @@
         </div>
     </footer>
 
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 300); // Small delay to ensure smooth rendering
+        });
+    </script>
 </body>
 </html>
