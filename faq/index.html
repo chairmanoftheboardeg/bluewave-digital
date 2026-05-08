@@ -136,7 +136,7 @@
                     <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Intelligent Support</h2>
                     <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-4">Meet Nexa.</h1>
                     <p class="text-lg text-slate-600 font-light leading-relaxed max-w-2xl mx-auto">
-                        Nexa is BlueWave Digital's proprietary AI Assistant. Powered by our internal knowledge base, Nexa can guide you through our services, pricing, and infrastructure solutions instantly.
+                        Nexa is BlueWave Digital's proprietary AI Assistant. Powered by our core knowledge base, Nexa can guide you through our services, pricing, and infrastructure solutions instantly.
                     </p>
                 </div>
 
@@ -167,7 +167,7 @@
                         <div class="flex items-start gap-4 max-w-[85%]">
                             <img src="https://i.ibb.co/Vpt2Z1Ct/Chat-GPT-Image-May-9-2026-01-29-57-AM-removebg-preview.png" alt="Nexa" class="w-8 h-8 rounded-full border border-slate-200 bg-white shadow-sm flex-shrink-0 mt-1">
                             <div class="bg-white border border-slate-200 rounded-2xl rounded-tl-none px-5 py-4 shadow-sm text-sm text-slate-700 leading-relaxed">
-                                Welcome to BlueWave Digital. I am Nexa, your intelligent digital concierge. How may I assist you with your digital infrastructure today?
+                                Welcome to BlueWave Digital. I am Nexa, your intelligent digital concierge. I can help with BlueWave Digital’s services, pricing, maintenance, careers, industries, quote requests, and support information. Could you tell me what you would like to know?
                             </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
 
     </main>
 
-    <footer class="bg-brand-dark pt-20 pb-10 text-slate-300 relative z-20 border-t border-white/5">
+    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300 relative z-20">
         <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
                 
@@ -407,40 +407,68 @@
         // 2. FAQ Accordion Logic
         function toggleFaq(button) {
             const parent = button.parentElement;
-            // Close all others
             document.querySelectorAll('.faq-item').forEach(item => {
                 if(item !== parent) item.classList.remove('faq-active');
             });
-            // Toggle clicked
             parent.classList.toggle('faq-active');
         }
 
-        // 3. NEXA AI JAVASCRIPT ENGINE (Simulated NLP Logic)
+        // 3. NEXA AI JAVASCRIPT ENGINE (Strict Multi-Tier Categorized NLP)
         const chatForm = document.getElementById('nexa-form');
         const chatInput = document.getElementById('nexa-input');
         const chatBox = document.getElementById('chat-box');
         const typingIndicator = document.getElementById('typing-indicator');
 
-        // Nexa Logic Dictionary
-        const nexaKnowledge = {
-            "price": "Our pricing is transparent and affordable. Standalone services start from SCR 3,000. However, if you require multiple services, we offer Custom Bundled Pricing to significantly reduce your overall cost. Every eligible web project also includes 7 months of free basic maintenance. Would you like me to guide you to our Pricing page?",
-            "cost": "Our pricing is transparent and affordable. Standalone services start from SCR 3,000. However, if you require multiple services, we offer Custom Bundled Pricing to significantly reduce your overall cost. Every eligible web project also includes 7 months of free basic maintenance. Would you like me to guide you to our Pricing page?",
-            "quote": "I can certainly direct you to request an official estimate. Please click the 'Request a Quote' button in our navigation menu, and a digital architect will review your project requirements.",
-            "service": "BlueWave Digital architects enterprise-grade solutions. We specialize in Custom Web & Software Development, AI & Business Automation, E-Commerce platforms, Cybersecurity & Hosting, and Discord Community Management. How can we help scale your operations?",
-            "discord": "We build highly secure, automated Discord infrastructure for communities and gaming clans. This service is provided in exclusive partnership with BlackWood Digital Services (BDS), who manages the 24/7 moderation and anti-raid security protocols.",
-            "blackwood": "We build highly secure, automated Discord infrastructure for communities and gaming clans. This service is provided in exclusive partnership with BlackWood Digital Services (BDS), who manages the 24/7 moderation and anti-raid security protocols.",
-            "bds": "We build highly secure, automated Discord infrastructure for communities and gaming clans. This service is provided in exclusive partnership with BlackWood Digital Services (BDS), who manages the 24/7 moderation and anti-raid security protocols.",
-            "support": "If you are an existing client experiencing an issue, please securely log in to your Client Portal. Our 2-way authenticated ticketing system ensures your technical issues are prioritized and resolved swiftly.",
-            "help": "If you are an existing client experiencing an issue, please securely log in to your Client Portal. Our 2-way authenticated ticketing system ensures your technical issues are prioritized and resolved swiftly.",
-            "login": "To access your dashboard, invoices, and support tickets, please click the 'Client Login' button located at the top right of the navigation menu.",
-            "tng": "BlueWave Digital is the official technology division and a proud subsidiary of the Tyler Nicholas Group (TNG). TNG handles our corporate strategy and global recruitment.",
-            "tyler nicholas": "BlueWave Digital is the official technology division and a proud subsidiary of the Tyler Nicholas Group (TNG). TNG handles our corporate strategy and global recruitment.",
-            "hello": "Hello! I am Nexa, BlueWave's digital concierge. How can I assist you with your digital infrastructure today?",
-            "hi": "Hello! I am Nexa, BlueWave's digital concierge. How can I assist you with your digital infrastructure today?",
-            "maintenance": "We stand by our code. Every eligible BlueWave Digital website project includes 7 months of free basic maintenance after launch. This covers bugs, minor content updates, and technical fixes connected to the original build."
-        };
+        // The Brain: Strict Categories mapped to your exact requests
+        const nexaCategories = [
+            {
+                name: "Discord & Community",
+                triggers: ["discord", "server", "moderation", "bot", "anti raid", "anti-raid", "community", "blackwood"],
+                response: "BlueWave Digital provides Discord & Community Solutions in partnership with BlackWood Digital Services. Services include Discord server setup, roles and permissions, verification systems, ticket systems, application systems, custom Discord bots, anti-raid security, reaction roles, community workflows, and moderation support through BlackWood Digital Services."
+            },
+            {
+                name: "Maintenance",
+                triggers: ["maintenance", "after launch", "warranty", "fix", "bug", "update", "7 months"],
+                response: "Every eligible BlueWave Digital website project includes 7 months of free basic maintenance after launch. This covers small technical fixes, minor text or image updates, broken links, form issues, and bugs connected to the original development work. It does not include new pages, new features, major redesigns, hosting/domain renewals, third-party fees, emergency rebuilds, or changes outside the original project scope. After 7 months, maintenance plans start from SCR 500/month."
+            },
+            {
+                name: "Careers",
+                triggers: ["job", "career", "apply", "internship", "volunteer", "hiring", "recruitment", "work with you"],
+                response: "Recruitment for BlueWave Digital is managed exclusively by Tyler Nicholas Group Careers, the official recruitment portal for the holding company. All vacancies, applications, updates, and candidate communication are handled through the Tyler Nicholas Group Careers Portal. Applicants should visit the official TNG Careers portal to view open roles and apply."
+            },
+            {
+                name: "Pricing",
+                triggers: ["price", "cost", "pricing", "package", "how much", "scr", "payment"],
+                response: "BlueWave Digital websites start from SCR 3,000. Business websites start from SCR 5,000, professional websites from SCR 8,000, corporate websites from SCR 12,000, premium custom websites from SCR 15,000, e-commerce from SCR 8,000, AI automation from SCR 3,000, and custom platforms from SCR 20,000+. Final pricing depends on the project scope. If a client needs multiple services in one project, BlueWave Digital may provide a custom bundled quote instead of charging every service separately."
+            },
+            {
+                name: "Quote Request",
+                triggers: ["quote", "request", "estimate", "project", "start", "interested"],
+                response: "To request a quote, please provide your name, business or organization name, email address, WhatsApp or phone number, the type of service you need, your project budget, your deadline, and a short description of what you want to build. BlueWave Digital will review the information and provide a project quote based on the scope."
+            },
+            {
+                name: "Contact",
+                triggers: ["contact", "email", "phone", "whatsapp", "support", "location"],
+                response: "BlueWave Digital is based in Victoria, Mahé, Seychelles and operates globally through a distributed team. For new project inquiries, clients should use the official contact or quote request form. Existing clients should use the secure Client Dashboard for authenticated support tickets."
+            },
+            {
+                name: "Industries",
+                triggers: ["industry", "clients", "who do you serve", "business type", "tourism", "startup"],
+                response: "BlueWave Digital serves small businesses, startups, corporate clients, hospitality and tourism brands, nonprofits and foundations, retail and e-commerce businesses, education and training organizations, public service and community groups, creators and media platforms, gaming and virtual communities, and professional service providers. BlueWave Digital does not limit itself to one type of client; its systems are adapted to each industry’s real operational needs."
+            },
+            {
+                name: "Services",
+                triggers: ["service", "offer", "build", "website", "software", "app", "automation", "ecommerce", "hosting", "cybersecurity", "branding", "nonprofit"],
+                response: "BlueWave Digital offers Web & Software Development, Website Management & Optimization, AI & Business Automation, E-Commerce Solutions, Cybersecurity & Hosting, Discord & Community Solutions in partnership with BlackWood Digital Services, Branding & Creative Digital Services, and Nonprofit & Digital Strategy Services. We build websites, dashboards, portals, booking systems, e-commerce stores, automation workflows, hosting setups, security systems, client portals, community systems, and digital infrastructure for multiple industries."
+            },
+            {
+                name: "Greetings",
+                triggers: ["hello", "hi", "hey", "greetings", "good morning", "good afternoon"],
+                response: "Hello! I am Nexa, BlueWave Digital's intelligent assistant. I can help with our services, pricing, maintenance, careers, industries, quote requests, and support information. What would you like to know?"
+            }
+        ];
 
-        const nexaFallback = "I am Nexa, BlueWave's automated assistant. I specialize in general inquiries regarding our services, pricing, and infrastructure. For highly specific project details, I strongly recommend creating a secure account in our Client Portal or visiting our Contact page to speak directly with one of our human digital architects.";
+        const nexaFallback = "I can help with BlueWave Digital’s services, pricing, maintenance, careers, industries, quote requests, and support information. Could you tell me what you would like to know?";
 
         function addMessage(text, isUser) {
             const msgDiv = document.createElement('div');
@@ -469,22 +497,26 @@
 
         function processNexaResponse(userInput) {
             const lowerInput = userInput.toLowerCase();
-            let response = null;
+            let bestMatch = null;
+            let highestScore = 0;
 
-            // Search knowledge base
-            for (const [key, value] of Object.entries(nexaKnowledge)) {
-                if (lowerInput.includes(key)) {
-                    response = value;
-                    break;
+            // Smart Scoring Engine
+            nexaCategories.forEach(category => {
+                let score = 0;
+                category.triggers.forEach(trigger => {
+                    if (lowerInput.includes(trigger)) {
+                        score++;
+                    }
+                });
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    bestMatch = category.response;
                 }
-            }
+            });
 
-            // Fallback
-            if (!response) {
-                response = nexaFallback;
-            }
-
-            return response;
+            // Return best match or exact fallback
+            return bestMatch ? bestMatch : nexaFallback;
         }
 
         chatForm.addEventListener('submit', (e) => {
@@ -492,21 +524,18 @@
             const text = chatInput.value.trim();
             if (!text) return;
 
-            // Add user message
             addMessage(text, true);
             chatInput.value = '';
 
-            // Show typing indicator
             typingIndicator.classList.remove('hidden');
             chatBox.appendChild(typingIndicator);
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Simulate thinking delay
             setTimeout(() => {
                 typingIndicator.classList.add('hidden');
                 const reply = processNexaResponse(text);
                 addMessage(reply, false);
-            }, 1200 + Math.random() * 800); // 1.2 to 2 seconds delay
+            }, 1200 + Math.random() * 800); 
         });
     </script>
 </body>
