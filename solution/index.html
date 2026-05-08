@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Solutions | BlueWave Digital</title>
+    
+    <link rel="icon" href="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#020b1a',     
+                            blue: '#0052CC',     
+                            blueHover: '#0043A6',
+                            cyan: '#00B8D9',     
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Image Protection */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; 
+        }
+        a img { pointer-events: none; }
+
+        /* Preloader */
+        .preloader-bg {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .preloader-waves {
+            position: absolute;
+            bottom: -10%; left: -10%; width: 120%; height: 50%;
+            background: radial-gradient(ellipse at center, rgba(0, 184, 217, 0.1) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(40px);
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" class="min-h-screen flex flex-col font-sans text-slate-900 bg-white antialiased selection:bg-brand-cyan selection:text-white overflow-hidden" id="body-wrap">
+
+    <div id="preloader" class="fixed inset-0 z-[100] preloader-bg flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="preloader-waves"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-28 object-contain mb-10 drop-shadow-xl">
+            <div class="w-72 h-1.5 bg-blue-100 rounded-full overflow-hidden mb-5 shadow-inner">
+                <div id="progress-fill" class="h-full bg-gradient-to-r from-brand-blue to-brand-cyan w-[5%] rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,184,217,0.8)]"></div>
+            </div>
+            <p class="text-brand-navy font-semibold text-[15px] tracking-wide mb-1">Loading your experience...</p>
+            <p class="text-slate-400 text-[11px] font-medium uppercase tracking-[0.15em]">Preparing digital excellence</p>
+        </div>
+    </div>
+
+    <header class="w-full bg-brand-navy/95 backdrop-blur-md fixed top-0 z-50 border-b border-white/10 shadow-sm">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex-shrink-0 flex items-center gap-3">
+                <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain">
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 text-[13px] font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="/" class="hover:text-brand-cyan transition-colors duration-200">Home</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Company <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-56 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/about/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">About</a>
+                        <a href="/industries/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Industries</a>
+                        <a href="/careers/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Careers</a>
+                        <a href="/work/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Our Portfolio & Work</a>
+                    </div>
+                </div>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="text-brand-cyan transition-colors duration-200 flex items-center">
+                        Services <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-48 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/services/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Services</a>
+                        <a href="/solutions/" class="block px-5 py-3 text-brand-blue bg-slate-50 border-b border-slate-100">Solutions</a>
+                        <a href="/pricing/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Pricing</a>
+                    </div>
+                </div>
+                <a href="/work/" class="hover:text-brand-cyan transition-colors duration-200">Work</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Contact <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-40 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/contact/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Contact Us</a>
+                        <a href="/faq/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">FAQ</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="/login/" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-[11px] font-bold text-white bg-white/5 border border-white/20 rounded hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 uppercase tracking-widest pointer-events-auto">Client Login</a>
+                <a href="/quote/" class="inline-flex items-center justify-center px-5 py-2 text-[11px] font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-md uppercase tracking-widest active:scale-95 pointer-events-auto">Request a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <section class="relative w-full h-[40vh] min-h-[350px] flex items-center justify-center mt-20 bg-brand-navy overflow-hidden border-b border-brand-cyan/20">
+            <img src="https://i.ibb.co/JWj1dHHc/Chat-GPT-Image-May-7-2026-07-54-18-PM.png" alt="BlueWave Solutions" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0 opacity-80">
+        </section>
+
+        <section class="pt-24 pb-16 bg-white border-b border-slate-100">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-8">Digital Solutions</h1>
+                <p class="text-xl text-slate-600 font-light leading-relaxed mb-8">
+                    BlueWave Digital does not only build individual services. We combine websites, custom software, workflow automation, secure hosting, and dedicated support into complete, unified solutions based entirely on your operational needs.
+                </p>
+                <p class="text-base text-slate-500 font-light leading-relaxed">
+                    Every client has different goals. Some simply need a fast, high-converting website. Others require direct bookings, integrated payments, secure client portals, complex automation, or digital community infrastructure. Our solutions combine the exact right tools into one clear, powerful digital system.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-[90rem] mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Directory</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Featured Solution Packages</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <a href="#sol-website" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-laptop text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Business Website Launch Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-startup" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-rocket text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Startup Digital Setup Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-ecommerce" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-cart-shopping text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">E-Commerce Growth Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-hospitality" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-bed text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Hospitality Direct Booking Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-nonprofit" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-hand-holding-heart text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Nonprofit Digital Infrastructure</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-ai" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-robot text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">AI Business Automation Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-portal" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-table-columns text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Client Portal & Dashboard Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-community" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-brands fa-discord text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Community Management Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-cybersecurity" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-shield-halved text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Cybersecurity & Hosting Solution</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-creator" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-microphone-lines text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Personal Brand & Creator Platform</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-corporate" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-building-user text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Corporate Digital Operations</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                    <a href="#sol-public" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-brand-blue hover:shadow-md transition-all group pointer-events-auto">
+                        <i class="fa-solid fa-landmark text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="text-sm font-bold text-brand-navy mb-2 leading-snug">Public Service & Community Engagement</h4>
+                        <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest group-hover:text-brand-blue transition-colors">View Details <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-white">
+            <div class="max-w-[90rem] mx-auto px-6">
+                
+                <div id="sol-website" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-laptop"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Business Website Launch Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For small businesses and new brands that need a highly professional, reliable online presence built rapidly.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Launch My Website</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Premium Website Design</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Core Business Pages</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Contact Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> WhatsApp Direct Integration</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> SEO Basics & Structuring</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Domain & DNS Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Hosting Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Business Email Configuration</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> 7 Months Free Basic Maintenance</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-startup" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-rocket"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Startup Digital Setup Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For new businesses and founders that need immediate, scalable digital infrastructure to capture leads from day one.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Set Up My Startup</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> High-Conversion Landing Page</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Company Email Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Advanced Lead Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Basic CRM / Inquiry Tracking</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Web Analytics Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Business Profile Linking</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Quote & Request Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Launch Strategy Support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-ecommerce" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-cart-shopping"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">E-Commerce Growth Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For shops, product sellers, gifting brands, and businesses ready to scale sales operations online.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Online Store</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Online Store</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Dynamic Product Catalogue</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Cart & Checkout Optimization</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Order Management Dashboard</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Delivery & Pickup Logistics</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Customer Accounts System</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Payment Flow Planning</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Detailed Sales Analytics</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Coupons & Discount Engine</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-hospitality" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-bed"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Hospitality Direct Booking Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">Essential for Seychelles. For hotels, villas, guesthouses, car hire, restaurants, and tourism brands wanting to bypass 3rd-party commissions.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Booking System</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> High-End Hospitality Website</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Direct Booking Request System</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Room & Service Listings</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Guest Inquiry Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> WhatsApp Concierge Integration</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Review Management Links</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Specialized Tourism SEO</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Direct Booking Strategy</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Digital Guest Information Pages</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-nonprofit" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Nonprofit Digital Infrastructure Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For foundations, NGOs, youth groups, and community projects that need to scale their impact efficiently.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Support My Nonprofit</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Nonprofit Campaign Website</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Donation System Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Volunteer Registration Portals</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Event Registration Engine</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Awareness Campaign Landing Pages</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Public Resource Library</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Impact Reporting Dashboard</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Community Directory</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Low-Cost Nonprofit Options</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-ai" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-robot"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">AI Business Automation Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For clients who want to drastically reduce manual work, save time, and operate 24/7 with zero downtime.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Automate My Business</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Custom AI Chatbots</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> FAQ & Customer Support AI</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Automated Lead Qualification</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Intelligent Email Sequences</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Form Response Automation</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Invoice & Proposal Generators</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Business Workflow Scripts</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Internal Task Automation</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> CRM Automation Synchronization</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-portal" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-table-columns"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Client Portal & Dashboard Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For businesses needing highly organized client communication, secure document operations, and private data handling.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Portal</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Client Login Gateways</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Private Client Dashboards</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Live Project Trackers</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure File & Document Uploads</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Invoice Generation & Delivery</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Payment Proof Upload Portals</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Support Ticket Architecture</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Internal Message Centers</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Master Admin Dashboards</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Automated Notification Systems</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-community" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-brands fa-discord"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Community Management Solution</h3>
+                            <div class="flex items-center gap-2 mb-6 border border-brand-blue/20 bg-brand-blue/5 px-3 py-2 rounded-lg inline-flex">
+                                <img src="https://i.ibb.co/ZRT8vbbc/Blackwood-Digital-Services.png" alt="BlackWood Digital" class="h-4">
+                                <span class="text-[10px] font-bold text-brand-navy uppercase tracking-widest">Provided in partnership with BDS</span>
+                            </div>
+                            <p class="text-slate-600 font-light mb-8">We structure, automate, and secure digital communities. Perfect for gaming clans and public forums.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Community</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Discord Server Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Strict Roles & Permissions</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Verification Systems</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Internal Ticket Systems</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Custom Moderation Bots</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Anti-Raid Server Hardening</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Reaction Roles Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Community Workflow Design</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> 24/7 Moderation via BlackWood</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-cybersecurity" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Cybersecurity & Hosting Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For clients who need absolute reliability, zero-trust infrastructure, and active digital protection.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Secure My Website</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Enterprise Hosting Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Domain & DNS Routing</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> SSL Encryption Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Business Email Architecture</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Automated Backups</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> 24/7 Uptime Monitoring</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Seamless Website Migration</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Core Security Hardening</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Login Protection & 2FA</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Web Application Firewalls</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Recovery & Incident Support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-creator" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-microphone-lines"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Personal Brand & Creator Platform Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For creators, public figures, professionals, and speakers who need to centralize their audience and media.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Brand Platform</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Personal Brand Website</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Official Media & Press Pages</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Digital Portfolios</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Direct Booking & Contact Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Centralized Social Links</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Blog & News Architecture</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Private Membership Areas</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Audience Engagement Tools</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Professional Biography Sections</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-corporate" class="py-24 border-b border-slate-200 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-building-user"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Corporate Digital Operations Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For serious organizations and B2B companies needing secure internal systems and high-level client management.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Modernize My Operations</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Enterprise Corporate Website</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Staff & HR Portals</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> B2B Client Portals</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> CRM Architecture & Setup</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Internal Request Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Executive Reporting Dashboards</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Document Upload Systems</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Workflow Automation</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Advanced Secure Hosting</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Dedicated Ongoing Support</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sol-public" class="py-24 flex flex-col lg:flex-row gap-12 scroll-mt-24">
+                    <div class="lg:w-1/3">
+                        <div class="sticky top-32">
+                            <div class="w-12 h-12 rounded-lg bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6"><i class="fa-solid fa-landmark"></i></div>
+                            <h3 class="text-3xl font-extrabold text-brand-navy tracking-tight mb-4">Public Service & Community Engagement Solution</h3>
+                            <p class="text-slate-600 font-light mb-8">For civic initiatives, public offices, youth organizations, and community programs requiring transparency.</p>
+                            <a href="/quote/" class="inline-flex items-center justify-center px-6 py-3 text-xs font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">Build My Community Platform</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-8 text-sm text-slate-700 font-medium">
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Public Service Websites</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Official Announcement Pages</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Civic Event Calendars</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Public Feedback & Grievance Forms</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Volunteer Coordination Portals</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Community Resource Directories</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Secure Digital Archives</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Community Reporting Tools</div>
+                            <div class="flex items-start gap-3"><i class="fa-solid fa-check text-brand-cyan mt-0.5"></i> Youth Engagement Platforms</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="bg-slate-50 py-16 border-y border-slate-200">
+            <div class="max-w-5xl mx-auto px-6 text-center">
+                <div class="inline-flex items-center gap-2 bg-brand-blue/10 px-4 py-2 rounded-full border border-brand-blue/20 mb-6">
+                    <i class="fa-solid fa-wand-magic-sparkles text-brand-blue"></i>
+                    <span class="text-[11px] font-bold text-brand-navy uppercase tracking-widest">Fully Custom Builds</span>
+                </div>
+                <h3 class="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-4">Want to mix and match?</h3>
+                <p class="text-slate-600 font-light leading-relaxed mb-8 max-w-2xl mx-auto">
+                    We understand that your project might require elements from multiple packages, or you might want to exclude certain features. Be creative. Tell us exactly what you dream of building, and we will architect a <strong>fully custom package</strong> with custom pricing.
+                </p>
+                <a href="/quote/" class="inline-flex items-center justify-center px-8 py-3.5 text-xs font-bold text-brand-navy transition-all bg-white border border-slate-300 rounded hover:border-brand-blue hover:text-brand-blue uppercase tracking-widest active:scale-95 pointer-events-auto shadow-sm">
+                    Request a Custom Package
+                </a>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white border-b border-slate-100">
+            <div class="max-w-[90rem] mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Methodology</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">How We Build Solutions</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center max-w-5xl mx-auto">
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">1</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Discover</h4>
+                        <p class="text-xs text-slate-500">Analyze the core problem.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">2</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Define</h4>
+                        <p class="text-xs text-slate-500">Define the exact system.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">3</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Plan</h4>
+                        <p class="text-xs text-slate-500">Plan the architecture.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">4</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Design</h4>
+                        <p class="text-xs text-slate-500">Design the experience.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">5</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Build</h4>
+                        <p class="text-xs text-slate-500">Code and develop the platform.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center mx-auto mb-4">6</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Test & Launch</h4>
+                        <p class="text-xs text-slate-500">Deploy to production.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-cyan text-white font-bold flex items-center justify-center mx-auto mb-4">7</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Maintain</h4>
+                        <p class="text-xs text-slate-500">7 months free maintenance.</p>
+                    </div>
+                    <div class="p-6 border border-slate-100 rounded-xl bg-slate-50">
+                        <div class="w-10 h-10 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center mx-auto mb-4">8</div>
+                        <h4 class="font-bold text-slate-800 text-sm mb-2">Upgrade</h4>
+                        <p class="text-xs text-slate-500">Scale as your business grows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-navy text-white border-b border-brand-cyan/20">
+            <div class="max-w-[80rem] mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Interactive Matrix</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight">Find Your Solution</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+                    
+                    <a href="#sol-website" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need a professional website"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Business Website Launch</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-ecommerce" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need to sell online"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">E-Commerce Growth</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-hospitality" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need direct bookings"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Hospitality Booking</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-portal" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need client management"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Client Portal & Dashboard</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-ai" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need business automation"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">AI Business Automation</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-community" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need a Discord system"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Community Management</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-nonprofit" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need nonprofit tools"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Nonprofit Infrastructure</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                    <a href="#sol-cybersecurity" class="flex items-center justify-between p-6 bg-brand-dark border border-brand-cyan/20 rounded-xl hover:bg-brand-blue/10 hover:border-brand-cyan transition-all group pointer-events-auto">
+                        <span class="text-slate-300 font-light group-hover:text-white transition-colors">"I need hosting & security"</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs font-bold text-brand-cyan hidden sm:block">Cybersecurity & Hosting</span>
+                            <i class="fa-solid fa-arrow-right text-brand-cyan"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Investment</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Pricing Preview</h3>
+                    <p class="text-slate-500 mt-4 font-light">Transparent starting points for our enterprise-grade architecture.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mb-10">
+                    <div class="flex justify-between items-center p-6 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">Websites</span>
+                        <span class="text-brand-navy font-semibold">from SCR 3,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-6 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">E-Commerce</span>
+                        <span class="text-brand-navy font-semibold">from SCR 8,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-6 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">AI Automation</span>
+                        <span class="text-brand-navy font-semibold">from SCR 3,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-6 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">Client Portals</span>
+                        <span class="text-brand-navy font-semibold">from SCR 10,000</span>
+                    </div>
+                    <div class="flex justify-between items-center p-6 border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">Custom Platforms</span>
+                        <span class="text-brand-navy font-semibold">from SCR 20,000+</span>
+                    </div>
+                    <div class="flex justify-between items-center p-6 hover:bg-slate-50 transition-colors">
+                        <span class="font-bold text-slate-800">Maintenance (After 7 months)</span>
+                        <span class="text-brand-navy font-semibold">from SCR 500 / month</span>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="/pricing/" class="inline-flex items-center justify-center px-8 py-3.5 text-xs font-bold text-white transition-all bg-brand-navy rounded hover:bg-brand-blue uppercase tracking-widest active:scale-95 pointer-events-auto shadow-md">
+                        View Full Pricing
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white border-b border-slate-100">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <i class="fa-solid fa-layer-group text-4xl text-brand-blue mb-6"></i>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-6">Why Choose a Solution Instead of One Service?</h3>
+                <p class="text-lg text-slate-600 font-light leading-relaxed">
+                    Clients rarely need just one isolated service. A business does not just need a website—it needs inquiries, bookings, automated emails, sales analytics, secure hosting, active security, and ongoing support working together seamlessly. Our solutions package these fragmented needs into one singular, powerful digital system.
+                </p>
+            </div>
+        </section>
+
+        <section class="bg-brand-navy py-24 text-white text-center border-t-[8px] border-brand-cyan relative z-20">
+            <div class="max-w-3xl mx-auto px-6">
+                <h2 class="text-4xl font-extrabold tracking-tight mb-6">Not sure which solution you need?</h2>
+                <p class="text-slate-300 text-lg font-light mb-10 leading-relaxed">
+                    Tell us what you are trying to build. BlueWave Digital will audit your operations and recommend the exact digital architecture based on your goals, budget, and industry.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/quote/" class="inline-flex items-center justify-center px-10 py-4 text-sm font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-cyan shadow-lg uppercase tracking-widest active:scale-95 pointer-events-auto">
+                        Request a Quote
+                    </a>
+                    <a href="/contact/" class="inline-flex items-center justify-center px-10 py-4 text-sm font-bold text-white transition-all bg-white/10 border border-white/20 rounded hover:bg-white/20 uppercase tracking-widest active:scale-95 pointer-events-auto">
+                        Book a Consultation
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-dark pt-20 pb-10 text-slate-300 relative z-20 border-t border-white/5">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
+                
+                <div class="lg:col-span-2">
+                    <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain mb-6">
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm mb-8 font-light">
+                        A technology and software firm dedicated to delivering high-performance digital infrastructure, automation, and design for global organizations.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.linkedin.com/company/tylernicholas-group/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/tylernicholasgroup/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/tyler_n_group" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/@TylerNicholasGroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/tylernicholasgroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Directory</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/about/" class="hover:text-brand-cyan transition-colors pointer-events-auto">About Us</a></li>
+                        <li><a href="/services/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Service Directory</a></li>
+                        <li><a href="/work/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Portfolio</a></li>
+                        <li><a href="/pricing/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Pricing & Packages</a></li>
+                        <li><a href="/careers/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Support & Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/login/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Login</a></li>
+                        <li><a href="/support/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Support Center</a></li>
+                        <li><a href="/privacy/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Terms of Service</a></li>
+                        <li><a href="/status/" class="hover:text-brand-cyan transition-colors pointer-events-auto">System Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Partnerships</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li>
+                            <a href="https://bds.tylernicholasgroup.com/" target="_blank" class="block hover:text-brand-cyan transition-colors group pointer-events-auto">
+                                <span class="block text-white mb-1 group-hover:text-brand-cyan transition-colors">BlackWood Digital</span>
+                                <span class="text-xs leading-snug text-slate-500 group-hover:text-slate-400 transition-colors">Specialized Discord & Community Security Solutions.</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                    <p class="text-xs text-slate-500">
+                        &copy; 2026 BlueWave Digital. All rights reserved.
+                    </p>
+                    <span class="hidden sm:block text-slate-700">|</span>
+                    
+                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=de5465d8-036a-4f5b-8c33-cbf78a4b1565" target="_blank" rel="noopener noreferrer" class="text-[10px] sm:text-xs font-medium text-slate-500 hover:text-white transition-colors pointer-events-auto">
+                        Protected by the Digital Millennium Copyright Act (DMCA)
+                    </a>
+                </div>
+
+                <a href="https://tylernicholasgroup.com" class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity group pointer-events-auto">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-white transition-colors">A Proud Member Of</span>
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" class="h-5 grayscale group-hover:grayscale-0 transition-all">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // TRUE IMAGE TRACKING PRELOADER
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const progressFill = document.getElementById('progress-fill');
+            const body = document.getElementById('body-wrap');
+            
+            const images = document.images;
+            const totalImages = images.length;
+            let loadedImages = 0;
+
+            function updateProgress() {
+                loadedImages++;
+                let percent = (loadedImages / totalImages) * 100;
+                progressFill.style.width = percent + '%';
+
+                if (loadedImages >= totalImages) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            body.classList.remove('overflow-hidden');
+                        }, 700);
+                    }, 400); 
+                }
+            }
+
+            if (totalImages === 0) {
+                progressFill.style.width = '100%';
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        body.classList.remove('overflow-hidden');
+                    }, 700);
+                }, 200);
+            } else {
+                for (let i = 0; i < totalImages; i++) {
+                    if (images[i].complete) {
+                        updateProgress();
+                    } else {
+                        images[i].addEventListener('load', updateProgress);
+                        images[i].addEventListener('error', updateProgress); 
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
