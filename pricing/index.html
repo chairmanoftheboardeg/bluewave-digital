@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Packages | BlueWave Digital</title>
+    
+    <link rel="icon" href="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            navy: '#020b1a',     
+                            blue: '#0052CC',     
+                            blueHover: '#0043A6',
+                            cyan: '#00B8D9',     
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Strict Image Protection */
+        img {
+            -webkit-user-drag: none; -khtml-user-drag: none; -moz-user-drag: none; -o-user-drag: none;
+            user-drag: none; user-select: none; -webkit-user-select: none; -ms-user-select: none; pointer-events: none; 
+        }
+        a img { pointer-events: none; }
+
+        /* Preloader */
+        .preloader-bg { background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); position: relative; overflow: hidden; }
+        .preloader-waves { position: absolute; bottom: -10%; left: -10%; width: 120%; height: 50%; background: radial-gradient(ellipse at center, rgba(0, 184, 217, 0.1) 0%, transparent 70%); border-radius: 50%; filter: blur(40px); }
+        
+        /* Custom Checkbox */
+        .calc-checkbox:checked + div { border-color: #00B8D9; background-color: rgba(0, 184, 217, 0.05); }
+        .calc-checkbox:checked + div .check-icon { opacity: 1; transform: scale(1); }
+        
+        .calc-radio:checked + div { border-color: #0052CC; background-color: rgba(0, 82, 204, 0.05); }
+        .calc-radio:checked + div .radio-icon { border-color: #0052CC; background-color: #0052CC; box-shadow: inset 0 0 0 3px white; }
+    </style>
+</head>
+<body oncontextmenu="return false;" class="min-h-screen flex flex-col font-sans text-slate-900 bg-slate-50 antialiased selection:bg-brand-cyan selection:text-white overflow-hidden" id="body-wrap">
+
+    <div id="preloader" class="fixed inset-0 z-[100] preloader-bg flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="preloader-waves"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-28 object-contain mb-10 drop-shadow-xl">
+            <div class="w-72 h-1.5 bg-blue-100 rounded-full overflow-hidden mb-5 shadow-inner">
+                <div id="progress-fill" class="h-full bg-gradient-to-r from-brand-blue to-brand-cyan w-[5%] rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,184,217,0.8)]"></div>
+            </div>
+            <p class="text-brand-navy font-semibold text-[15px] tracking-wide mb-1">Loading your experience...</p>
+            <p class="text-slate-400 text-[11px] font-medium uppercase tracking-[0.15em]">Preparing digital excellence</p>
+        </div>
+    </div>
+
+    <header class="w-full bg-brand-navy/95 backdrop-blur-md fixed top-0 z-50 border-b border-white/10 shadow-sm">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex-shrink-0 flex items-center gap-3">
+                <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain">
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 text-[13px] font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="/" class="hover:text-brand-cyan transition-colors duration-200">Home</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Company <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-56 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/about/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">About</a>
+                        <a href="/industries/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Industries</a>
+                        <a href="/careers/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Careers</a>
+                        <a href="/work/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Our Portfolio & Work</a>
+                    </div>
+                </div>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Services <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-48 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/services/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Services</a>
+                        <a href="/solutions/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Solutions</a>
+                        <a href="/pricing/" class="block px-5 py-3 text-brand-blue bg-slate-50">Pricing</a>
+                    </div>
+                </div>
+                <a href="/work/" class="hover:text-brand-cyan transition-colors duration-200">Work</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Contact <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-40 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/contact/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Contact Us</a>
+                        <a href="/faq/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">FAQ</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="/login/" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-[11px] font-bold text-white bg-white/5 border border-white/20 rounded hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 uppercase tracking-widest pointer-events-auto">Client Login</a>
+                <a href="/quote/" class="inline-flex items-center justify-center px-5 py-2 text-[11px] font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-md uppercase tracking-widest active:scale-95 pointer-events-auto">Request a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        
+        <section class="bg-brand-navy pt-40 pb-20 relative overflow-hidden border-b border-brand-cyan/20">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-cyan/5 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 bg-brand-cyan/10 px-4 py-2 rounded-full border border-brand-cyan/30 mb-8">
+                    <i class="fa-solid fa-code text-brand-cyan text-[10px]"></i>
+                    <span class="text-[10px] font-bold text-brand-cyan uppercase tracking-widest">100% Handwritten Code</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-8 leading-[1.1]">
+                    "We don't build software with software.<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-blue">We build software with code.</span>"
+                </h1>
+                
+                <div class="text-lg text-slate-300 font-light leading-relaxed max-w-3xl mx-auto space-y-2">
+                    <p>BlueWave Digital is one of many web development companies. What sets us apart is our commitment to absolute precision.</p>
+                    <p class="font-medium text-white">100% Custom-Coded Solutions. No templates. No builders. Zero platforms.</p>
+                    <p>Bespoke development built from scratch, from the ground up.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white border-b border-slate-200">
+            <div class="max-w-[90rem] mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Transparent Investment</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-6">Our Pricing System</h3>
+                    <p class="text-slate-600 font-light leading-relaxed">
+                        BlueWave Digital offers affordable digital solutions starting from <strong>SCR 3,000</strong>. Our pricing is designed to stay affordable while remaining flexible. Clients may choose a standard package, request individual services, or receive a <strong class="text-brand-blue">Custom Bundled Quote</strong> when multiple services are needed. This allows us to keep pricing fair, clear, and accessible without overcharging clients for every small feature separately.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-3xl shadow-xl overflow-hidden max-w-5xl mx-auto">
+                    <div class="bg-brand-navy p-8 text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-brand-cyan/20 rounded-full blur-2xl"></div>
+                        <h4 class="text-2xl font-bold text-white mb-2 relative z-10">Smart Pricing Calculator</h4>
+                        <p class="text-sm text-slate-300 font-light relative z-10">Play around with packages and add-ons to estimate your project cost.</p>
+                    </div>
+
+                    <div class="p-8 md:p-12 flex flex-col lg:flex-row gap-12">
+                        <div class="lg:w-3/5 space-y-8">
+                            
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800 uppercase tracking-widest mb-4">1. Select Base Build</h5>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="radio" name="base_pkg" value="3000" class="calc-radio absolute opacity-0" checked onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-semibold text-slate-700">Starter Website</span>
+                                            <div class="w-4 h-4 rounded-full border-2 border-slate-300 radio-icon transition-all"></div>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="radio" name="base_pkg" value="5000" class="calc-radio absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-semibold text-slate-700">Business Website</span>
+                                            <div class="w-4 h-4 rounded-full border-2 border-slate-300 radio-icon transition-all"></div>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="radio" name="base_pkg" value="8000" class="calc-radio absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-semibold text-slate-700">Starter E-Commerce</span>
+                                            <div class="w-4 h-4 rounded-full border-2 border-slate-300 radio-icon transition-all"></div>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="radio" name="base_pkg" value="20000" class="calc-radio absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-semibold text-slate-700">Custom Web Platform</span>
+                                            <div class="w-4 h-4 rounded-full border-2 border-slate-300 radio-icon transition-all"></div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h5 class="text-sm font-bold text-slate-800 uppercase tracking-widest mb-4">2. Select Add-Ons</h5>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="5000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">AI Chatbot Setup</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="10000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">Client Portal</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="3000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">Discord Server</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="5000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">Brand Identity Starter</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="6000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">Security Hardening</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                    <label class="cursor-pointer relative pointer-events-auto">
+                                        <input type="checkbox" value="8000" class="calc-checkbox absolute opacity-0" onchange="calculatePrice()">
+                                        <div class="border border-slate-200 bg-white p-4 rounded-lg flex items-center justify-between transition-all">
+                                            <span class="text-sm font-medium text-slate-700">Workflow Automation</span>
+                                            <i class="fa-solid fa-check text-brand-cyan opacity-0 transform scale-50 transition-all check-icon"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:w-2/5">
+                            <div class="bg-white border border-brand-blue/20 rounded-2xl p-8 shadow-lg h-full flex flex-col justify-center relative overflow-hidden">
+                                <div class="absolute top-0 right-0 w-2 h-full bg-brand-cyan"></div>
+                                
+                                <div class="mb-6 border-b border-slate-100 pb-6">
+                                    <p class="text-sm text-slate-500 font-medium mb-1">Standard Subtotal</p>
+                                    <p class="text-2xl font-bold text-slate-400 line-through decoration-brand-cyan/50" id="calc-subtotal">SCR 3,000</p>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <p class="text-sm font-bold text-brand-blue uppercase tracking-widest mb-2">Estimated Bundled Quote</p>
+                                    <p class="text-4xl font-extrabold text-brand-navy tracking-tight" id="calc-final">SCR 3,000</p>
+                                    <p class="text-xs text-brand-cyan font-bold mt-2 bg-brand-cyan/10 inline-block px-2 py-1 rounded" id="calc-saved">You save SCR 0 (0%)</p>
+                                </div>
+
+                                <div class="text-xs text-slate-500 font-light leading-relaxed mb-6">
+                                    *This is an estimated price. When you combine services, our team applies a bundled discount (up to 25%). <strong>At the end of the day, our main goal is to provide you with the tools to succeed!</strong>
+                                </div>
+
+                                <a href="/quote/" class="inline-flex items-center justify-center w-full py-4 text-xs font-bold text-white transition-all bg-brand-navy rounded hover:bg-brand-blue shadow-md uppercase tracking-widest active:scale-95 pointer-events-auto">
+                                    Request Official Quote
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-navy border-y border-brand-cyan text-white">
+            <div class="max-w-[90rem] mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">The BlueWave Rule</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-6">Custom Bundled Project Pricing</h3>
+                    <p class="text-lg text-slate-300 font-light leading-relaxed">
+                        When a client requests several services in one project, BlueWave Digital does not simply add every service price together. Instead, the project is priced as a custom bundle based on the final scope. <strong>Standalone services are priced individually. Combined projects are quoted as bundles.</strong>
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-8 rounded-xl shadow-lg hover:border-brand-cyan transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">Business Growth Bundle</h4>
+                        <p class="text-2xl font-extrabold text-brand-cyan mb-4">SCR 12,000</p>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Best for a website with light extra features. Includes a business website, contact/forms, basic catalogue, simple logo support, SEO setup, analytics, and 7 months free basic maintenance.</p>
+                    </div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-8 rounded-xl shadow-lg hover:border-brand-cyan transition-colors">
+                        <h4 class="text-lg font-bold text-white mb-2">Digital Operations Bundle</h4>
+                        <p class="text-2xl font-extrabold text-brand-cyan mb-4">SCR 18,000</p>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Includes a professional website, forms, small e-commerce section, admin dashboard, invoice setup, AI chatbot setup, SEO, analytics, and 7 months free basic maintenance.</p>
+                    </div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-8 rounded-xl shadow-lg hover:border-brand-cyan transition-colors relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-brand-blue/20 rounded-full blur-xl"></div>
+                        <h4 class="text-lg font-bold text-white mb-2">Custom Platform Bundle</h4>
+                        <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 25,000</p>
+                        <p class="text-sm text-slate-400 font-light leading-relaxed">Includes a custom website, dashboard, database, forms, e-commerce flow, invoice system, user management tools, AI chatbot, basic automation, and 7 months free basic maintenance.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-brand-blue to-brand-navy border border-brand-blue/50 p-8 rounded-xl shadow-lg">
+                        <h4 class="text-lg font-bold text-white mb-2">Enterprise Solution Bundle</h4>
+                        <p class="text-2xl font-extrabold text-white mb-4">SCR 50,000</p>
+                        <p class="text-sm text-blue-100 font-light leading-relaxed">Full-scale web platform, advanced backend, user systems, dashboards, databases, payment flow, reporting, automations, admin controls, and 7 months free basic maintenance.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-12 text-center text-sm text-brand-cyan font-medium">
+                    If your project requires several services, we will create a custom bundled quote allowing you to receive a complete solution at a more affordable combined price.
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50 border-b border-slate-200">
+            <div class="max-w-[90rem] mx-auto px-6">
+                
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-8 bg-brand-blue"></div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Website Packages</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Starter Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 3,000</p>
+                            <p class="text-sm text-slate-600 font-light mb-6 flex-grow">For individuals, small brands, and very simple businesses.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 font-medium border-t border-slate-100 pt-4">
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 1–3 Pages & Responsive Design</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> WhatsApp Button & Contact Section</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Domain Connection & Basic SEO</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 7 Months Free Basic Maintenance</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-brand-cyan text-brand-navy text-[9px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-widest">Popular</div>
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Business Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 5,000</p>
+                            <p class="text-sm text-slate-600 font-light mb-6 flex-grow">For small businesses that need a proper online presence.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 font-medium border-t border-slate-100 pt-4">
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 4–6 Pages & Custom Design</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Service Sections & Inquiry Forms</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Google Maps & Analytics Setup</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Speed Optimization & Basic SEO</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Professional Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 8,000</p>
+                            <p class="text-sm text-slate-600 font-light mb-6 flex-grow">For companies, organizations, and professional service providers.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 font-medium border-t border-slate-100 pt-4">
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 7–10 Pages & Advanced Design</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> SEO Structure & Image Optimization</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Legal Pages & Basic CMS Setup</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 7 Months Free Basic Maintenance</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow flex flex-col">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Corporate Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 12,000</p>
+                            <p class="text-sm text-slate-600 font-light mb-6 flex-grow">For larger companies, groups, public figures, and foundations.</p>
+                            <ul class="space-y-2 text-xs text-slate-700 font-medium border-t border-slate-100 pt-4">
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 10–15 Pages & Premium Design</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Blog, News, Team & Careers Sections</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Portfolio & Project Layouts</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Basic Admin Content Management</li>
+                            </ul>
+                        </div>
+                        <div class="bg-brand-navy border border-brand-blue/30 p-8 rounded-2xl shadow-lg flex flex-col lg:col-span-2">
+                            <h4 class="text-xl font-bold text-white mb-1">Premium Custom Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-cyan mb-4">SCR 15,000</p>
+                            <p class="text-sm text-slate-300 font-light mb-6 flex-grow">For serious brands needing a high-end, immersive custom website architecture.</p>
+                            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-400 font-medium border-t border-slate-700 pt-4">
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> 15+ Pages & Custom Layout System</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Advanced UI Sections & Animations</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Full Admin-Managed Content</li>
+                                <li><i class="fa-solid fa-check text-brand-cyan mr-2"></i> Advanced SEO & Launch Support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-8 bg-brand-cyan"></div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Digital System Packages</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Custom Form System</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 3,000</p>
+                            <p class="text-xs text-slate-500">Contact, quote, application, booking, and database submission forms.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Admin Dashboard</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 8,000</p>
+                            <p class="text-xs text-slate-500">Manage content, submissions, users, project data, and simple operations.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Client Portal Starter</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 10,000</p>
+                            <p class="text-xs text-slate-500">Client login, dashboard, project status, documents, and message section.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Booking & Reservation</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 12,000</p>
+                            <p class="text-xs text-slate-500">Booking forms, service listings, date requests, and client confirmation flows.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Invoice & Payment Proof</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 12,000</p>
+                            <p class="text-xs text-slate-500">Invoice creation, secure links, proof upload, tracking, and receipts.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Custom Web Platform Starter</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 20,000</p>
+                            <p class="text-xs text-slate-500">User accounts, backend database, dashboards, forms, and custom workflows.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-6 rounded-xl hover:border-brand-cyan transition-colors">
+                            <h4 class="font-bold text-brand-navy mb-1">Advanced Custom Platform</h4>
+                            <p class="text-lg font-extrabold text-brand-blue mb-3">SCR 35,000</p>
+                            <p class="text-xs text-slate-500">Multiple roles, advanced dashboards, notifications, and business workflows.</p>
+                        </div>
+                        <div class="bg-brand-navy border border-brand-cyan/30 p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-white mb-1">Enterprise Platform</h4>
+                            <p class="text-lg font-extrabold text-brand-cyan mb-3">SCR 50,000</p>
+                            <p class="text-xs text-slate-400">Full-scale portals, directories, memberships, and multi-feature software.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-8 bg-brand-blue"></div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">E-Commerce Packages</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Product Catalogue Website</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 5,000</p>
+                            <p class="text-xs text-slate-600 mb-4">Display products without online checkout. Includes pages, categories, and WhatsApp orders.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Starter Online Store</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 8,000</p>
+                            <p class="text-xs text-slate-600 mb-4">Catalogue, cart, basic checkout flow, inquiry system, and basic store management.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Business E-Commerce</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 12,000</p>
+                            <p class="text-xs text-slate-600 mb-4">Advanced checkout, order management, customer accounts, discounts, and payment planning.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-8 rounded-2xl shadow-sm md:col-span-2">
+                            <h4 class="text-xl font-bold text-brand-navy mb-1">Advanced E-Commerce</h4>
+                            <p class="text-2xl font-extrabold text-brand-blue mb-4">SCR 20,000</p>
+                            <p class="text-xs text-slate-600 mb-4">Inventory setup, order tracking, sales dashboard, advanced product management, delivery configurations, and full payment integration planning.</p>
+                        </div>
+                        <div class="bg-brand-navy border border-brand-cyan/30 p-8 rounded-2xl shadow-lg">
+                            <h4 class="text-xl font-bold text-white mb-1">Marketplace / Multi-Vendor</h4>
+                            <p class="text-2xl font-extrabold text-brand-cyan mb-4">SCR 35,000</p>
+                            <p class="text-xs text-slate-400 mb-4">For platforms where multiple sellers or vendors can list products, manage their own dashboards, and process sales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-20">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-1.5 h-8 bg-brand-cyan"></div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">AI & Automation Packages</h3>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-white border border-slate-200 p-5 rounded-lg flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div><h4 class="font-bold text-slate-800 text-sm">Basic Automation Setup</h4><p class="text-[10px] text-slate-500">Forms, emails, Google Sheets.</p></div>
+                            <span class="font-extrabold text-brand-blue">SCR 3,000</span>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-5 rounded-lg flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div><h4 class="font-bold text-slate-800 text-sm">AI Chatbot Setup</h4><p class="text-[10px] text-slate-500">Custom trained FAQ assistant.</p></div>
+                            <span class="font-extrabold text-brand-blue">SCR 5,000</span>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-5 rounded-lg flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div><h4 class="font-bold text-slate-800 text-sm">Lead Capture Automation</h4><p class="text-[10px] text-slate-500">Forms, follow-ups, tracking.</p></div>
+                            <span class="font-extrabold text-brand-blue">SCR 5,000</span>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-5 rounded-lg flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div><h4 class="font-bold text-slate-800 text-sm">Business Workflow Auto.</h4><p class="text-[10px] text-slate-500">Onboarding, task routing.</p></div>
+                            <span class="font-extrabold text-brand-blue">SCR 8,000</span>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-5 rounded-lg flex justify-between items-center hover:shadow-md transition-shadow">
+                            <div><h4 class="font-bold text-slate-800 text-sm">Invoice / Proposal Auto.</h4><p class="text-[10px] text-slate-500">Generation & delivery.</p></div>
+                            <span class="font-extrabold text-brand-blue">SCR 8,000</span>
+                        </div>
+                        <div class="bg-brand-navy border border-brand-blue/30 p-5 rounded-lg flex justify-between items-center shadow-md">
+                            <div><h4 class="font-bold text-white text-sm">Full AI Business Assistant</h4><p class="text-[10px] text-slate-400">Support, leads, workflows.</p></div>
+                            <span class="font-extrabold text-brand-cyan">SCR 15,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-box-open text-brand-blue text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Business Setup Packages</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Startup Digital Setup</span><span class="text-sm font-bold text-brand-navy">SCR 6,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Creator / Personal Brand Package</span><span class="text-sm font-bold text-brand-navy">SCR 6,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Small Business Digital Setup</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Restaurant Digital Setup</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Public Figure Website Package</span><span class="text-sm font-bold text-brand-navy">SCR 10,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Tourism Business Digital Setup</span><span class="text-sm font-bold text-brand-navy">SCR 12,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Corporate Digital Setup</span><span class="text-sm font-bold text-brand-navy">SCR 15,000</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-pen-nib text-brand-cyan text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Branding & Creative</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Logo Design</span><span class="text-sm font-bold text-brand-navy">SCR 2,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Social Media Kit</span><span class="text-sm font-bold text-brand-navy">SCR 2,500</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Company Profile Design</span><span class="text-sm font-bold text-brand-navy">SCR 3,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Pitch Deck / Presentation</span><span class="text-sm font-bold text-brand-navy">SCR 4,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Brand Identity Starter</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Full Brand Launch Package</span><span class="text-sm font-bold text-brand-navy">SCR 10,000</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-shield-halved text-brand-blue text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Hosting & Cybersecurity</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Domain, DNS, or SSL Setup</span><span class="text-sm font-bold text-brand-navy">SCR 1,000 each</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Hosting or Email Setup</span><span class="text-sm font-bold text-brand-navy">SCR 1,500 each</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Backup & Recovery Setup</span><span class="text-sm font-bold text-brand-navy">SCR 2,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Website Migration</span><span class="text-sm font-bold text-brand-navy">SCR 2,500</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Basic Security / Firewall Setup</span><span class="text-sm font-bold text-brand-navy">SCR 2,500 - 3,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Server Deployment</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Full Security Hardening</span><span class="text-sm font-bold text-brand-navy">SCR 6,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Full Infrastructure Setup</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-screwdriver-wrench text-brand-cyan text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Website Management</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Website / SEO Audit</span><span class="text-sm font-bold text-brand-navy">SCR 2,000 each</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Speed Optimization</span><span class="text-sm font-bold text-brand-navy">SCR 2,500</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Technical Fix Package</span><span class="text-sm font-bold text-brand-navy">SCR 3,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Website Redesign (Partial)</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Full Website Improvement Pkg</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-brands fa-discord text-brand-blue text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Discord & Community</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Basic Server Setup</span><span class="text-sm font-bold text-brand-navy">SCR 3,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Anti-Raid / Security Setup</span><span class="text-sm font-bold text-brand-navy">SCR 4,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Professional Community Setup</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Custom Bot Starter</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Advanced Infrastructure</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Advanced Custom Bot</span><span class="text-sm font-bold text-brand-navy">SCR 12,000</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center gap-3 mb-6">
+                            <i class="fa-solid fa-hand-holding-heart text-brand-cyan text-xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Nonprofit Strategy</h3>
+                        </div>
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Awareness Campaign Page</span><span class="text-sm font-bold text-brand-navy">SCR 2,000</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Nonprofit Basic Website</span><span class="text-sm font-bold text-brand-navy">SCR 2,500</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Donation or Volunteer System</span><span class="text-sm font-bold text-brand-navy">SCR 2,500 each</span></div>
+                            <div class="flex justify-between items-center p-4 border-b border-slate-100"><span class="text-sm font-semibold text-slate-700">Nonprofit Full Website</span><span class="text-sm font-bold text-brand-navy">SCR 5,000</span></div>
+                            <div class="flex justify-between items-center p-4"><span class="text-sm font-semibold text-slate-700">Full Digital Package</span><span class="text-sm font-bold text-brand-navy">SCR 8,000</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-white border-b border-slate-200">
+            <div class="max-w-[90rem] mx-auto px-6">
+                
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/2 bg-brand-navy rounded-3xl p-10 md:p-14 shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-2 h-full bg-brand-cyan"></div>
+                        <h3 class="text-3xl font-extrabold text-white tracking-tight mb-6">7 Months Free Maintenance.</h3>
+                        <p class="text-slate-300 font-light leading-relaxed mb-6">
+                            Every eligible BlueWave Digital website project includes 7 months of free basic maintenance after launch. This covers small technical fixes, minor text/image updates, broken links, form issues, and bugs connected to the original development work.
+                        </p>
+                        <p class="text-xs text-slate-500 bg-brand-dark/50 p-4 rounded-lg border border-slate-700 font-light">
+                            <strong class="text-slate-400">Note:</strong> New pages, new features, major redesigns, hosting/domain renewal fees, third-party tool fees, emergency rebuilds, or changes outside the original project scope are not included in free maintenance.
+                        </p>
+                    </div>
+
+                    <div class="lg:w-1/2">
+                        <div class="mb-8">
+                            <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-2">Long-Term Support</h2>
+                            <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Maintenance Plans After 7 Months</h3>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-lg flex justify-between items-center">
+                                <div><h4 class="font-bold text-slate-800 text-sm">Basic Care</h4><p class="text-[10px] text-slate-500">Small fixes, minor updates, monthly check, backups.</p></div>
+                                <span class="font-extrabold text-brand-navy">SCR 500 / mo</span>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-lg flex justify-between items-center">
+                                <div><h4 class="font-bold text-slate-800 text-sm">Standard Care</h4><p class="text-[10px] text-slate-500">Up to 3 updates/mo, SEO/speed/security checks, priority support.</p></div>
+                                <span class="font-extrabold text-brand-navy">SCR 1,000 / mo</span>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-lg flex justify-between items-center">
+                                <div><h4 class="font-bold text-slate-800 text-sm">Business Care</h4><p class="text-[10px] text-slate-500">Up to 6 updates/mo, monthly performance reports, uptime monitoring.</p></div>
+                                <span class="font-extrabold text-brand-navy">SCR 1,500 / mo</span>
+                            </div>
+                            <div class="bg-slate-50 border border-slate-200 p-5 rounded-lg flex justify-between items-center">
+                                <div><h4 class="font-bold text-slate-800 text-sm">Premium Care</h4><p class="text-[10px] text-slate-500">Up to 10 updates/mo, active optimization, minor design improvements.</p></div>
+                                <span class="font-extrabold text-brand-navy">SCR 2,500 / mo</span>
+                            </div>
+                            <div class="bg-brand-navy border border-brand-cyan/30 p-5 rounded-lg flex justify-between items-center shadow-lg">
+                                <div><h4 class="font-bold text-white text-sm">Enterprise Care</h4><p class="text-[10px] text-slate-400">Advanced portal support, high-priority, SEO/security reviews.</p></div>
+                                <span class="font-extrabold text-brand-cyan">SCR 5,000 / mo</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-slate-200">
+                            <h4 class="font-bold text-slate-800 text-sm mb-4">Hosting Support Plans</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="bg-white border border-slate-200 p-4 rounded-lg text-center"><p class="text-[11px] font-bold text-brand-navy mb-1">Basic Hosting</p><p class="text-xs font-bold text-slate-500">SCR 500 / mo</p></div>
+                                <div class="bg-white border border-slate-200 p-4 rounded-lg text-center"><p class="text-[11px] font-bold text-brand-navy mb-1">Managed Hosting</p><p class="text-xs font-bold text-slate-500">SCR 1,000 / mo</p></div>
+                                <div class="bg-white border border-slate-200 p-4 rounded-lg text-center"><p class="text-[11px] font-bold text-brand-navy mb-1">Premium Managed</p><p class="text-xs font-bold text-slate-500">SCR 2,000 / mo</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <i class="fa-solid fa-file-contract text-3xl text-brand-blue mb-6"></i>
+                <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight mb-10">Payment Terms</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="text-sm font-bold text-brand-navy mb-2">Projects under SCR 5,000</h4>
+                        <p class="text-xs text-slate-600 font-medium">100% Upfront.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="text-sm font-bold text-brand-navy mb-2">SCR 5,000 to SCR 15,000</h4>
+                        <p class="text-xs text-slate-600 font-medium">70% Upfront / 30% Before Launch.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="text-sm font-bold text-brand-navy mb-2">Projects above SCR 15,000</h4>
+                        <p class="text-xs text-slate-600 font-medium">50% Upfront / 30% Dev Milestone / 20% Before Launch.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="text-sm font-bold text-brand-navy mb-2">Large Custom Platforms</h4>
+                        <p class="text-xs text-slate-600 font-medium">40% Upfront / 30% Dev Milestone / 20% Testing / 10% Before Launch.</p>
+                    </div>
+                </div>
+                
+                <p class="text-xs text-slate-500 mt-8 font-light italic">
+                    Final access, launch, transfer of files, or deployment will only occur after full payment is completed.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300 relative z-20">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
+                
+                <div class="lg:col-span-2">
+                    <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain mb-6">
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm mb-8 font-light">
+                        A technology and software firm dedicated to delivering high-performance digital infrastructure, automation, and design for global organizations.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.linkedin.com/company/tylernicholas-group/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/tylernicholasgroup/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/tyler_n_group" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/@TylerNicholasGroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/tylernicholasgroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Directory</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/about/" class="hover:text-brand-cyan transition-colors pointer-events-auto">About Us</a></li>
+                        <li><a href="/services/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Service Directory</a></li>
+                        <li><a href="/work/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Portfolio</a></li>
+                        <li><a href="/pricing/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Pricing & Packages</a></li>
+                        <li><a href="/careers/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Support & Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/login/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Login</a></li>
+                        <li><a href="/support/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Support Center</a></li>
+                        <li><a href="/privacy/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Terms of Service</a></li>
+                        <li><a href="/status/" class="hover:text-brand-cyan transition-colors pointer-events-auto">System Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Partnerships</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li>
+                            <a href="https://bds.tylernicholasgroup.com/" target="_blank" class="block hover:text-brand-cyan transition-colors group pointer-events-auto">
+                                <span class="block text-white mb-1 group-hover:text-brand-cyan transition-colors">BlackWood Digital</span>
+                                <span class="text-xs leading-snug text-slate-500 group-hover:text-slate-400 transition-colors">Specialized Discord & Community Security Solutions.</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                    <p class="text-xs text-slate-500">&copy; 2026 BlueWave Digital. All rights reserved.</p>
+                    <span class="hidden sm:block text-slate-700">|</span>
+                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=de5465d8-036a-4f5b-8c33-cbf78a4b1565" target="_blank" rel="noopener noreferrer" class="text-[10px] sm:text-xs font-medium text-slate-500 hover:text-white transition-colors pointer-events-auto">
+                        Protected by the Digital Millennium Copyright Act (DMCA)
+                    </a>
+                </div>
+                <a href="https://tylernicholasgroup.com" class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity group pointer-events-auto">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-white transition-colors">A Proud Member Of</span>
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" class="h-5 grayscale group-hover:grayscale-0 transition-all">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // TRUE IMAGE TRACKING PRELOADER
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const progressFill = document.getElementById('progress-fill');
+            const body = document.getElementById('body-wrap');
+            
+            const images = document.images;
+            const totalImages = images.length;
+            let loadedImages = 0;
+
+            function updateProgress() {
+                loadedImages++;
+                let percent = (loadedImages / totalImages) * 100;
+                progressFill.style.width = percent + '%';
+
+                if (loadedImages >= totalImages) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            body.classList.remove('overflow-hidden');
+                        }, 700);
+                    }, 400); 
+                }
+            }
+
+            if (totalImages === 0) {
+                progressFill.style.width = '100%';
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        body.classList.remove('overflow-hidden');
+                    }, 700);
+                }, 200);
+            } else {
+                for (let i = 0; i < totalImages; i++) {
+                    if (images[i].complete) {
+                        updateProgress();
+                    } else {
+                        images[i].addEventListener('load', updateProgress);
+                        images[i].addEventListener('error', updateProgress); 
+                    }
+                }
+            }
+        });
+
+        // SMART CALCULATOR LOGIC
+        function calculatePrice() {
+            // 1. Get Base Package Value
+            let baseValue = 0;
+            const baseRadios = document.querySelectorAll('input[name="base_pkg"]');
+            baseRadios.forEach(radio => {
+                if(radio.checked) baseValue = parseInt(radio.value);
+            });
+
+            // 2. Get Add-ons Value
+            let addonsValue = 0;
+            let addonsCount = 0;
+            const addonCheckboxes = document.querySelectorAll('.calc-checkbox');
+            addonCheckboxes.forEach(checkbox => {
+                if(checkbox.checked) {
+                    addonsValue += parseInt(checkbox.value);
+                    addonsCount++;
+                }
+            });
+
+            // 3. Calculate Subtotal
+            const subtotal = baseValue + addonsValue;
+            
+            // 4. Calculate Bundle Discount (Up to 25% max based on how many items are added)
+            let discountMultiplier = 0;
+            if (addonsCount > 0) {
+                // E.g., 5% off for 1 addon, 10% for 2, 15% for 3, capping at 25%
+                discountMultiplier = Math.min(0.25, addonsCount * 0.05); 
+            }
+            
+            const discountAmount = subtotal * discountMultiplier;
+            const finalQuote = subtotal - discountAmount;
+
+            // 5. Format and Update DOM
+            const formatSCR = (num) => 'SCR ' + num.toLocaleString();
+
+            document.getElementById('calc-subtotal').innerText = formatSCR(subtotal);
+            document.getElementById('calc-final').innerText = formatSCR(finalQuote);
+            
+            if (discountAmount > 0) {
+                document.getElementById('calc-saved').innerText = `You save ${formatSCR(discountAmount)} (${(discountMultiplier * 100)}%)`;
+                document.getElementById('calc-saved').style.display = 'inline-block';
+            } else {
+                document.getElementById('calc-saved').style.display = 'none';
+            }
+        }
+
+        // Run once on load
+        calculatePrice();
+    </script>
+</body>
+</html>
