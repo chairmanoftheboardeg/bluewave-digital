@@ -1,657 +1,584 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | BlueWave Digital</title>
     
-    <link rel="icon" href="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" type="image/png">
+    <link rel="icon" href="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" type="image/png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            navy: '#020b1a',     
+                            blue: '#0052CC',     
+                            blueHover: '#0043A6',
+                            cyan: '#00B8D9',     
+                            dark: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* --- CORE VARIABLES --- */
-        :root {
-            --bg-deep-navy: #06101e;
-            --bg-card: #0a182b;
-            --bg-pure-black: #000000;
-            --cyan-glow: #00d2ff;
-            --blue-accent: #3b96d2;
-            --text-white: #ffffff;
-            --text-muted: #a0aec0;
+        /* Strict Image Protection */
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            pointer-events: none; 
         }
+        a img { pointer-events: none; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-deep-navy);
-            color: var(--text-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        /* --- GLOBAL LINK STYLING FOR TNG --- */
-        .tng-link {
-            color: var(--text-white);
-            text-decoration: none;
-            font-weight: 800;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .tng-link:hover {
-            color: var(--cyan-glow);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-
-        /* --- LOADING SCREEN --- */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--bg-deep-navy);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
-        }
-
-        .loader-ring {
-            width: 80px;
-            height: 80px;
-            border: 4px solid rgba(0, 210, 255, 0.1);
-            border-left-color: var(--cyan-glow);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* --- NAVIGATION BAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background: rgba(6, 16, 30, 0.9);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
-        }
-
-        .logo img {
-            height: 55px;
-            width: auto;
-            transition: transform 0.3s ease;
-            display: block;
-        }
-
-        .logo:hover img {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: color 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--cyan-glow);
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--blue-accent), var(--cyan-glow));
-            color: var(--bg-deep-navy);
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 800;
-            font-family: 'Space Grotesk', sans-serif;
-            text-transform: uppercase;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.6);
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border: 1px solid var(--blue-accent);
-            color: var(--cyan-glow);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: all 0.3s;
-            text-align: center;
-            text-transform: uppercase;
-        }
-
-        .btn-outline:hover {
-            background: rgba(0, 210, 255, 0.1);
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
-            transform: translateY(-3px);
-        }
-
-        /* --- PAGE HERO --- */
-        .page-hero {
-            padding: 12rem 5% 6rem;
-            text-align: center;
+        /* Preloader */
+        .preloader-bg {
+            background: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%);
             position: relative;
-            background: radial-gradient(circle at top, rgba(0, 210, 255, 0.05) 0%, transparent 60%);
+            overflow: hidden;
+        }
+        .preloader-waves {
+            position: absolute;
+            bottom: -10%; left: -10%; width: 120%; height: 50%;
+            background: radial-gradient(ellipse at center, rgba(0, 184, 217, 0.1) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(40px);
         }
 
-        .page-hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .page-hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 800px;
-            margin: 0 auto;
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        /* --- CAREERS SECTION --- */
-        .careers-section {
-            padding: 2rem 5% 8rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        /* Information Protocol Box */
-        .protocol-box {
-            background: rgba(0, 210, 255, 0.05);
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            border-left: 4px solid var(--cyan-glow);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 4rem;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        .protocol-box h3 {
-            color: var(--cyan-glow);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .protocol-box p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .protocol-box p strong {
-            color: var(--text-white);
-        }
-
-        .protocol-box ul {
-            color: var(--text-muted);
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .protocol-box li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Job Postings Container */
-        .jobs-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .job-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            animation: fadeInUp 0.5s ease-out forwards;
-        }
-
-        .job-card:hover {
-            border-color: rgba(0, 210, 255, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .job-title-group h2 {
-            font-size: 1.8rem;
-            color: var(--text-white);
-            margin-bottom: 0.5rem;
-        }
-
-        .job-meta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .job-meta span {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--cyan-glow);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .job-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .job-footer {
-            margin-top: 1rem;
-        }
-
-        /* Loading / Error States */
-        .status-message {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: var(--bg-card);
-            border: 1px dashed rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text-muted);
-        }
-
-        .status-message i {
-            font-size: 3rem;
-            color: var(--blue-accent);
-            margin-bottom: 1rem;
-        }
-
-        /* --- TNG BRANDING SECTION --- */
-        .tng-section {
-            padding: 5rem 5%;
-            background: linear-gradient(180deg, var(--bg-deep-navy) 0%, #030811 100%);
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .tng-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: var(--bg-pure-black);
-            padding: 1rem 3rem;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
-            transition: all 0.3s;
-        }
-
-        .tng-badge:hover {
-            border-color: var(--cyan-glow);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
-            transform: scale(1.02);
-        }
-
-        .tng-badge i {
-            color: var(--cyan-glow);
-            font-size: 1.5rem;
-        }
-
-        .tng-text h4 {
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--text-white);
-        }
-
-        .tng-text p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 2px;
-        }
-
-        /* --- FOOTER --- */
-        .site-footer {
-            background-color: #030811;
-            padding: 4rem 5% 2rem;
-            border-top: 2px solid var(--blue-accent);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            margin-bottom: 3rem;
-        }
-
-        .footer-logo img {
-            height: 45px;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-about p {
-            color: var(--text-muted);
-            max-width: 400px;
-        }
-
-        .footer-links h3 {
-            color: var(--cyan-glow);
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--cyan-glow);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* --- KEYFRAMES --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- MOBILE MENU --- */
-        .menu-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-white);
-        }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .menu-toggle { display: block; }
-            .page-hero h1 { font-size: 3rem; }
-            .job-header { flex-direction: column; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
+        /* Modal Transitions */
+        .modal-overlay { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-content-fade { transition: opacity 0.3s ease, transform 0.3s ease; }
+        .modal-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .modal-hidden .modal-content-fade { opacity: 0; transform: scale(0.95) translateY(10px); }
+        .modal-visible { opacity: 1; visibility: visible; pointer-events: auto; }
+        .modal-visible .modal-content-fade { opacity: 1; transform: scale(1) translateY(0); }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;" class="min-h-screen flex flex-col font-sans text-slate-900 bg-white antialiased selection:bg-brand-cyan selection:text-white overflow-hidden" id="body-wrap">
 
-    <div id="loader">
-        <div class="loader-ring"></div>
+    <div id="preloader" class="fixed inset-0 z-[100] preloader-bg flex flex-col items-center justify-center transition-opacity duration-700 ease-out">
+        <div class="preloader-waves"></div>
+        <div class="relative z-10 flex flex-col items-center">
+            <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-28 object-contain mb-10 drop-shadow-xl">
+            <div class="w-72 h-1.5 bg-blue-100 rounded-full overflow-hidden mb-5 shadow-inner">
+                <div id="progress-fill" class="h-full bg-gradient-to-r from-brand-blue to-brand-cyan w-[5%] rounded-full transition-all duration-300 ease-out shadow-[0_0_10px_rgba(0,184,217,0.8)]"></div>
+            </div>
+            <p class="text-brand-navy font-semibold text-[15px] tracking-wide mb-1">Loading your experience...</p>
+            <p class="text-slate-400 text-[11px] font-medium uppercase tracking-[0.15em]">Preparing digital excellence</p>
+        </div>
     </div>
 
-    <nav class="navbar">
-        <a href="/" class="logo">
-            <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
-        </a>
-        
-        <div class="menu-toggle"><i class="fa-solid fa-bars"></i></div>
-        
-        <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/services/">Services</a></li>
-            <li><a href="/portfolio/">Portfolio</a></li>
-            <li><a href="/careers/" class="active">Careers</a></li>
-            <li><a href="/about/">About Us</a></li>
-            <li><a href="/contact/">Contact</a></li>
-        </ul>
-    </nav>
+    <header class="w-full bg-brand-navy/95 backdrop-blur-md fixed top-0 z-50 border-b border-white/10 shadow-sm">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="/" class="flex-shrink-0 flex items-center gap-3">
+                <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain">
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 text-[13px] font-semibold tracking-wider text-slate-300 uppercase">
+                <a href="/" class="hover:text-brand-cyan transition-colors duration-200">Home</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="text-brand-cyan transition-colors duration-200 flex items-center">
+                        Company <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-56 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/about/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">About</a>
+                        <a href="/industries/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Industries</a>
+                        <a href="/careers/" class="block px-5 py-3 text-brand-blue bg-slate-50 border-b border-slate-100">Careers</a>
+                        <a href="/work/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Our Portfolio & Work</a>
+                    </div>
+                </div>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Services <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-48 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/services/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Services</a>
+                        <a href="/solutions/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Solutions</a>
+                        <a href="/pricing/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">Pricing</a>
+                    </div>
+                </div>
+                <a href="/work/" class="hover:text-brand-cyan transition-colors duration-200">Work</a>
+                <div class="relative group py-8 cursor-pointer">
+                    <span class="hover:text-brand-cyan transition-colors duration-200 flex items-center">
+                        Contact <i class="fa-solid fa-chevron-down ml-1.5 text-[10px]"></i>
+                    </span>
+                    <div class="absolute top-[70px] left-0 w-40 bg-white border border-slate-200 rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left -translate-y-2 group-hover:translate-y-0">
+                        <a href="/contact/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue border-b border-slate-100">Contact Us</a>
+                        <a href="/faq/" class="block px-5 py-3 text-slate-700 hover:bg-slate-50 hover:text-brand-blue">FAQ</a>
+                    </div>
+                </div>
+            </nav>
 
-    <header class="page-hero">
-        <h1>Join BlueWave Digital.</h1>
-        <p>We are always looking for elite engineers, developers, and strategists to join our operations. Review our open technical positions below.</p>
+            <div class="flex-shrink-0 flex items-center gap-3">
+                <a href="/login/" class="hidden md:inline-flex items-center justify-center px-4 py-2 text-[11px] font-bold text-white bg-white/5 border border-white/20 rounded hover:bg-white/10 hover:border-white/40 transition-all active:scale-95 uppercase tracking-widest pointer-events-auto">Client Login</a>
+                <a href="/quote/" class="inline-flex items-center justify-center px-5 py-2 text-[11px] font-bold text-white transition-all bg-brand-blue rounded hover:bg-brand-blueHover shadow-md uppercase tracking-widest active:scale-95 pointer-events-auto">Request a Quote</a>
+            </div>
+        </div>
     </header>
 
-    <section class="careers-section">
+    <main class="flex-grow">
+        
+        <section class="relative w-full h-[45vh] min-h-[350px] flex items-center justify-center mt-20 bg-brand-navy overflow-hidden border-b border-brand-cyan/20">
+            <img src="https://i.ibb.co/JWj1dHHc/Chat-GPT-Image-May-7-2026-07-54-18-PM.png" alt="BlueWave Careers Background" class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0">
+        </section>
 
-        <div class="protocol-box">
-            <h3><i class="fa-solid fa-circle-info"></i> Application Protocol & Timeline</h3>
-            <p><strong>Centralized Hiring:</strong> BlueWave Digital is a subsidiary of the Tyler Nicholas Group. All applications are processed through our central corporate HR portal.</p>
-            <ul>
-                <li>When you click "Apply," you will be routed to <code>careers.tylernicholasgroup.com</code>.</li>
-                <li><strong>You must locate this specific job post again on the central portal and click it to access the final application form.</strong></li>
-                <li>If you do not see any roles listed here, you may browse the central portal for other opportunities across the organization.</li>
-            </ul>
-            <p><strong>Timeline:</strong> Applications are reviewed within 2 to 4 business days. Expect an official response in less than 240 hours.</p>
-            <p><strong>Notice (As of March 2026):</strong> The majority of our current openings operate on a Paid or Volunteer Part-Time basis.</p>
-            
-            <div style="margin-top: 1.5rem;">
-                <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-outline" style="font-size: 0.85rem; padding: 0.5rem 1.2rem;">Visit Central TNG Careers Portal</a>
-            </div>
-        </div>
-
-        <div class="jobs-container" id="jobs-container">
-            <div class="status-message">
-                <i class="fa-solid fa-circle-notch fa-spin"></i>
-                <h3>Connecting to Secure Server...</h3>
-                <p>Retrieving active job postings for BlueWave Digital.</p>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="tng-section reveal">
-        <div class="tng-badge">
-            <i class="fa-solid fa-building-shield"></i>
-            <div class="tng-text">
-                <h4>A <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a> Company</h4>
-                <p>Backed by elite corporate infrastructure.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="site-footer">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="footer-logo">
-                    <img src="https://bluewave-digital.tylernicholasgroup.com/images/logo.png" alt="BlueWave Digital Logo">
+        <section class="bg-brand-navy pt-16 pb-16 relative overflow-hidden">
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-8">Careers at BlueWave</h1>
+                
+                <div class="bg-brand-dark border border-brand-cyan/30 rounded-xl p-8 shadow-2xl relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-brand-cyan"></div>
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="TNG Logo" class="h-6 mx-auto mb-4">
+                    <p class="text-slate-300 font-light leading-relaxed mb-6">
+                        Recruitment for BlueWave Digital is managed exclusively by the Tyler Nicholas Group, our holding and parent company. All official vacancies, applications, recruitment updates, and candidate communications are handled directly through the Tyler Nicholas Group Careers Portal.
+                    </p>
+                    <a href="https://careers.tylernicholasgroup.com" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 text-xs font-bold text-brand-navy transition-all bg-brand-cyan rounded hover:bg-white shadow-lg uppercase tracking-widest active:scale-95 pointer-events-auto">
+                        Go to TNG Careers Portal <i class="fa-solid fa-arrow-up-right-from-square ml-2"></i>
+                    </a>
                 </div>
-                <p>Elite digital infrastructure and software development. Operating on-site in Seychelles and remote worldwide.</p>
             </div>
-            
-            <div class="footer-links">
-                <h3>Solutions</h3>
-                <ul>
-                    <li><a href="/services/">Custom Development</a></li>
-                    <li><a href="/services/">Infrastructure Setup</a></li>
-                    <li><a href="/services/">Discord Security</a></li>
-                    <li><a href="/services/">Nonprofit Systems</a></li>
-                </ul>
+        </section>
+
+        <section class="py-24 bg-slate-50 border-b border-slate-100">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">The Opportunity</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Why Work With BlueWave Digital</h3>
+                    <p class="text-slate-500 mt-4 text-lg font-light max-w-2xl mx-auto">
+                        Work on real websites, custom software, enterprise automation, hosting environments, community systems, and digital infrastructure. Gain tangible experience in modern digital services, client projects, and high-level technology operations.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm">
+                        <i class="fa-solid fa-users text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="font-bold text-slate-800 mb-2">Best Team</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Collaborate with driven, visionary talent building the future.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm">
+                        <i class="fa-solid fa-clock text-2xl text-brand-cyan mb-4"></i>
+                        <h4 class="font-bold text-slate-800 mb-2">Part-Time Options</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">All positions offer part-time flexibility to fit your lifestyle.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm">
+                        <i class="fa-solid fa-calendar-check text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="font-bold text-slate-800 mb-2">Flexible Hours</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">You work when work needs to be done. True autonomy.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm">
+                        <i class="fa-solid fa-earth-americas text-2xl text-brand-cyan mb-4"></i>
+                        <h4 class="font-bold text-slate-800 mb-2">Fully Remote</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Execute your tasks from anywhere in the world.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-6 rounded-xl text-center shadow-sm">
+                        <i class="fa-solid fa-scale-balanced text-2xl text-brand-blue mb-4"></i>
+                        <h4 class="font-bold text-slate-800 mb-2">Paid Fairly & Equally</h4>
+                        <p class="text-xs text-slate-500 leading-relaxed">Get paid exactly for the value and work you deliver.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w-full bg-white">
+            <img src="https://i.ibb.co/rKMbDkKX/Chat-GPT-Image-May-8-2026-05-03-24-PM.png" alt="Join BlueWave Digital" class="w-full h-auto object-cover max-h-[400px]">
+        </section>
+
+        <section class="py-24 bg-white border-b border-slate-100">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-2">We Are Hiring</h2>
+                        <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Current Open Positions</h3>
+                    </div>
+                    <a href="https://careers.tylernicholasgroup.com" target="_blank" class="inline-flex items-center text-xs font-bold text-brand-blue hover:text-brand-navy transition-colors uppercase tracking-widest pointer-events-auto">
+                        View All TNG Jobs <i class="fa-solid fa-arrow-right ml-2 text-brand-cyan"></i>
+                    </a>
+                </div>
+
+                <div id="jobs-loader" class="flex flex-col items-center justify-center py-12">
+                    <i class="fa-solid fa-circle-notch fa-spin text-3xl text-brand-cyan mb-4"></i>
+                    <p class="text-sm text-slate-500 font-medium tracking-wide">Syncing with TNG Global Database...</p>
+                </div>
+
+                <div id="jobs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+                    </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-slate-50">
+            <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-navy mb-6">What We Look For</h3>
+                    <p class="text-slate-600 font-light mb-8">We are obsessed with quality. We seek candidates who bring the following traits to our digital infrastructure teams:</p>
+                    
+                    <ul class="space-y-4 text-slate-700 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Professional communication</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Absolute reliability</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Technical curiosity</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Problem-solving mentality</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Strict respect for deadlines</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Willingness to learn rapidly</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Meticulous attention to detail</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Client-focused thinking</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-cyan mr-3"></i> Unyielding integrity & confidentiality</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-brand-navy mb-6">Student & Early-Career Opportunities</h3>
+                    <p class="text-slate-600 font-light mb-8">BlueWave Digital is an exceptional environment for young talent. We actively support students and junior professionals through:</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-graduation-cap text-brand-blue mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Internships</h4>
+                        </div>
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-laptop-code text-brand-cyan mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Junior Developer Roles</h4>
+                        </div>
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-briefcase text-brand-blue mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Work Experience</h4>
+                        </div>
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-hands-holding-circle text-brand-cyan mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Volunteer Digital Projects</h4>
+                        </div>
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-folder-open text-brand-blue mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Portfolio-Building</h4>
+                        </div>
+                        <div class="bg-white p-5 border border-slate-200 rounded-lg shadow-sm">
+                            <i class="fa-solid fa-chalkboard-user text-brand-cyan mb-2"></i>
+                            <h4 class="font-bold text-slate-800 text-sm">Mentorship & Training</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-24 bg-white border-y border-slate-100">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">The Pipeline</h2>
+                    <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Our Recruitment Process</h3>
+                </div>
+
+                <div class="relative border-l-2 border-brand-cyan/30 ml-3 md:ml-6 space-y-12">
+                    
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-navy border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">1</div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">Apply via TNG Careers</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">Submit your application securely through the official Tyler Nicholas Group Careers Page.</p>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-blue border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">2</div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">HR Review</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">Your initial application will be thoroughly reviewed by the TNG Human Resources Department.</p>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-cyan border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">3</div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">Dashboard Communication</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">You may receive messages via your careers site dashboard from the officer overseeing your application. Please monitor your dashboard for updates.</p>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-navy border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">4</div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">Interview & Assessment</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">
+                            Interviews are conducted via dashboard messaging or the ZOOM platform. We believe in maintaining a comfortable environment; you are <strong>not required</strong> to have your camera on. To maintain our strict privacy and security policies, all meetings are subject to recording and are securely archived.
+                        </p>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-blue border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm">5</div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">Role Confirmation</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">Following a successful interview, you will receive official role confirmation alongside all necessary documentation.</p>
+                    </div>
+
+                    <div class="relative pl-8 md:pl-12">
+                        <div class="absolute -left-[17px] top-1 w-8 h-8 rounded-full bg-brand-cyan border-4 border-white flex items-center justify-center text-white text-xs font-bold shadow-sm"><i class="fa-solid fa-check"></i></div>
+                        <h4 class="text-lg font-bold text-brand-navy mb-2">Onboarding</h4>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">You will be officially onboarded. Welcome to the Tyler Nicholas Group's BlueWave Digital Family.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-brand-navy py-24 text-white">
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-brand-cyan text-[11px] font-bold uppercase tracking-[0.25em] mb-4">Corporate Standards</h2>
+                    <h3 class="text-3xl font-extrabold tracking-tight mb-6">Equal Opportunity & Inclusion</h3>
+                    <p class="text-slate-300 font-light leading-relaxed">
+                        BlueWave Digital welcomes motivated applicants from different backgrounds, skill levels, and locations. We value professionalism, learning, creativity, and the ability to contribute meaningfully to client and organizational work.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Employment Act 1995</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Employment (Amendment) Act 2025</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Intl. Trade Zone Regulations</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Data Protection Act (2003)</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">EU Working Time Directive</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Fair Labor Standards Act</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Right to Disconnect Laws</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">GDPR Compliance</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">EU AI Act</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Digital Personal Data Protection Act</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-slate-300">Occupational Safety & Health</p></div>
+                    <div class="bg-brand-dark border border-brand-cyan/20 p-4 rounded-lg"><p class="text-xs font-medium text-brand-cyan">Global Remote Policy</p></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brand-dark pt-20 pb-10 border-t-[8px] border-brand-cyan text-slate-300 relative z-20">
+        <div class="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16 border-b border-slate-700 pb-16">
+                
+                <div class="lg:col-span-2">
+                    <img src="https://i.ibb.co/MDHS2J5v/Blue-Wave-Digital-New-Logo.png" alt="BlueWave Digital" class="h-10 object-contain mb-6">
+                    <p class="text-sm text-slate-400 leading-relaxed max-w-sm mb-8 font-light">
+                        A technology and software firm dedicated to delivering high-performance digital infrastructure, automation, and design for global organizations.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.linkedin.com/company/tylernicholas-group/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/tylernicholasgroup/" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://x.com/tyler_n_group" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.youtube.com/@TylerNicholasGroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/tylernicholasgroup" target="_blank" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:bg-brand-blue transition-colors active:scale-95 pointer-events-auto"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Directory</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/about/" class="hover:text-brand-cyan transition-colors pointer-events-auto">About Us</a></li>
+                        <li><a href="/services/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Service Directory</a></li>
+                        <li><a href="/work/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Portfolio</a></li>
+                        <li><a href="/pricing/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Pricing & Packages</a></li>
+                        <li><a href="/careers/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Support & Legal</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="/login/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Client Login</a></li>
+                        <li><a href="/support/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Support Center</a></li>
+                        <li><a href="/privacy/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Privacy Policy</a></li>
+                        <li><a href="/terms/" class="hover:text-brand-cyan transition-colors pointer-events-auto">Terms of Service</a></li>
+                        <li><a href="/status/" class="hover:text-brand-cyan transition-colors pointer-events-auto">System Status</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest mb-6">Partnerships</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li>
+                            <a href="https://bds.tylernicholasgroup.com/" target="_blank" class="block hover:text-brand-cyan transition-colors group pointer-events-auto">
+                                <span class="block text-white mb-1 group-hover:text-brand-cyan transition-colors">BlackWood Digital</span>
+                                <span class="text-xs leading-snug text-slate-500 group-hover:text-slate-400 transition-colors">Specialized Discord & Community Security Solutions.</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="footer-links">
-                <h3>Company</h3>
-                <ul>
-                    <li><a href="/about/">About Us</a></li>
-                    <li><a href="/portfolio/">Our Work</a></li>
-                    <li><a href="/careers/">Careers at TNG</a></li>
-                    <li><a href="/contact/">Contact Us</a></li>
-                </ul>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+                    <p class="text-xs text-slate-500">&copy; 2026 BlueWave Digital. All rights reserved.</p>
+                    <span class="hidden sm:block text-slate-700">|</span>
+                    <a href="https://www.dmca.com/Protection/Status.aspx?ID=de5465d8-036a-4f5b-8c33-cbf78a4b1565" target="_blank" rel="noopener noreferrer" class="text-[10px] sm:text-xs font-medium text-slate-500 hover:text-white transition-colors pointer-events-auto">
+                        Protected by the Digital Millennium Copyright Act (DMCA)
+                    </a>
+                </div>
+                <a href="https://tylernicholasgroup.com" class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-opacity group pointer-events-auto">
+                    <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 group-hover:text-white transition-colors">A Proud Member Of</span>
+                    <img src="https://i.ibb.co/1tcyLSRN/TNG-Logo.png" alt="Tyler Nicholas Group" class="h-5 grayscale group-hover:grayscale-0 transition-all">
+                </a>
             </div>
-        </div>
-
-        <div class="footer-bottom">
-            &copy; 2026 BlueWave Digital. All Rights Reserved. <br>
-            Proudly owned and operated by the <a href="https://tylernicholasgroup.com" target="_blank" class="tng-link">Tyler Nicholas Group</a>.
         </div>
     </footer>
 
+    <div id="job-modal" class="fixed inset-0 z-[80000] bg-brand-navy/90 backdrop-blur-sm modal-overlay modal-hidden flex items-center justify-center p-4">
+        <div class="modal-content-fade bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl shadow-2xl flex flex-col relative overflow-hidden pointer-events-auto">
+            <div class="bg-slate-50 border-b border-slate-200 p-6 sm:p-8 flex-shrink-0 relative">
+                <button onclick="closeModal('job-modal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-800 bg-slate-200 hover:bg-slate-300 w-8 h-8 rounded-full flex items-center justify-center transition-colors"><i class="fa-solid fa-xmark"></i></button>
+                <span id="jd-badge" class="inline-block bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-3 border border-brand-cyan/20">Type</span>
+                <h2 id="jd-title" class="text-2xl sm:text-3xl font-extrabold text-brand-navy tracking-tight leading-tight mb-2 pr-8">Role</h2>
+                <p class="text-slate-600 text-sm font-medium"><i class="fa-solid fa-building text-brand-blue mr-1"></i> <span id="jd-company" class="mr-4">Company</span> <i class="fa-solid fa-location-dot text-brand-cyan mr-1"></i> <span id="jd-location">Location</span></p>
+            </div>
+            <div class="flex-grow overflow-y-auto p-6 sm:p-8 bg-white">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4 border-b border-slate-100 pb-2">Role Overview</h3>
+                <div id="jd-description" class="prose prose-sm max-w-none text-slate-700 font-light leading-relaxed whitespace-pre-wrap">Loading...</div>
+            </div>
+            <div class="bg-slate-50 border-t border-slate-200 p-6 flex-shrink-0 flex justify-end">
+                <a href="https://careers.tylernicholasgroup.com" target="_blank" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-blueHover text-white font-bold py-3.5 px-8 rounded-lg shadow-md transition-all uppercase tracking-wide text-xs text-center flex justify-center items-center">
+                    Apply via TNG Careers <i class="fa-solid fa-arrow-up-right-from-square ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 1. Loading Screen & Reveal Logic
-        window.addEventListener("load", function() {
-            const loader = document.getElementById("loader");
-            setTimeout(() => { loader.style.opacity = "0"; loader.style.visibility = "hidden"; }, 600);
+        // Preloader Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
+            const progressFill = document.getElementById('progress-fill');
+            const body = document.getElementById('body-wrap');
+            
+            const images = document.images;
+            const totalImages = images.length;
+            let loadedImages = 0;
+
+            function updateProgress() {
+                loadedImages++;
+                let percent = (loadedImages / totalImages) * 100;
+                progressFill.style.width = percent + '%';
+
+                if (loadedImages >= totalImages) {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                            body.classList.remove('overflow-hidden');
+                        }, 700);
+                    }, 400); 
+                }
+            }
+
+            if (totalImages === 0) {
+                progressFill.style.width = '100%';
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        body.classList.remove('overflow-hidden');
+                    }, 700);
+                }, 200);
+            } else {
+                for (let i = 0; i < totalImages; i++) {
+                    if (images[i].complete) {
+                        updateProgress();
+                    } else {
+                        images[i].addEventListener('load', updateProgress);
+                        images[i].addEventListener('error', updateProgress); 
+                    }
+                }
+            }
         });
 
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
-            }
+        // Modal Logic
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('modal-hidden');
+            modal.classList.add('modal-visible');
         }
-        window.addEventListener("scroll", reveal);
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('modal-visible');
+            modal.classList.add('modal-hidden');
+        }
 
-        // 2. Supabase Fetch Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const jobsContainer = document.getElementById('jobs-container');
-            const supabaseUrl = 'https://hicowukbjsbpuebquqbh.supabase.co';
-            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpY293dWtianNicHVlYnF1cWJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5NzgyNzQsImV4cCI6MjA4NzU1NDI3NH0.sz7ZNU3-WcsskIaHC5Cjs_-WVmXLtYR15Iy8VGi8ch0';
+        // Supabase Job Fetching
+        let jobsData = [];
+        document.addEventListener("DOMContentLoaded", () => {
+            const initSupabase = async () => {
+                try {
+                    const sbUrl = 'https://kkvjwmzlezrkwqiizkwp.supabase.co';
+                    const sbKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtrdmp3bXpsZXpya3dxaWl6a3dwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5MzY2OTksImV4cCI6MjA5MjUxMjY5OX0.Oa44WwSsEhao79sLfkF4HA-dmDbVV3NeT9txvl83460';
+                    window.sbClient = window.supabase.createClient(sbUrl, sbKey);
 
-            // Query: Get jobs where company = 'BlueWave Digital' AND is_active = true
-            const endpoint = `${supabaseUrl}/rest/v1/job_postings?select=*&company=eq.BlueWave%20Digital&is_active=eq.true&order=created_at.desc`;
+                    // Fetch ONLY BlueWave Digital Jobs
+                    const { data: jobs, error } = await window.sbClient
+                        .from('tng_job_postings')
+                        .select('*')
+                        .eq('is_active', true)
+                        .eq('company_id', '15aae629-e117-4dcd-b5c0-c8be7564008f')
+                        .order('created_at', { ascending: false });
 
-            fetch(endpoint, {
-                method: 'GET',
-                headers: {
-                    'apikey': supabaseKey,
-                    'Authorization': `Bearer ${supabaseKey}`,
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if (!response.ok) { throw new Error('Network response was not ok'); }
-                return response.json();
-            })
-            .then(jobs => {
-                jobsContainer.innerHTML = ''; // Clear loading message
+                    const loaderEl = document.getElementById('jobs-loader');
+                    const gridEl = document.getElementById('jobs-grid');
 
-                if (jobs.length === 0) {
-                    jobsContainer.innerHTML = `
-                        <div class="status-message" style="border-color: rgba(255,255,255,0.05);">
-                            <i class="fa-solid fa-folder-open" style="color: var(--text-muted);"></i>
-                            <h3>No Specific Openings</h3>
-                            <p>There are currently no exclusive listings active for BlueWave Digital. <br>Please check the main corporate portal for all open positions across the organization.</p>
-                            <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-primary" style="margin-top: 1.5rem;">View All TNG Careers</a>
-                        </div>
-                    `;
-                    return;
-                }
+                    if (error) {
+                        console.error(error);
+                        loaderEl.innerHTML = `<p class="text-red-500 font-bold">Failed to connect to database.</p>`;
+                        return;
+                    }
 
-                jobs.forEach((job, index) => {
-                    // Determine the Apply link logic based on your instruction
-                    // If external_link exists and isn't empty, use it. Otherwise default to TNG careers.
-                    const applyLink = (job.external_link && job.external_link.trim() !== "") 
-                        ? job.external_link 
-                        : "https://careers.tylernicholasgroup.com";
+                    loaderEl.classList.add('hidden');
+                    gridEl.classList.remove('hidden');
 
-                    // Convert plain text description to basic HTML if needed, or just insert
-                    const safeDesc = job.description || "No description provided.";
-
-                    const card = document.createElement('div');
-                    card.className = 'job-card';
-                    // Stagger the animation slightly for each card
-                    card.style.animationDelay = `${index * 0.15}s`;
-                    
-                    card.innerHTML = `
-                        <div class="job-header">
-                            <div class="job-title-group">
-                                <h2>${job.title}</h2>
-                                <div class="job-meta">
-                                    <span><i class="fa-solid fa-location-dot"></i> ${job.location || 'Remote'}</span>
-                                    <span><i class="fa-solid fa-clock"></i> ${job.employment_type || 'Part-Time'}</span>
+                    if (!jobs || jobs.length === 0) {
+                        gridEl.innerHTML = `<div class="col-span-full py-8 text-center text-slate-500 font-light">No open positions currently available at BlueWave Digital.</div>`;
+                    } else {
+                        jobsData = jobs;
+                        gridEl.innerHTML = jobs.map((job) => `
+                            <div class="bg-white border border-slate-200 rounded-xl flex flex-col shadow-sm hover:shadow-md hover:border-brand-blue transition-all cursor-pointer pointer-events-auto" onclick="showJob('${job.id}')">
+                                <div class="p-6 flex-grow">
+                                    <span class="inline-block bg-brand-cyan/10 text-brand-cyan text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest mb-3 border border-brand-cyan/20">${job.employment_type || 'Full-Time'}</span>
+                                    <h3 class="text-lg font-bold text-brand-navy mb-2 leading-tight">${job.title}</h3>
+                                    <p class="text-slate-500 text-xs font-medium"><i class="fa-solid fa-location-dot mr-1 text-brand-cyan"></i> ${job.location || 'Remote'}</p>
+                                </div>
+                                <div class="bg-slate-50 border-t border-slate-100 p-4 text-center text-xs font-bold text-brand-blue uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-colors rounded-b-xl">
+                                    View Role <i class="fa-solid fa-arrow-right ml-1"></i>
                                 </div>
                             </div>
-                        </div>
-                        <div class="job-description">
-                            ${safeDesc}
-                        </div>
-                        <div class="job-footer">
-                            <a href="${applyLink}" target="_blank" class="btn-primary">Apply Now <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
-                        </div>
-                    `;
-                    jobsContainer.appendChild(card);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching jobs:', error);
-                jobsContainer.innerHTML = `
-                    <div class="status-message" style="border-color: rgba(230, 0, 38, 0.3);">
-                        <i class="fa-solid fa-triangle-exclamation" style="color: #E60026;"></i>
-                        <h3>Connection Error</h3>
-                        <p>Unable to connect to the TNG secure career database. Please try again later or visit the central portal directly.</p>
-                        <a href="https://careers.tylernicholasgroup.com" target="_blank" class="btn-outline" style="margin-top: 1.5rem;">Go to Central Portal</a>
-                    </div>
-                `;
-            });
+                        `).join('');
+                    }
+                } catch (err) {
+                    console.error("Init failed:", err);
+                }
+            };
+
+            const checkSupabase = setInterval(() => {
+                if (window.supabase) {
+                    clearInterval(checkSupabase); 
+                    initSupabase();
+                }
+            }, 100);
         });
+
+        // Handle Job Click
+        window.showJob = function(id) {
+            const job = jobsData.find(j => j.id === id);
+            if(!job) return;
+            document.getElementById('jd-title').innerText = job.title;
+            document.getElementById('jd-company').innerText = "BlueWave Digital";
+            document.getElementById('jd-location').innerText = job.location || 'Remote';
+            document.getElementById('jd-badge').innerText = job.employment_type || 'Full-Time';
+            document.getElementById('jd-description').innerText = job.description || 'No description available.';
+            openModal('job-modal');
+        }
     </script>
 </body>
 </html>
